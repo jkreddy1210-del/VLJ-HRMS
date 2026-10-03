@@ -57,9 +57,23 @@ export default function AttendanceDevicesPage() {
   useEffect(() => { loadDevices(); }, [loadDevices]);
   useEffect(() => {
     if (!canManage) return;
-    apiFetch("/employees?limit=500&status=Active")
-      .then((data) => setEmployees(data.employees || []))
-      .catch((error) => toast.error(error.message || "Could not load employees"));
+    let cancelled = false;
+    async function loadEmployees() {
+      try {
+        const firstPage = await apiFetch("/employees?limit=100&page=1&status=Active");
+        const allEmployees = [...(firstPage.employees || [])];
+        const totalPages = firstPage.pagination?.totalPages || 1;
+        for (let page = 2; page <= totalPages; page += 1) {
+          const data = await apiFetch(`/employees?limit=100&page=${page}&status=Active`);
+          allEmployees.push(...(data.employees || []));
+        }
+        if (!cancelled) setEmployees(allEmployees);
+      } catch (error) {
+        if (!cancelled) toast.error(error.message || "Could not load employees");
+      }
+    }
+    loadEmployees();
+    return () => { cancelled = true; };
   }, [canManage]);
   useEffect(() => { loadDetails(selectedId); }, [selectedId, loadDetails]);
 
