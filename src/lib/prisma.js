@@ -6,7 +6,7 @@ import { employeeProfilePhotoExtension } from "@/lib/employee-photo-db";
 const globalForPrisma = globalThis;
 
 /** Bump when schema adds models so stale Next.js HMR clients are discarded. */
-const PRISMA_CLIENT_VERSION = 5;
+const PRISMA_CLIENT_VERSION = 6;
 
 function createPrismaClient() {
   const adapter = new PrismaMariaDb(parseDatabaseUrl(process.env.DATABASE_URL));
