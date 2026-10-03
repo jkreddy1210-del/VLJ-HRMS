@@ -28,6 +28,8 @@ import {
 
   Clock,
 
+  Fingerprint,
+
   ChevronLeft,
 
   ChevronRight,
