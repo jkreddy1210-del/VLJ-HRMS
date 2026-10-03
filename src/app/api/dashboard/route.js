@@ -49,10 +49,99 @@ function canViewOrgDashboard(user) {
   ].some((p) => perms.includes(p));
 }
 
-async function buildOrgDashboard() {
+function canReviewLeavesOnDashboard(user) {
+  const perms = user?.permissions || [];
+  return [
+    "Full System Access",
+    "All Permissions",
+    "Approve Any Leave",
+    "Leave Approval",
+    "Final Leave Approval",
+    "View Leave Requests",
+    "View Team Leave Requests",
+  ].some((p) => perms.includes(p));
+}
+
+function canApproveLeavesOnDashboard(user) {
+  const perms = user?.permissions || [];
+  return [
+    "Full System Access",
+    "All Permissions",
+    "Approve Any Leave",
+    "Leave Approval",
+    "Final Leave Approval",
+    "View Team Leave Requests",
+  ].some((p) => perms.includes(p));
+}
+
+async function getPendingLeavesForDashboard(user, limit = 10) {
+  if (!canReviewLeavesOnDashboard(user)) {
+    return { pendingLeaves: [], pendingLeaveTotal: 0, canApproveLeaves: false };
+  }
+
+  const include = {
+    employee: { include: { department: true } },
+    leaveType: true,
+  };
+
+  let where = { finalStatus: "Pending" };
+
+  const perms = user.permissions || [];
+  const seesAll =
+    perms.includes("Full System Access") ||
+    perms.includes("All Permissions") ||
+    perms.includes("Approve Any Leave") ||
+    perms.includes("View Leave Requests") ||
+    perms.includes("Final Leave Approval") ||
+    user.role === "hr" ||
+    user.role === "admin" ||
+    user.role === "super_admin";
+
+  if (!seesAll && perms.includes("View Team Leave Requests") && user.employeeId) {
+    const team = await prisma.employee.findMany({
+      where: { reportingManagerId: user.employeeId },
+      select: { id: true },
+    });
+    where = { ...where, employeeId: { in: team.map((t) => t.id) } };
+  } else if (!seesAll) {
+    return { pendingLeaves: [], pendingLeaveTotal: 0, canApproveLeaves: false };
+  }
+
+  const [rows, total] = await Promise.all([
+    prisma.leaveRequest.findMany({
+      where,
+      include,
+      orderBy: { createdAt: "desc" },
+      take: limit,
+    }),
+    prisma.leaveRequest.count({ where }),
+  ]);
+
+  return {
+    pendingLeaves: rows.map((r) => ({
+      id: r.id,
+      employeeCode: r.employee.employeeCode,
+      employeeName: r.employee.fullName,
+      department: r.employee.department?.departmentName || "—",
+      leaveType: r.leaveType.leaveName,
+      from: r.fromDate.toISOString().split("T")[0],
+      to: r.toDate.toISOString().split("T")[0],
+      days: Number(r.totalDays),
+      reason: r.reason || "",
+      status: r.finalStatus,
+      managerStatus: r.managerStatus,
+      hrStatus: r.hrStatus,
+      createdAt: r.createdAt.toISOString(),
+    })),
+    pendingLeaveTotal: total,
+    canApproveLeaves: canApproveLeavesOnDashboard(user),
+  };
+}
+
+async function buildOrgDashboard(user) {
   const { start: today, end: tomorrow } = istDayRange(0);
 
-  const [totalEmployees, todayAttendance, recentAudits] = await Promise.all([
+  const [totalEmployees, todayAttendance, recentAudits, leavePanel] = await Promise.all([
     prisma.employee.count({ where: { status: "Active" } }),
     prisma.attendance.findMany({
       where: { attendanceDate: { gte: today, lt: tomorrow } },
@@ -62,6 +151,7 @@ async function buildOrgDashboard() {
       take: 5,
       include: { employee: true },
     }),
+    getPendingLeavesForDashboard(user, 10),
   ]);
 
   const presentToday = todayAttendance.filter((a) =>
@@ -163,6 +253,9 @@ async function buildOrgDashboard() {
     departmentAttendance,
     monthlyTrend,
     recentActivities,
+    pendingLeaves: leavePanel.pendingLeaves,
+    pendingLeaveTotal: leavePanel.pendingLeaveTotal,
+    canApproveLeaves: leavePanel.canApproveLeaves,
   };
 }
 
@@ -181,7 +274,7 @@ export async function GET(request) {
     });
   }
 
-  const org = await buildOrgDashboard();
+  const org = await buildOrgDashboard(user);
   return Response.json({
     mode: "org",
     ...org,

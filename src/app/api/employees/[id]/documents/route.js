@@ -19,7 +19,7 @@ const ALLOWED_TYPES = [
   "Payslip",
   "Other",
 ];
-const MAX_SIZE = 2 * 1024 * 1024;
+const MAX_SIZE = 5 * 1024 * 1024;
 const ALLOWED_MIME = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
 const PHOTO_MIME = ["image/jpeg", "image/jpg", "image/png"];
 
@@ -55,7 +55,7 @@ export async function POST(request, { params }) {
     return Response.json({ error: "Invalid document type" }, { status: 400 });
   }
   if (file.size > MAX_SIZE) {
-    return Response.json({ error: "File must be under 2MB" }, { status: 400 });
+    return Response.json({ error: "File must be under 5MB" }, { status: 400 });
   }
 
   const isPhotoUpload = documentType === "Other";

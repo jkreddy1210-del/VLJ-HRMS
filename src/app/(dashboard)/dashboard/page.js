@@ -16,6 +16,10 @@ import {
   User,
   Clock,
   Calendar,
+  Check,
+  X,
+  Bell,
+  Loader2,
 } from "lucide-react";
 import {
   BarChart,
@@ -30,31 +34,76 @@ import {
 } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { toast } from "sonner";
 import { useAuth } from "@/context/auth-context";
 import { api } from "@/lib/api-client";
 import { formatDate, getTimeOfDayGreeting } from "@/lib/utils";
+import { QuickActionsCard } from "@/components/dashboard/quick-actions-card";
+import { EventsCalendar } from "@/components/dashboard/events-calendar";
 
 const statCards = [
-  { key: "totalEmployees", label: "Total Employees", hint: "Active employees", icon: Users, color: "from-champagne to-gold", bg: "bg-champagne/10" },
-  { key: "presentToday", label: "Present Today", hint: "Came to office today", icon: UserCheck, color: "from-emerald-500 to-emerald-600", bg: "bg-emerald-500/10" },
-  { key: "onLeave", label: "On Leave Today", hint: "Approved / marked leave", icon: CalendarOff, color: "from-amber-500 to-amber-600", bg: "bg-amber-500/10" },
-  { key: "absentToday", label: "Absent Today", hint: "Not present (includes not marked yet)", icon: UserX, color: "from-red-500 to-red-600", bg: "bg-red-500/10" },
+  {
+    key: "totalEmployees",
+    label: "Total Employees",
+    hint: "Active employees",
+    icon: Users,
+    accent: "border-l-champagne",
+    iconWrap: "bg-champagne/20 text-champagne",
+    valueClass: "text-champagne",
+  },
+  {
+    key: "presentToday",
+    label: "Present Today",
+    hint: "Came to office today",
+    icon: UserCheck,
+    accent: "border-l-emerald-500",
+    iconWrap: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+    valueClass: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    key: "onLeave",
+    label: "On Leave Today",
+    hint: "Approved / marked leave",
+    icon: CalendarOff,
+    accent: "border-l-amber-500",
+    iconWrap: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
+    valueClass: "text-amber-600 dark:text-amber-400",
+  },
+  {
+    key: "absentToday",
+    label: "Absent Today",
+    hint: "Not present (includes not marked yet)",
+    icon: UserX,
+    accent: "border-l-red-500",
+    iconWrap: "bg-red-500/15 text-red-600 dark:text-red-400",
+    valueClass: "text-red-600 dark:text-red-400",
+  },
 ];
 
 const quickActions = [
-  { label: "My Profile", href: null, icon: User, color: "bg-slate-600", perms: ["View Profile", "Edit Profile"], useProfileHref: true },
-  { label: "Add Employee", href: "/employees/add", icon: Plus, color: "bg-champagne", perms: ["Employee Management"] },
-  { label: "Mark Attendance", href: "/attendance", icon: ClipboardCheck, color: "bg-emerald-500", perms: ["Mark Attendance", "Attendance Monitoring"] },
-  { label: "Generate Report", href: "/reports", icon: FileBarChart, color: "bg-amber-500", perms: ["Generate Reports", "View Team Reports"] },
+  { id: "profile", label: "My Profile", href: null, icon: User, color: "bg-slate-600", perms: ["View Profile", "Edit Profile"], useProfileHref: true },
+  { id: "add-employee", label: "Add Employee", href: "/employees/add", icon: Plus, color: "bg-champagne", perms: ["Employee Management"] },
+  { id: "mark-attendance", label: "Mark Attendance", href: "/attendance", icon: ClipboardCheck, color: "bg-emerald-500", perms: ["Mark Attendance", "Attendance Monitoring"] },
+  { id: "generate-report", label: "Generate Report", href: "/reports", icon: FileBarChart, color: "bg-amber-500", perms: ["Generate Reports", "View Team Reports"] },
   {
+    id: "approve-leave",
     label: "Approve Leave",
     href: "/leaves",
     icon: ThumbsUp,
     color: "bg-purple-500",
     perms: ["Final Leave Approval", "Leave Approval", "View Leave Requests", "View Team Leave Requests"],
   },
-  { label: "Apply Leave", href: "/leaves", icon: CalendarDays, color: "bg-gold", perms: ["Apply Leave"], hideForRoles: ["super_admin"] },
-  { label: "View Attendance", href: "/attendance", icon: ClipboardCheck, color: "bg-teal-500", perms: ["View Attendance", "View Team Attendance"] },
+  { id: "apply-leave", label: "Apply Leave", href: "/leaves", icon: CalendarDays, color: "bg-gold", perms: ["Apply Leave"], hideForRoles: ["super_admin"] },
+  { id: "view-attendance", label: "View Attendance", href: "/attendance", icon: ClipboardCheck, color: "bg-teal-500", perms: ["View Attendance", "View Team Attendance"] },
 ];
 
 const container = {
@@ -220,33 +269,15 @@ function EmployeeSelfDashboard({ self, visibleQuickActions, userId }) {
         </Card>
 
         {visibleQuickActions.length > 0 && (
-          <Card className="glass-card">
-            <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
-              <CardDescription>Frequently used actions</CardDescription>
-            </CardHeader>
-            <CardContent className="grid grid-cols-2 gap-3">
-              {visibleQuickActions.map((action) => {
-                const href = action.useProfileHref ? `/employees/${userId}` : action.href;
-                return (
-                  <Link key={action.label} href={href}>
-                    <motion.div
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex flex-col items-center gap-2 rounded-xl border p-4 transition-colors hover:bg-muted/50"
-                    >
-                      <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${action.color} text-white`}>
-                        <action.icon className="h-5 w-5" />
-                      </div>
-                      <span className="text-center text-xs font-medium">{action.label}</span>
-                    </motion.div>
-                  </Link>
-                );
-              })}
-            </CardContent>
-          </Card>
+          <QuickActionsCard
+            availableActions={visibleQuickActions}
+            userId={userId}
+            gridClassName="grid grid-cols-2 gap-3"
+          />
         )}
       </div>
+
+      <EventsCalendar />
 
       <Card className="glass-card">
         <CardHeader>
@@ -299,6 +330,11 @@ export default function DashboardPage() {
   const [weeklyAttendance, setWeeklyAttendance] = useState([]);
   const [departmentAttendance, setDepartmentAttendance] = useState([]);
   const [monthlyTrend, setMonthlyTrend] = useState([]);
+  const [pendingLeaves, setPendingLeaves] = useState([]);
+  const [pendingLeaveTotal, setPendingLeaveTotal] = useState(0);
+  const [canApproveLeaves, setCanApproveLeaves] = useState(false);
+  const [actingLeaveId, setActingLeaveId] = useState(null);
+  const [leaveConfirm, setLeaveConfirm] = useState(null);
   const [self, setSelf] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -311,7 +347,7 @@ export default function DashboardPage() {
     setGreeting(getTimeOfDayGreeting());
   }, []);
 
-  useEffect(() => {
+  const loadDashboard = () => {
     setLoading(true);
     api
       .dashboard()
@@ -322,13 +358,49 @@ export default function DashboardPage() {
           setWeeklyAttendance(data.weeklyAttendance || []);
           setDepartmentAttendance(data.departmentAttendance || []);
           setMonthlyTrend(data.monthlyTrend || []);
+          setPendingLeaves(data.pendingLeaves || []);
+          setPendingLeaveTotal(data.pendingLeaveTotal || 0);
+          setCanApproveLeaves(Boolean(data.canApproveLeaves));
         }
       })
       .catch(() => {})
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    loadDashboard();
   }, []);
 
+  const handleLeaveAction = async (id, action) => {
+    setActingLeaveId(id);
+    try {
+      await api.updateLeave(id, { action });
+      toast.success(action === "approve" ? "Leave approved" : "Leave rejected");
+      setPendingLeaves((prev) => prev.filter((l) => l.id !== id));
+      setPendingLeaveTotal((n) => Math.max(0, n - 1));
+      setLeaveConfirm(null);
+    } catch (err) {
+      toast.error(err.message || "Action failed");
+    } finally {
+      setActingLeaveId(null);
+    }
+  };
+
+  const askLeaveConfirm = (leave, action) => {
+    setLeaveConfirm({
+      id: leave.id,
+      action,
+      employeeName: leave.employeeName,
+      leaveType: leave.leaveType,
+      from: leave.from,
+      to: leave.to,
+    });
+  };
+
+  const extraPending = Math.max(0, pendingLeaveTotal - pendingLeaves.length);
+
   return (
+    <>
     <div className="space-y-6">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="font-display text-2xl font-bold lg:text-3xl">
@@ -351,25 +423,143 @@ export default function DashboardPage() {
 
       {showOrgDashboard && (
         <>
-          <motion.div variants={container} initial="hidden" animate="show" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {statCards.map((stat) => (
-              <motion.div key={stat.key} variants={item}>
-                <Card className="glass-card overflow-hidden transition-shadow hover:shadow-glow">
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between">
-                      <div className={`rounded-lg p-2 ${stat.bg}`}>
-                        <stat.icon className={`h-5 w-5 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`} />
+          <div className="grid h-auto items-stretch gap-4 lg:h-[280px] lg:grid-cols-[minmax(0,1fr)_minmax(280px,340px)]">
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="grid h-full grid-cols-2 gap-3"
+            >
+              {statCards.map((stat) => (
+                <motion.div key={stat.key} variants={item} className="min-h-0 h-full">
+                  <Card className={`glass-card h-full overflow-hidden border-l-4 ${stat.accent} transition-shadow hover:shadow-glow`}>
+                    <CardContent className="flex h-full items-center gap-3 p-3.5">
+                      <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${stat.iconWrap}`}>
+                        <stat.icon className="h-5 w-5" />
                       </div>
-                    </div>
-                    <p className="mt-3 text-2xl font-bold">
-                      {stats[stat.key] ?? 0}
-                    </p>
-                    <p className="text-xs text-muted-foreground">{stat.label}</p>
-                    <p className="text-[10px] text-muted-foreground/70">{stat.hint}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+                      <div className="min-w-0 shrink-0">
+                        <p className={`text-2xl font-bold leading-none tracking-tight ${stat.valueClass}`}>
+                          {stats[stat.key] ?? 0}
+                        </p>
+                      </div>
+                      <div className="min-w-0 flex-1 text-right">
+                        <p className="text-xs font-semibold leading-snug text-foreground sm:text-sm">
+                          {stat.label}
+                        </p>
+                        <p className="mt-0.5 text-[10px] leading-tight text-muted-foreground">{stat.hint}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.15 }} className="min-h-0 h-[280px] lg:h-full">
+              <Card className="glass-card flex h-full flex-col overflow-hidden">
+                <CardHeader className="shrink-0 space-y-1 border-b py-3 px-4">
+                  <div className="flex items-center justify-between gap-2">
+                    <CardTitle className="text-sm font-semibold">Pending Leaves</CardTitle>
+                    <Badge variant="warning" className="shrink-0">
+                      {pendingLeaveTotal}
+                    </Badge>
+                  </div>
+                  <CardDescription className="text-[11px]">
+                    Latest {Math.min(10, pendingLeaveTotal)} requests
+                    {extraPending > 0 ? ` · +${extraPending} more in notifications` : ""}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex min-h-0 flex-1 flex-col overflow-hidden p-0">
+                  <div className="min-h-0 flex-1 space-y-2 overflow-y-auto overscroll-contain p-3">
+                    {loading ? (
+                      <div className="flex items-center justify-center py-10 text-muted-foreground">
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                      </div>
+                    ) : pendingLeaves.length === 0 ? (
+                      <p className="py-8 text-center text-xs text-muted-foreground">No pending leave requests</p>
+                    ) : (
+                      pendingLeaves.map((leave) => (
+                        <div key={leave.id} className="rounded-lg border bg-background/60 p-3">
+                          <div className="flex items-start justify-between gap-2">
+                            <div className="min-w-0">
+                              <p className="truncate text-sm font-medium">{leave.employeeName}</p>
+                              <p className="text-[11px] text-muted-foreground">
+                                {leave.employeeCode} · {leave.department}
+                              </p>
+                            </div>
+                            <Badge variant="outline" className="shrink-0 text-[10px]">
+                              {leave.leaveType}
+                            </Badge>
+                          </div>
+                          <p className="mt-1.5 text-[11px] text-muted-foreground">
+                            {formatDate(leave.from)} – {formatDate(leave.to)}
+                            <span className="ml-1">({leave.days}d)</span>
+                          </p>
+                          {leave.reason ? (
+                            <p className="mt-1 line-clamp-2 text-xs text-foreground/90">
+                              <span className="font-medium text-muted-foreground">Reason: </span>
+                              {leave.reason}
+                            </p>
+                          ) : (
+                            <p className="mt-1 text-xs italic text-muted-foreground">No reason given</p>
+                          )}
+                          {canApproveLeaves && (
+                            <div className="mt-2 flex gap-2">
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="h-7 flex-1 border-emerald-200 text-emerald-700 hover:bg-emerald-50"
+                                disabled={actingLeaveId === leave.id}
+                                onClick={() => askLeaveConfirm(leave, "approve")}
+                              >
+                                {actingLeaveId === leave.id && leaveConfirm?.action === "approve" ? (
+                                  <Loader2 className="h-3 w-3 animate-spin" />
+                                ) : (
+                                  <>
+                                    <Check className="h-3 w-3" /> Approve
+                                  </>
+                                )}
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="h-7 flex-1 border-red-200 text-red-700 hover:bg-red-50"
+                                disabled={actingLeaveId === leave.id}
+                                onClick={() => askLeaveConfirm(leave, "reject")}
+                              >
+                                {actingLeaveId === leave.id && leaveConfirm?.action === "reject" ? (
+                                  <Loader2 className="h-3 w-3 animate-spin" />
+                                ) : (
+                                  <>
+                                    <X className="h-3 w-3" /> Reject
+                                  </>
+                                )}
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      ))
+                    )}
+                  </div>
+                  <div className="flex shrink-0 items-center justify-between gap-2 border-t px-3 py-2">
+                    {extraPending > 0 ? (
+                      <p className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                        <Bell className="h-3 w-3" />
+                        Check notifications for older requests
+                      </p>
+                    ) : (
+                      <span />
+                    )}
+                    <Link href="/leaves" className="text-[11px] font-medium text-champagne hover:underline">
+                      View all
+                    </Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </div>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}>
+            <EventsCalendar />
           </motion.div>
 
           <div className="grid gap-6 lg:grid-cols-2">
@@ -452,32 +642,72 @@ export default function DashboardPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <Card className="glass-card h-full">
-                  <CardHeader>
-                    <CardTitle>Quick Actions</CardTitle>
-                    <CardDescription>Frequently used actions</CardDescription>
-                  </CardHeader>
-                  <CardContent className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                    {visibleQuickActions.map((action) => {
-                      const href = action.useProfileHref ? `/employees/${user?.id}` : action.href;
-                      return (
-                        <Link key={action.label} href={href}>
-                          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex flex-col items-center gap-2 rounded-xl border p-4 transition-colors hover:bg-muted/50">
-                            <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${action.color} text-white`}>
-                              <action.icon className="h-5 w-5" />
-                            </div>
-                            <span className="text-center text-xs font-medium">{action.label}</span>
-                          </motion.div>
-                        </Link>
-                      );
-                    })}
-                  </CardContent>
-                </Card>
+                <QuickActionsCard
+                  availableActions={visibleQuickActions}
+                  userId={user?.id}
+                  className="h-full"
+                  gridClassName="grid grid-cols-2 gap-3 sm:grid-cols-3"
+                />
               </motion.div>
             )}
           </div>
         </>
       )}
     </div>
+
+      <Dialog
+        open={Boolean(leaveConfirm)}
+        onOpenChange={(open) => {
+          if (!open && !actingLeaveId) setLeaveConfirm(null);
+        }}
+      >
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>
+              {leaveConfirm?.action === "approve" ? "Approve leave?" : "Reject leave?"}
+            </DialogTitle>
+            <DialogDescription>
+              {leaveConfirm ? (
+                <>
+                  Are you sure you want to{" "}
+                  <span className="font-semibold text-foreground">
+                    {leaveConfirm.action === "approve" ? "approve" : "reject"}
+                  </span>{" "}
+                  leave for{" "}
+                  <span className="font-semibold text-foreground">{leaveConfirm.employeeName}</span>
+                  {leaveConfirm.leaveType ? ` (${leaveConfirm.leaveType})` : ""}
+                  {leaveConfirm.from && leaveConfirm.to
+                    ? ` · ${formatDate(leaveConfirm.from)} – ${formatDate(leaveConfirm.to)}`
+                    : ""}
+                  ?
+                </>
+              ) : null}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              type="button"
+              variant="outline"
+              disabled={Boolean(actingLeaveId)}
+              onClick={() => setLeaveConfirm(null)}
+            >
+              No
+            </Button>
+            <Button
+              type="button"
+              disabled={Boolean(actingLeaveId) || !leaveConfirm}
+              className={
+                leaveConfirm?.action === "approve"
+                  ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                  : "bg-red-600 text-white hover:bg-red-700"
+              }
+              onClick={() => leaveConfirm && handleLeaveAction(leaveConfirm.id, leaveConfirm.action)}
+            >
+              {actingLeaveId ? <Loader2 className="h-4 w-4 animate-spin" /> : "Yes"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

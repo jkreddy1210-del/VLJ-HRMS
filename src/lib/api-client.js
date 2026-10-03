@@ -32,6 +32,8 @@ export const api = {
   changePassword: (body) => apiFetch("/auth/change-password", { method: "POST", body: JSON.stringify(body) }),
   me: () => apiFetch("/auth/me"),
   dashboard: () => apiFetch("/dashboard"),
+  dashboardCalendar: (params) =>
+    apiFetch(`/dashboard/calendar?${new URLSearchParams(params || {})}`),
   notifications: () => apiFetch("/notifications"),
   markNotificationRead: (id) => apiFetch(`/notifications/${id}`, { method: "PATCH", body: JSON.stringify({ isRead: true }) }),
   employees: (params) => apiFetch(`/employees?${new URLSearchParams(params || {})}`),
@@ -127,6 +129,38 @@ export const api = {
   attendanceMarkSheet: (params) => apiFetch(`/attendance/mark-sheet?${new URLSearchParams(params || {})}`),
   bulkMarkAttendance: (body) => apiFetch("/attendance/bulk", { method: "POST", body: JSON.stringify(body) }),
   attendanceMarkStatuses: () => apiFetch("/attendance/mark-statuses"),
+  downloadAttendanceMonthlyBulkTemplate: async () => {
+    const token = getToken();
+    const res = await fetch(`${API_BASE}/reports/attendance/bulk-upload/template`, {
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data.error || "Download failed");
+    }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "attendance-monthly-report-template.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  },
+  bulkUploadAttendanceMonthly: async (file) => {
+    const token = getToken();
+    const formData = new FormData();
+    formData.append("file", file);
+    const res = await fetch(`${API_BASE}/reports/attendance/bulk-upload`, {
+      method: "POST",
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: formData,
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(data.error || "Upload failed");
+    return data;
+  },
   submitAttendanceCorrection: (body) =>
     apiFetch("/attendance/corrections", { method: "POST", body: JSON.stringify(body) }),
   processAttendanceCorrection: (id, body) =>
@@ -162,4 +196,6 @@ export const api = {
   updateShift: (id, body) => apiFetch(`/shifts/${id}`, { method: "PATCH", body: JSON.stringify(body) }),
   deleteShift: (id) => apiFetch(`/shifts/${id}`, { method: "DELETE" }),
   lookups: () => apiFetch("/lookups"),
+  banks: () => apiFetch("/banks"),
+  createBank: (body) => apiFetch("/banks", { method: "POST", body: JSON.stringify(body) }),
 };

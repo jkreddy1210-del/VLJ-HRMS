@@ -22,6 +22,7 @@ async function main() {
 
   const tables = [
     "attendance_corrections",
+    "attendance_monthly_summaries",
     "attendance",
     "attendance_exceptions",
     "leave_requests",

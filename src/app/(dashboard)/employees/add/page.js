@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, Suspense, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, Upload, Save, ChevronRight, ChevronLeft, Check, Camera } from "lucide-react";
+import { ArrowLeft, Upload, Save, ChevronRight, ChevronLeft, Camera, Eye } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,11 @@ import {
 import { isValidEmail } from "@/lib/auth-validation";
 import { useAuth } from "@/context/auth-context";
 import { useLookups } from "@/hooks/use-lookups";
-import { CameraCaptureDialog } from "@/components/employees/camera-capture-dialog";
+import { DocumentUploadField } from "@/components/employees/document-upload-field";
+import { FilePreviewDialog } from "@/components/employees/file-preview-dialog";
+import { ImageCropDialog } from "@/components/employees/image-crop-dialog";
+import { BankNameField } from "@/components/employees/bank-name-field";
+import { validateUploadFile } from "@/lib/file-upload";
 
 const sections = [
   { id: "personal", title: "Personal Information" },
@@ -47,8 +51,6 @@ const EXPERIENCE_DOC_UPLOADS = [
   { label: "Payslip (Month 3)", type: "Payslip", key: "Payslip_3" },
 ];
 
-const MAX_FILE_SIZE = 2 * 1024 * 1024;
-
 function fieldClass(errors, field) {
   return errors[field] ? "border-destructive focus-visible:ring-destructive" : "";
 }
@@ -67,7 +69,9 @@ function validationToastMessage(errors) {
 
 const emptyForm = {
   employeeCode: "", firstName: "", lastName: "", dob: "", gender: "",
-  bloodGroup: "", emergencyContact: "", departmentId: "", designationId: "", joiningDate: "",
+  bloodGroup: "", motherName: "", fatherName: "", maritalStatus: "",
+  spouseName: "", religion: "", nationality: "Indian",
+  emergencyContact: "", departmentId: "", designationId: "", joiningDate: "",
   employmentType: "Full_Time", status: "Active", employeeCategory: "Fresher",
   roleId: "", reportingManagerId: "",
   qualification: "", specialization: "", skills: "",
@@ -76,7 +80,7 @@ const emptyForm = {
   previousCtc: "", expectedCtc: "", lastWorkingDate: "", noticePeriod: "", relevantExperience: "",
   mobile: "", alternateMobile: "", email: "",
   password: "", confirmPassword: "",
-  address: "", pan: "", aadhaar: "", bankName: "", accountNumber: "", ifscCode: "",
+  address: "", temporaryAddress: "", pan: "", aadhaar: "", bankName: "", accountNumber: "", ifscCode: "",
 };
 
 function AddEmployeeContent() {
@@ -99,16 +103,19 @@ function AddEmployeeContent() {
   const [loadingEmployee, setLoadingEmployee] = useState(isEditMode);
   const [departments, setDepartments] = useState([]);
   const [designations, setDesignations] = useState([]);
+  const [banks, setBanks] = useState([]);
   const { lookups } = useLookups();
   const [pendingFiles, setPendingFiles] = useState({});
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [profilePreview, setProfilePreview] = useState(null);
-  const [cameraOpen, setCameraOpen] = useState(false);
+  const [profilePreviewOpen, setProfilePreviewOpen] = useState(false);
+  const [profileCropOpen, setProfileCropOpen] = useState(false);
+  const [profileCropSrc, setProfileCropSrc] = useState(null);
   const [fieldErrors, setFieldErrors] = useState({});
   const [codeLoading, setCodeLoading] = useState(false);
   const [existingDocs, setExistingDocs] = useState({});
-  const fileInputRefs = useRef({});
   const photoInputRef = useRef(null);
+  const photoCameraRef = useRef(null);
 
   const filteredDesignations = useMemo(() => {
     if (!form.departmentId) return [];
@@ -135,6 +142,7 @@ function AddEmployeeContent() {
     if (!lookups) return;
     setDepartments(lookups.departments || []);
     setDesignations(lookups.designations || []);
+    setBanks(lookups.banks || []);
   }, [lookups]);
 
   useEffect(() => {
@@ -157,6 +165,12 @@ function AddEmployeeContent() {
           dob: emp.dob || "",
           gender: emp.gender || "",
           bloodGroup: emp.bloodGroup || "",
+          motherName: emp.motherName || "",
+          fatherName: emp.fatherName || "",
+          maritalStatus: emp.maritalStatus || "",
+          spouseName: emp.spouseName || "",
+          religion: emp.religion || "",
+          nationality: emp.nationality || "Indian",
           emergencyContact: emp.emergencyContact || "",
           departmentId: emp.departmentId ? String(emp.departmentId) : "",
           designationId: emp.designationId ? String(emp.designationId) : "",
@@ -189,6 +203,7 @@ function AddEmployeeContent() {
           password: "",
           confirmPassword: "",
           address: emp.address || "",
+          temporaryAddress: emp.temporaryAddress || "",
           pan: emp.pan || "",
           aadhaar: emp.aadhaar || "",
           bankName: emp.bankName || "",
@@ -221,26 +236,15 @@ function AddEmployeeContent() {
   };
 
   const validateFile = (file) => {
-    if (!file) return false;
-    if (file.size > MAX_FILE_SIZE) {
-      toast.error("File must be under 2MB");
-      return false;
-    }
-    const allowed = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
-    if (!allowed.includes(file.type)) {
-      toast.error("Only JPG, PNG, and PDF files are allowed");
+    const check = validateUploadFile(file, { allowPdf: true });
+    if (!check.valid) {
+      toast.error(check.message);
       return false;
     }
     return true;
   };
 
-  const handleFileSelect = (type, event) => {
-    const file = event.target.files?.[0];
-    if (!file || !validateFile(file)) {
-      event.target.value = "";
-      return;
-    }
-    setPendingFiles((prev) => ({ ...prev, [type]: file }));
+  const clearDocFieldError = (type) => {
     setFieldErrors((prev) => {
       const key = typeof type === "string" && type.startsWith("Payslip") ? null : `doc_${type}`;
       if (!key || !prev[key]) return prev;
@@ -248,39 +252,47 @@ function AddEmployeeContent() {
       delete next[key];
       return next;
     });
-    event.target.value = "";
   };
 
-  const handlePhotoSelect = (event) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    if (file.size > MAX_FILE_SIZE) {
-      toast.error("Photo must be under 2MB");
-      event.target.value = "";
-      return;
-    }
-    if (!["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
-      toast.error("Only JPG and PNG photos are allowed");
-      event.target.value = "";
-      return;
-    }
-    setProfilePhoto(file);
-    setProfilePreview(URL.createObjectURL(file));
-    event.target.value = "";
+  const handleDocFileSelect = (type, file) => {
+    if (!file || !validateFile(file)) return;
+    setPendingFiles((prev) => ({ ...prev, [type]: file }));
+    clearDocFieldError(type);
   };
 
   const applyProfilePhotoFile = (file) => {
     if (!file) return;
-    if (file.size > MAX_FILE_SIZE) {
-      toast.error("Photo must be under 2MB");
-      return;
-    }
-    if (!["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
-      toast.error("Only JPG and PNG photos are allowed");
+    const check = validateUploadFile(file, { allowPdf: false });
+    if (!check.valid) {
+      toast.error(check.message);
       return;
     }
     setProfilePhoto(file);
-    setProfilePreview(URL.createObjectURL(file));
+    setProfilePreview((prev) => {
+      if (prev?.startsWith("blob:")) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
+  };
+
+  const handlePhotoSelect = (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    applyProfilePhotoFile(file);
+  };
+
+  const handleProfileCameraSelect = (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setProfileCropSrc(url);
+    setProfileCropOpen(true);
+  };
+
+  const handleProfileCropClose = (open) => {
+    if (!open && profileCropSrc?.startsWith("blob:")) URL.revokeObjectURL(profileCropSrc);
+    if (!open) setProfileCropSrc(null);
+    setProfileCropOpen(open);
   };
 
   const validateStep = (stepIndex) => {
@@ -438,6 +450,23 @@ function AddEmployeeContent() {
         toast.success(isEditMode ? "Employee updated successfully." : "Employee created successfully.");
       }
 
+      if (isEditMode) {
+        setPendingFiles({});
+        setProfilePhoto(null);
+        try {
+          const data = await api.employee(editId);
+          if (data.employee?.photo) setProfilePreview(data.employee.photo);
+          const docsByType = {};
+          (data.documents || []).forEach((doc) => {
+            if (doc.documentType) docsByType[doc.documentType] = doc;
+          });
+          setExistingDocs(docsByType);
+        } catch {
+          /* stay on page even if refresh fails */
+        }
+        return;
+      }
+
       router.push("/employees");
     } catch (err) {
       if (employeeCreated) {
@@ -463,14 +492,30 @@ function AddEmployeeContent() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-4">
-        <Link href="/employees"><Button variant="ghost" size="icon"><ArrowLeft className="h-5 w-5" /></Button></Link>
-        <div>
+      <div className="flex flex-wrap items-center gap-4">
+        <Link href="/employees">
+          <Button variant="ghost" size="icon" type="button" title={isEditMode ? "Back to employees list" : "Cancel"}>
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+        </Link>
+        <div className="min-w-0 flex-1">
           <h1 className="font-display text-2xl font-bold lg:text-3xl">{isEditMode ? "Edit Employee" : "Add Employee"}</h1>
           <p className="text-muted-foreground">
             {isEditMode ? "Update employee record" : "Create a new employee record"}
           </p>
         </div>
+        {isEditMode && (
+          <Button variant="premium" type="button" onClick={handleSave} disabled={saving} className="shrink-0">
+            {saving ? (
+              "Saving..."
+            ) : (
+              <>
+                <Save className="h-4 w-4" />
+                Save
+              </>
+            )}
+          </Button>
+        )}
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row">
@@ -530,25 +575,39 @@ function AddEmployeeContent() {
                       )}
                     </div>
                     <div>
+                      <input
+                        ref={photoInputRef}
+                        type="file"
+                        accept="image/jpeg,image/jpg,image/png"
+                        className="hidden"
+                        onChange={handlePhotoSelect}
+                      />
+                      <input
+                        ref={photoCameraRef}
+                        type="file"
+                        accept="image/*"
+                        capture="user"
+                        className="hidden"
+                        onChange={handleProfileCameraSelect}
+                      />
                       <div className="flex flex-wrap gap-2">
-                        <input
-                          ref={photoInputRef}
-                          type="file"
-                          accept="image/jpeg,image/jpg,image/png"
-                          className="hidden"
-                          onChange={handlePhotoSelect}
-                        />
+                        <Button variant="outline" size="sm" type="button" onClick={() => photoCameraRef.current?.click()}>
+                          <Camera className="mr-1 h-3 w-3" />
+                          Camera
+                        </Button>
                         <Button variant="outline" size="sm" type="button" onClick={() => photoInputRef.current?.click()}>
                           <Upload className="mr-1 h-3 w-3" />
-                          {profilePhoto ? "Change Photo" : "Upload Photo"}
+                          Upload File
                         </Button>
-                        <Button variant="outline" size="sm" type="button" onClick={() => setCameraOpen(true)}>
-                          <Camera className="mr-1 h-3 w-3" />
-                          Take Photo
-                        </Button>
+                        {profilePreview && (
+                          <Button variant="outline" size="sm" type="button" onClick={() => setProfilePreviewOpen(true)}>
+                            <Eye className="mr-1 h-3 w-3" />
+                            View
+                          </Button>
+                        )}
                       </div>
                       <p className="mt-1 text-xs text-muted-foreground">
-                        {profilePhoto ? profilePhoto.name : "JPG, PNG. Max 2MB"}
+                        {profilePhoto ? profilePhoto.name : "JPG, PNG. Max 5MB. Camera opens phone camera directly."}
                       </p>
                     </div>
                   </div>
@@ -599,6 +658,53 @@ function AddEmployeeContent() {
                         <SelectContent>
                           {(lookups?.bloodGroups || []).map((bg) => (
                             <SelectItem key={bg.value} value={bg.value}>{bg.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Father&apos;s Name</Label>
+                      <Input value={form.fatherName} onChange={(e) => set("fatherName", e.target.value)} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Mother&apos;s Name</Label>
+                      <Input value={form.motherName} onChange={(e) => set("motherName", e.target.value)} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Marriage Status</Label>
+                      <Select value={form.maritalStatus || undefined} onValueChange={(v) => set("maritalStatus", v)}>
+                        <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                        <SelectContent>
+                          {(lookups?.maritalStatuses || []).map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    {form.maritalStatus === "Married" && (
+                      <div className="space-y-2">
+                        <Label>Spouse Name</Label>
+                        <Input value={form.spouseName} onChange={(e) => set("spouseName", e.target.value)} />
+                      </div>
+                    )}
+                    <div className="space-y-2">
+                      <Label>Religion</Label>
+                      <Select value={form.religion || undefined} onValueChange={(v) => set("religion", v)}>
+                        <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                        <SelectContent>
+                          {(lookups?.religions || []).map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Nationality</Label>
+                      <Select value={form.nationality || undefined} onValueChange={(v) => set("nationality", v)}>
+                        <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                        <SelectContent>
+                          {(lookups?.nationalities || []).map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -739,186 +845,161 @@ function AddEmployeeContent() {
           )}
 
           {activeSection === "category" && (
-            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
               <Card className="glass-card">
                 <CardHeader>
-                  <CardTitle>
-                    {form.employeeCategory === "Fresher" ? "Education Details" : "Experience Details"}
-                  </CardTitle>
-                  <CardDescription>
-                    {form.employeeCategory === "Fresher"
-                      ? "Academic background for fresher employees"
-                      : "Previous employment history"}
-                  </CardDescription>
+                  <CardTitle>Education Details</CardTitle>
+                  <CardDescription>Academic background</CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4 sm:grid-cols-2">
-                  {form.employeeCategory === "Fresher" ? (
-                    <>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Highest Qualification *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "qualification")}
-                          value={form.qualification}
-                          onChange={(e) => set("qualification", e.target.value)}
-                          placeholder="e.g. B.Tech"
-                        />
-                        <FieldError message={fieldErrors.qualification} />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>College / University *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "collegeName")}
-                          value={form.collegeName}
-                          onChange={(e) => set("collegeName", e.target.value)}
-                        />
-                        <FieldError message={fieldErrors.collegeName} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Specialization</Label>
-                        <Input value={form.specialization} onChange={(e) => set("specialization", e.target.value)} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Graduation Year *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "graduationYear")}
-                          type="number"
-                          min="1950"
-                          max="2100"
-                          value={form.graduationYear}
-                          onChange={(e) => set("graduationYear", e.target.value)}
-                          placeholder="e.g. 2024"
-                        />
-                        <FieldError message={fieldErrors.graduationYear} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Percentage / CGPA</Label>
-                        <Input value={form.cgpa} onChange={(e) => set("cgpa", e.target.value)} placeholder="e.g. 8.5 or 75%" />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Internship Experience (Optional)</Label>
-                        <Textarea rows={2} value={form.internshipDetails} onChange={(e) => set("internshipDetails", e.target.value)} />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Skills</Label>
-                        <Textarea rows={2} value={form.skills} onChange={(e) => set("skills", e.target.value)} placeholder="e.g. JavaScript, React" />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Certifications (Optional)</Label>
-                        <Textarea rows={2} value={form.certifications} onChange={(e) => set("certifications", e.target.value)} />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="space-y-2">
-                        <Label>Total Experience (Years) *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "totalExperienceYears")}
-                          type="number"
-                          min="0"
-                          value={form.totalExperienceYears}
-                          onChange={(e) => set("totalExperienceYears", e.target.value)}
-                        />
-                        <FieldError message={fieldErrors.totalExperienceYears} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Total Experience (Months) *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "totalExperienceMonths")}
-                          type="number"
-                          min="0"
-                          max="11"
-                          value={form.totalExperienceMonths}
-                          onChange={(e) => set("totalExperienceMonths", e.target.value)}
-                        />
-                        <FieldError message={fieldErrors.totalExperienceMonths} />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Previous Company Name *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "previousCompany")}
-                          value={form.previousCompany}
-                          onChange={(e) => set("previousCompany", e.target.value)}
-                        />
-                        <FieldError message={fieldErrors.previousCompany} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Previous Designation *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "previousDesignation")}
-                          value={form.previousDesignation}
-                          onChange={(e) => set("previousDesignation", e.target.value)}
-                        />
-                        <FieldError message={fieldErrors.previousDesignation} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Previous CTC *</Label>
-                        <Input
-                          className={fieldClass(fieldErrors, "previousCtc")}
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          value={form.previousCtc}
-                          onChange={(e) => set("previousCtc", e.target.value)}
-                        />
-                        <FieldError message={fieldErrors.previousCtc} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Expected CTC</Label>
-                        <Input type="number" min="0" step="0.01" value={form.expectedCtc} onChange={(e) => set("expectedCtc", e.target.value)} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Last Working Date</Label>
-                        <Input type="date" value={form.lastWorkingDate} onChange={(e) => set("lastWorkingDate", e.target.value)} />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Notice Period</Label>
-                        <Input value={form.noticePeriod} onChange={(e) => set("noticePeriod", e.target.value)} placeholder="e.g. 30 days" />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Relevant Experience</Label>
-                        <Textarea rows={2} value={form.relevantExperience} onChange={(e) => set("relevantExperience", e.target.value)} />
-                      </div>
-                      <div className="space-y-2 sm:col-span-2">
-                        <Label>Skills</Label>
-                        <Textarea rows={2} value={form.skills} onChange={(e) => set("skills", e.target.value)} />
-                      </div>
-                      <div className="space-y-4 sm:col-span-2">
-                        <Label>Previous Employment Documents</Label>
-                        <div className="grid gap-3 sm:grid-cols-2">
-                          {EXPERIENCE_DOC_UPLOADS.map((doc) => {
-                            const file = pendingFiles[doc.key];
-                            return (
-                              <div key={doc.key} className="flex items-center justify-between rounded-lg border p-3">
-                                <div className="min-w-0">
-                                  <span className="text-sm font-medium">{doc.label}</span>
-                                  {file && (
-                                    <p className="mt-1 flex items-center gap-1 text-xs text-emerald-600">
-                                      <Check className="h-3 w-3" /> {file.name}
-                                    </p>
-                                  )}
-                                </div>
-                                <div>
-                                  <input
-                                    ref={(el) => { fileInputRefs.current[doc.key] = el; }}
-                                    type="file"
-                                    accept="image/jpeg,image/jpg,image/png,application/pdf"
-                                    className="hidden"
-                                    onChange={(e) => handleFileSelect(doc.key, e)}
-                                  />
-                                  <Button variant="outline" size="sm" type="button" onClick={() => fileInputRefs.current[doc.key]?.click()}>
-                                    <Upload className="mr-1 h-3 w-3" />
-                                    {file ? "Change" : "Upload"}
-                                  </Button>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </>
-                  )}
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>Highest Qualification *</Label>
+                    <Input
+                      className={fieldClass(fieldErrors, "qualification")}
+                      value={form.qualification}
+                      onChange={(e) => set("qualification", e.target.value)}
+                      placeholder="e.g. B.Tech"
+                    />
+                    <FieldError message={fieldErrors.qualification} />
+                  </div>
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>College / University *</Label>
+                    <Input
+                      className={fieldClass(fieldErrors, "collegeName")}
+                      value={form.collegeName}
+                      onChange={(e) => set("collegeName", e.target.value)}
+                    />
+                    <FieldError message={fieldErrors.collegeName} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Specialization</Label>
+                    <Input value={form.specialization} onChange={(e) => set("specialization", e.target.value)} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Graduation Year *</Label>
+                    <Input
+                      className={fieldClass(fieldErrors, "graduationYear")}
+                      type="number"
+                      min="1950"
+                      max="2100"
+                      value={form.graduationYear}
+                      onChange={(e) => set("graduationYear", e.target.value)}
+                      placeholder="e.g. 2024"
+                    />
+                    <FieldError message={fieldErrors.graduationYear} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Percentage / CGPA</Label>
+                    <Input value={form.cgpa} onChange={(e) => set("cgpa", e.target.value)} placeholder="e.g. 8.5 or 75%" />
+                  </div>
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>Internship Experience (Optional)</Label>
+                    <Textarea rows={2} value={form.internshipDetails} onChange={(e) => set("internshipDetails", e.target.value)} />
+                  </div>
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>Skills</Label>
+                    <Textarea rows={2} value={form.skills} onChange={(e) => set("skills", e.target.value)} placeholder="e.g. JavaScript, React" />
+                  </div>
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>Certifications (Optional)</Label>
+                    <Textarea rows={2} value={form.certifications} onChange={(e) => set("certifications", e.target.value)} />
+                  </div>
                 </CardContent>
               </Card>
+
+              {form.employeeCategory === "Experienced" && (
+                <Card className="glass-card">
+                  <CardHeader>
+                    <CardTitle>Experience Details</CardTitle>
+                    <CardDescription>Previous employment history</CardDescription>
+                  </CardHeader>
+                  <CardContent className="grid gap-4 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <Label>Total Experience (Years) *</Label>
+                      <Input
+                        className={fieldClass(fieldErrors, "totalExperienceYears")}
+                        type="number"
+                        min="0"
+                        value={form.totalExperienceYears}
+                        onChange={(e) => set("totalExperienceYears", e.target.value)}
+                      />
+                      <FieldError message={fieldErrors.totalExperienceYears} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Total Experience (Months) *</Label>
+                      <Input
+                        className={fieldClass(fieldErrors, "totalExperienceMonths")}
+                        type="number"
+                        min="0"
+                        max="11"
+                        value={form.totalExperienceMonths}
+                        onChange={(e) => set("totalExperienceMonths", e.target.value)}
+                      />
+                      <FieldError message={fieldErrors.totalExperienceMonths} />
+                    </div>
+                    <div className="space-y-2 sm:col-span-2">
+                      <Label>Previous Company Name *</Label>
+                      <Input
+                        className={fieldClass(fieldErrors, "previousCompany")}
+                        value={form.previousCompany}
+                        onChange={(e) => set("previousCompany", e.target.value)}
+                      />
+                      <FieldError message={fieldErrors.previousCompany} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Previous Designation *</Label>
+                      <Input
+                        className={fieldClass(fieldErrors, "previousDesignation")}
+                        value={form.previousDesignation}
+                        onChange={(e) => set("previousDesignation", e.target.value)}
+                      />
+                      <FieldError message={fieldErrors.previousDesignation} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Previous CTC *</Label>
+                      <Input
+                        className={fieldClass(fieldErrors, "previousCtc")}
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={form.previousCtc}
+                        onChange={(e) => set("previousCtc", e.target.value)}
+                      />
+                      <FieldError message={fieldErrors.previousCtc} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Expected CTC</Label>
+                      <Input type="number" min="0" step="0.01" value={form.expectedCtc} onChange={(e) => set("expectedCtc", e.target.value)} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Last Working Date</Label>
+                      <Input type="date" value={form.lastWorkingDate} onChange={(e) => set("lastWorkingDate", e.target.value)} />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Notice Period</Label>
+                      <Input value={form.noticePeriod} onChange={(e) => set("noticePeriod", e.target.value)} placeholder="e.g. 30 days" />
+                    </div>
+                    <div className="space-y-2 sm:col-span-2">
+                      <Label>Relevant Experience</Label>
+                      <Textarea rows={2} value={form.relevantExperience} onChange={(e) => set("relevantExperience", e.target.value)} />
+                    </div>
+                    <div className="space-y-4 sm:col-span-2">
+                      <Label>Previous Employment Documents</Label>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {EXPERIENCE_DOC_UPLOADS.map((doc) => (
+                          <DocumentUploadField
+                            key={doc.key}
+                            label={doc.label}
+                            pendingFile={pendingFiles[doc.key]}
+                            onFileSelect={(file) => handleDocFileSelect(doc.key, file)}
+                            compact
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
             </motion.div>
           )}
 
@@ -980,8 +1061,22 @@ function AddEmployeeContent() {
                     <FieldError message={fieldErrors.confirmPassword} />
                   </div>
                   <div className="space-y-2 sm:col-span-2">
-                    <Label>Address</Label>
-                    <Textarea rows={3} value={form.address} onChange={(e) => set("address", e.target.value)} />
+                    <Label>Permanent Address</Label>
+                    <Textarea
+                      rows={3}
+                      value={form.address}
+                      onChange={(e) => set("address", e.target.value)}
+                      placeholder="Permanent residential address"
+                    />
+                  </div>
+                  <div className="space-y-2 sm:col-span-2">
+                    <Label>Temporary Address</Label>
+                    <Textarea
+                      rows={3}
+                      value={form.temporaryAddress}
+                      onChange={(e) => set("temporaryAddress", e.target.value)}
+                      placeholder="Current / temporary address"
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -1018,15 +1113,14 @@ function AddEmployeeContent() {
                       />
                       <FieldError message={fieldErrors.aadhaar} />
                     </div>
-                    <div className="space-y-2">
-                      <Label>Bank Name *</Label>
-                      <Input
-                        className={fieldClass(fieldErrors, "bankName")}
-                        value={form.bankName}
-                        onChange={(e) => set("bankName", e.target.value)}
-                      />
-                      <FieldError message={fieldErrors.bankName} />
-                    </div>
+                    <BankNameField
+                      value={form.bankName}
+                      onChange={(v) => set("bankName", v)}
+                      banks={banks}
+                      onBanksChange={setBanks}
+                      error={fieldErrors.bankName}
+                      required
+                    />
                     <div className="space-y-2">
                       <Label>IFSC Code *</Label>
                       <Input
@@ -1048,64 +1142,16 @@ function AddEmployeeContent() {
                     </div>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2">
-                    {DOCUMENT_UPLOADS.map((doc) => {
-                      const file = pendingFiles[doc.type];
-                      const existing = existingDocs[doc.type];
-                      const docError = fieldErrors[`doc_${doc.type}`];
-                      return (
-                        <div key={doc.type} className={`flex items-center justify-between rounded-lg border p-4 ${docError ? "border-destructive" : ""}`}>
-                          <div className="min-w-0 pr-2">
-                            <span className="text-sm font-medium">{doc.label}</span>
-                            {file && (
-                              <p className="mt-1 flex items-center gap-1 text-xs text-emerald-600">
-                                <Check className="h-3 w-3" /> {file.name}
-                              </p>
-                            )}
-                            {!file && existing && (
-                              <p className="mt-1 text-xs text-muted-foreground">
-                                Uploaded: {existing.fileName}
-                              </p>
-                            )}
-                            {existing?.isImage && existing.url && !file && (
-                              <img
-                                src={existing.url}
-                                alt={existing.fileName}
-                                className="mt-2 h-14 w-14 rounded object-cover border"
-                              />
-                            )}
-                            {existing?.url && existing?.isPdf && !file && (
-                              <a
-                                href={existing.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="mt-1 inline-block text-xs text-champagne hover:underline"
-                              >
-                                View PDF
-                              </a>
-                            )}
-                            <FieldError message={docError} />
-                          </div>
-                          <div>
-                            <input
-                              ref={(el) => { fileInputRefs.current[doc.type] = el; }}
-                              type="file"
-                              accept="image/jpeg,image/jpg,image/png,application/pdf"
-                              className="hidden"
-                              onChange={(e) => handleFileSelect(doc.type, e)}
-                            />
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              type="button"
-                              onClick={() => fileInputRefs.current[doc.type]?.click()}
-                            >
-                              <Upload className="mr-1 h-3 w-3" />
-                              {file ? "Change" : "Upload"}
-                            </Button>
-                          </div>
-                        </div>
-                      );
-                    })}
+                    {DOCUMENT_UPLOADS.map((doc) => (
+                      <DocumentUploadField
+                        key={doc.type}
+                        label={doc.label}
+                        pendingFile={pendingFiles[doc.type]}
+                        existingDoc={existingDocs[doc.type]}
+                        onFileSelect={(file) => handleDocFileSelect(doc.type, file)}
+                        error={fieldErrors[`doc_${doc.type}`]}
+                      />
+                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -1114,39 +1160,67 @@ function AddEmployeeContent() {
 
           <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Link href="/employees" className="w-full sm:w-auto">
-                <Button variant="outline" className="w-full sm:w-auto">Cancel</Button>
-              </Link>
+              {!isEditMode && (
+                <Link href="/employees" className="w-full sm:w-auto">
+                  <Button variant="outline" className="w-full sm:w-auto">Cancel</Button>
+                </Link>
+              )}
               {step > 0 && (
                 <Button variant="outline" className="w-full sm:w-auto" onClick={() => setStep(step - 1)}>
                   <ChevronLeft className="h-4 w-4" /> Previous
                 </Button>
               )}
             </div>
-            <div className="w-full sm:w-auto">
-              {step < sections.length - 1 ? (
-                <Button variant="premium" className="w-full sm:w-auto" onClick={handleNext}>
-                  Next <ChevronRight className="h-4 w-4" />
-                </Button>
-              ) : (
-                <Button variant="premium" className="w-full sm:w-auto" onClick={handleSave} disabled={saving}>
-                  {saving ? "Saving..." : (
+            <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+              {isEditMode && (
+                <Button
+                  variant="premium"
+                  className="w-full sm:w-auto"
+                  onClick={handleSave}
+                  disabled={saving}
+                >
+                  {saving ? (
+                    "Saving..."
+                  ) : (
                     <>
                       <Save className="h-4 w-4" />
-                      {isEditMode ? "Update Employee" : "Save Employee"}
+                      Save
                     </>
                   )}
                 </Button>
               )}
+              {step < sections.length - 1 ? (
+                <Button variant={isEditMode ? "outline" : "premium"} className="w-full sm:w-auto" onClick={handleNext}>
+                  Next <ChevronRight className="h-4 w-4" />
+                </Button>
+              ) : !isEditMode ? (
+                <Button variant="premium" className="w-full sm:w-auto" onClick={handleSave} disabled={saving}>
+                  {saving ? "Saving..." : (
+                    <>
+                      <Save className="h-4 w-4" />
+                      Save Employee
+                    </>
+                  )}
+                </Button>
+              ) : null}
             </div>
           </div>
         </div>
       </div>
 
-      <CameraCaptureDialog
-        open={cameraOpen}
-        onOpenChange={setCameraOpen}
-        onCapture={applyProfilePhotoFile}
+      <ImageCropDialog
+        open={profileCropOpen}
+        onOpenChange={handleProfileCropClose}
+        imageSrc={profileCropSrc}
+        title="Profile Photo"
+        onConfirm={applyProfilePhotoFile}
+      />
+      <FilePreviewDialog
+        open={profilePreviewOpen}
+        onOpenChange={setProfilePreviewOpen}
+        title="Profile Photo"
+        url={profilePreview}
+        fileName={profilePhoto?.name || "Profile photo"}
       />
     </div>
   );

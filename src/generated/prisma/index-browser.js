@@ -199,6 +199,12 @@ exports.Prisma.EmployeeScalarFieldEnum = {
   dob: 'dob',
   gender: 'gender',
   bloodGroup: 'bloodGroup',
+  motherName: 'motherName',
+  fatherName: 'fatherName',
+  maritalStatus: 'maritalStatus',
+  spouseName: 'spouseName',
+  religion: 'religion',
+  nationality: 'nationality',
   mobile: 'mobile',
   alternateMobile: 'alternateMobile',
   email: 'email',
@@ -206,6 +212,7 @@ exports.Prisma.EmployeeScalarFieldEnum = {
   roleId: 'roleId',
   lastLogin: 'lastLogin',
   address: 'address',
+  temporaryAddress: 'temporaryAddress',
   departmentId: 'departmentId',
   designationId: 'designationId',
   reportingManagerId: 'reportingManagerId',
@@ -273,6 +280,25 @@ exports.Prisma.AttendanceScalarFieldEnum = {
   attendanceStatus: 'attendanceStatus',
   lateMinutes: 'lateMinutes',
   attendanceRemark: 'attendanceRemark',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  createdBy: 'createdBy',
+  updatedBy: 'updatedBy'
+};
+
+exports.Prisma.AttendanceMonthlySummaryScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  employeeCode: 'employeeCode',
+  year: 'year',
+  month: 'month',
+  monthName: 'monthName',
+  lateDays: 'lateDays',
+  fullDays: 'fullDays',
+  halfDays: 'halfDays',
+  sundays: 'sundays',
+  totalPresentDays: 'totalPresentDays',
+  absentDays: 'absentDays',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
@@ -360,6 +386,13 @@ exports.Prisma.LeaveRequestScalarFieldEnum = {
   updatedAt: 'updatedAt',
   createdBy: 'createdBy',
   updatedBy: 'updatedBy'
+};
+
+exports.Prisma.BankScalarFieldEnum = {
+  id: 'id',
+  bankName: 'bankName',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.HolidayScalarFieldEnum = {
@@ -509,11 +542,18 @@ exports.Prisma.EmployeeOrderByRelevanceFieldEnum = {
   fullName: 'fullName',
   gender: 'gender',
   bloodGroup: 'bloodGroup',
+  motherName: 'motherName',
+  fatherName: 'fatherName',
+  maritalStatus: 'maritalStatus',
+  spouseName: 'spouseName',
+  religion: 'religion',
+  nationality: 'nationality',
   mobile: 'mobile',
   alternateMobile: 'alternateMobile',
   email: 'email',
   passwordHash: 'passwordHash',
   address: 'address',
+  temporaryAddress: 'temporaryAddress',
   emergencyContact: 'emergencyContact',
   bankName: 'bankName',
   accountNumber: 'accountNumber',
@@ -547,6 +587,11 @@ exports.Prisma.AttendanceOrderByRelevanceFieldEnum = {
   attendanceRemark: 'attendanceRemark'
 };
 
+exports.Prisma.AttendanceMonthlySummaryOrderByRelevanceFieldEnum = {
+  employeeCode: 'employeeCode',
+  monthName: 'monthName'
+};
+
 exports.Prisma.AttendanceSyncLogOrderByRelevanceFieldEnum = {
   remarks: 'remarks'
 };
@@ -567,6 +612,10 @@ exports.Prisma.LeaveTypeOrderByRelevanceFieldEnum = {
 
 exports.Prisma.LeaveRequestOrderByRelevanceFieldEnum = {
   reason: 'reason'
+};
+
+exports.Prisma.BankOrderByRelevanceFieldEnum = {
+  bankName: 'bankName'
 };
 
 exports.Prisma.HolidayOrderByRelevanceFieldEnum = {
@@ -706,12 +755,14 @@ exports.Prisma.ModelName = {
   Employee: 'Employee',
   EmployeeDocument: 'EmployeeDocument',
   Attendance: 'Attendance',
+  AttendanceMonthlySummary: 'AttendanceMonthlySummary',
   AttendanceSyncLog: 'AttendanceSyncLog',
   AttendanceException: 'AttendanceException',
   AttendanceStatusSetting: 'AttendanceStatusSetting',
   LeaveType: 'LeaveType',
   LeaveBalance: 'LeaveBalance',
   LeaveRequest: 'LeaveRequest',
+  Bank: 'Bank',
   Holiday: 'Holiday',
   AttendanceCorrection: 'AttendanceCorrection',
   ReportDownloadLog: 'ReportDownloadLog',

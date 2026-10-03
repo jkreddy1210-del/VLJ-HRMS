@@ -23,6 +23,14 @@ export function normalizeEmployeeInput(body = {}) {
     bankName: body.bankName?.trim() || "",
     accountNumber: body.accountNumber?.trim() || "",
     ifscCode: body.ifscCode?.trim().toUpperCase() || "",
+    motherName: body.motherName?.trim() || "",
+    fatherName: body.fatherName?.trim() || "",
+    maritalStatus: body.maritalStatus?.trim() || "",
+    spouseName: body.spouseName?.trim() || "",
+    religion: body.religion?.trim() || "",
+    nationality: body.nationality?.trim() || "",
+    address: body.address?.trim() || "",
+    temporaryAddress: body.temporaryAddress?.trim() || "",
   };
 }
 

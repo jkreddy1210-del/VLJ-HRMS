@@ -47,7 +47,7 @@ export async function mapAttendanceRecords(rows, prisma) {
 export async function markEmployeeAttendance(
   prisma,
   authUser,
-  { date, employeeCode, statusApi, inTime, outTime, now = new Date() }
+  { date, employeeCode, statusApi, inTime, outTime, now = new Date(), allowInactive = false }
 ) {
   if (!date || !employeeCode) {
     throw new Error("Date and employee are required");
@@ -59,7 +59,10 @@ export async function markEmployeeAttendance(
   }
 
   const employee = await prisma.employee.findFirst({
-    where: { employeeCode: String(employeeCode).trim(), status: "Active" },
+    where: {
+      employeeCode: String(employeeCode).trim(),
+      ...(allowInactive ? {} : { status: "Active" }),
+    },
     include: { department: true },
   });
   if (!employee) {

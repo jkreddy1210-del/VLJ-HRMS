@@ -4,12 +4,13 @@ import {
   computeMonthlyAttendanceStats,
   formatAttendanceReportHeader,
   getMonthIndexFromName,
+  countSundaysInMonth,
 } from "@/lib/attendance-monthly-report";
 
-function buildEmployeeWhere(department, search) {
+function buildEmployeeWhere(department, search, { requireActive = true } = {}) {
   const q = (search || "").trim();
   return {
-    status: "Active",
+    ...(requireActive ? { status: "Active" } : {}),
     ...(department && department !== "all"
       ? { department: { departmentName: department } }
       : {}),
@@ -36,6 +37,24 @@ function canAccessReport(user) {
   );
 }
 
+function mapSummaryRow(summary, sno) {
+  return {
+    sno,
+    employeeId: summary.employeeId,
+    employeeCode: summary.employeeCode || summary.employee?.employeeCode || "",
+    employeeName: summary.employee?.fullName || summary.employeeCode,
+    department: summary.employee?.department?.departmentName || "—",
+    lateDays: summary.lateDays,
+    fullDays: summary.fullDays,
+    halfDays: summary.halfDays,
+    sundays: summary.sundays,
+    sundaysInMonth: countSundaysInMonth(summary.year, summary.month),
+    totalPresentDays: summary.totalPresentDays,
+    absentDays: summary.absentDays,
+    source: "uploaded",
+  };
+}
+
 export async function GET(request) {
   const { user, error } = await requireAuth(request);
   if (error) return error;
@@ -57,18 +76,19 @@ export async function GET(request) {
 
   const rangeStart = new Date(year, monthIndex - 1, 1);
   const rangeEnd = new Date(year, monthIndex, 1);
-  const employeeWhere = buildEmployeeWhere(department, search);
+  const employeeWhereActive = buildEmployeeWhere(department, search, { requireActive: true });
+  const employeeWhereAny = buildEmployeeWhere(department, search, { requireActive: false });
 
-  const [employees, attendanceRows, departmentRows] = await Promise.all([
+  const [employees, attendanceRows, summaryRows, departmentRows] = await Promise.all([
     prisma.employee.findMany({
-      where: employeeWhere,
+      where: employeeWhereActive,
       include: { department: true },
       orderBy: { fullName: "asc" },
     }),
     prisma.attendance.findMany({
       where: {
         attendanceDate: { gte: rangeStart, lt: rangeEnd },
-        employee: employeeWhere,
+        employee: employeeWhereActive,
       },
       select: {
         employeeId: true,
@@ -76,6 +96,16 @@ export async function GET(request) {
         attendanceStatus: true,
         lateMinutes: true,
         inTime: true,
+      },
+    }),
+    prisma.attendanceMonthlySummary.findMany({
+      where: {
+        year,
+        month: monthIndex,
+        employee: employeeWhereAny,
+      },
+      include: {
+        employee: { include: { department: true } },
       },
     }),
     prisma.department.findMany({ orderBy: { departmentName: "asc" } }),
@@ -89,19 +119,32 @@ export async function GET(request) {
     attendanceByEmployee.get(row.employeeId).push(row);
   }
 
-  const rows = employees.map((emp, index) => {
+  const summaryByEmployee = new Map(summaryRows.map((row) => [row.employeeId, row]));
+  const rowByEmployee = new Map();
+
+  for (const summary of summaryRows) {
+    rowByEmployee.set(summary.employeeId, mapSummaryRow(summary, 0));
+  }
+
+  for (const emp of employees) {
+    if (rowByEmployee.has(emp.id)) continue;
+
     const records = attendanceByEmployee.get(emp.id) || [];
     const stats = computeMonthlyAttendanceStats(records, year, monthIndex);
-
-    return {
-      sno: index + 1,
+    rowByEmployee.set(emp.id, {
+      sno: 0,
       employeeId: emp.id,
       employeeCode: emp.employeeCode,
       employeeName: emp.fullName,
       department: emp.department?.departmentName || "—",
       ...stats,
-    };
-  });
+      source: "computed",
+    });
+  }
+
+  const rows = Array.from(rowByEmployee.values())
+    .sort((a, b) => String(a.employeeName).localeCompare(String(b.employeeName)))
+    .map((row, index) => ({ ...row, sno: index + 1 }));
 
   return Response.json({
     month: monthName,
@@ -110,6 +153,10 @@ export async function GET(request) {
     department,
     search,
     rows,
+    sources: {
+      uploaded: rows.filter((r) => r.source === "uploaded").length,
+      computed: rows.filter((r) => r.source === "computed").length,
+    },
     departmentFilters: departmentRows.map((d) => ({
       value: d.departmentName,
       label: d.departmentName,

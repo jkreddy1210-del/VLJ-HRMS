@@ -288,6 +288,12 @@ model Employee {
   dob                DateTime?      @db.Date
   gender             String?        @db.VarChar(20)
   bloodGroup         String?        @map("blood_group") @db.VarChar(10)
+  motherName         String?        @map("mother_name") @db.VarChar(100)
+  fatherName         String?        @map("father_name") @db.VarChar(100)
+  maritalStatus      String?        @map("marital_status") @db.VarChar(20)
+  spouseName         String?        @map("spouse_name") @db.VarChar(100)
+  religion           String?        @db.VarChar(50)
+  nationality        String?        @db.VarChar(50)
   mobile             String         @db.VarChar(15)
   alternateMobile    String?        @map("alternate_mobile") @db.VarChar(15)
   email              String         @unique @db.VarChar(150)
@@ -295,6 +301,7 @@ model Employee {
   roleId             Int            @map("role_id")
   lastLogin          DateTime?      @map("last_login")
   address            String?        @db.Text
+  temporaryAddress   String?        @map("temporary_address") @db.Text
   departmentId       Int            @map("department_id")
   designationId      Int            @map("designation_id")
   reportingManagerId Int?           @map("reporting_manager_id")
@@ -344,11 +351,12 @@ model Employee {
   passwordResetTokens   PasswordResetToken[]
   employeePermissions   EmployeePermission[]
   auditLogs             AuditLog[]
-  attendanceRecords     Attendance[]
-  attendanceExceptions  AttendanceException[]
-  leaveBalances         LeaveBalance[]
-  leaveRequests         LeaveRequest[]
-  attendanceCorrections AttendanceCorrection[]
+  attendanceRecords          Attendance[]
+  attendanceMonthlySummaries AttendanceMonthlySummary[]
+  attendanceExceptions       AttendanceException[]
+  leaveBalances              LeaveBalance[]
+  leaveRequests              LeaveRequest[]
+  attendanceCorrections      AttendanceCorrection[]
 
   creator Employee? @relation("EmployeeCreatedBy", fields: [createdBy], references: [id], onDelete: SetNull)
   updater Employee? @relation("EmployeeUpdatedBy", fields: [updatedBy], references: [id], onDelete: SetNull)
@@ -370,6 +378,8 @@ model Employee {
   documentsUpdated       EmployeeDocument[]     @relation("EmployeeDocumentUpdatedBy")
   attendanceCreated      Attendance[]           @relation("AttendanceCreatedBy")
   attendanceUpdated      Attendance[]           @relation("AttendanceUpdatedBy")
+  monthlySummariesCreated AttendanceMonthlySummary[] @relation("AttendanceMonthlySummaryCreatedBy")
+  monthlySummariesUpdated AttendanceMonthlySummary[] @relation("AttendanceMonthlySummaryUpdatedBy")
   syncLogsCreated        AttendanceSyncLog[]    @relation("AttendanceSyncLogCreatedBy")
   syncLogsUpdated        AttendanceSyncLog[]    @relation("AttendanceSyncLogUpdatedBy")
   exceptionsCreated      AttendanceException[]  @relation("AttendanceExceptionCreatedBy")
@@ -466,6 +476,39 @@ model Attendance {
   @@index([attendanceStatus])
   @@index([employeeId, attendanceDate])
   @@map("attendance")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TABLE 9B: ATTENDANCE_MONTHLY_SUMMARIES
+// Month-wise totals uploaded from Attendance Report (historical / previous months)
+// ─────────────────────────────────────────────────────────────────────────────
+
+model AttendanceMonthlySummary {
+  id               Int      @id @default(autoincrement())
+  employeeId       Int      @map("employee_id")
+  employeeCode     String   @map("employee_code") @db.VarChar(20)
+  year             Int
+  month            Int
+  monthName        String   @map("month_name") @db.VarChar(20)
+  lateDays         Int      @default(0) @map("late_days")
+  fullDays         Int      @default(0) @map("full_days")
+  halfDays         Int      @default(0) @map("half_days")
+  sundays          Int      @default(0)
+  totalPresentDays Int      @default(0) @map("total_present_days")
+  absentDays       Int      @default(0) @map("absent_days")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+  createdBy        Int?     @map("created_by")
+  updatedBy        Int?     @map("updated_by")
+
+  employee Employee  @relation(fields: [employeeId], references: [id], onDelete: Restrict)
+  creator  Employee? @relation("AttendanceMonthlySummaryCreatedBy", fields: [createdBy], references: [id], onDelete: SetNull)
+  updater  Employee? @relation("AttendanceMonthlySummaryUpdatedBy", fields: [updatedBy], references: [id], onDelete: SetNull)
+
+  @@unique([employeeId, year, month])
+  @@index([employeeCode])
+  @@index([year, month])
+  @@map("attendance_monthly_summaries")
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -630,6 +673,20 @@ model LeaveRequest {
 // ─────────────────────────────────────────────────────────────────────────────
 // TABLE 15: HOLIDAYS
 // ─────────────────────────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MASTER: BANKS (dropdown + addable)
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Bank {
+  id        Int      @id @default(autoincrement())
+  bankName  String   @unique @map("bank_name") @db.VarChar(100)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([bankName])
+  @@map("banks")
+}
 
 model Holiday {
   id          Int         @id @default(autoincrement())

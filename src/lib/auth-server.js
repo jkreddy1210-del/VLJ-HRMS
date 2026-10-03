@@ -302,6 +302,21 @@ export function canEditAttendanceForDate(user, dateStr) {
   return dateStr === getLocalDateString();
 }
 
+/** Past/previous attendance Excel import (HR / admin / monitoring). */
+export function canBulkImportAttendance(user) {
+  if (!user) return false;
+  return (
+    hasFullAccess(user) ||
+    user.permissions?.includes("Attendance Monitoring") ||
+    user.permissions?.includes("Attendance Corrections") ||
+    user.permissions?.includes("Mark Attendance") ||
+    user.role === "security" ||
+    user.role === "hr" ||
+    user.role === "admin" ||
+    user.role === "super_admin"
+  );
+}
+
 export async function requireAuth(request) {
 
   const user = await getAuthUser(request);

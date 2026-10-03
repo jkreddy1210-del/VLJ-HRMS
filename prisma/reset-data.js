@@ -12,6 +12,7 @@ async function main() {
 
   const deleted = await prisma.$transaction([
     prisma.attendanceCorrection.deleteMany(),
+    prisma.attendanceMonthlySummary.deleteMany(),
     prisma.attendance.deleteMany(),
     prisma.attendanceException.deleteMany(),
     prisma.attendanceSyncLog.deleteMany(),
@@ -28,6 +29,7 @@ async function main() {
 
   const labels = [
     "attendance corrections",
+    "attendance monthly summaries",
     "attendance records",
     "attendance exceptions",
     "attendance sync logs",

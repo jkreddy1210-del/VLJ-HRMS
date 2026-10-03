@@ -11,6 +11,9 @@ import {
 import {
   GENDERS,
   BLOOD_GROUPS,
+  MARITAL_STATUSES,
+  RELIGIONS,
+  NATIONALITIES,
   EMPLOYMENT_TYPES,
   EMPLOYEE_STATUSES,
   EMPLOYEE_LIST_STATUS_FILTERS,
@@ -26,6 +29,8 @@ import {
   LEAVE_REQUEST_STATUS_FILTERS,
 } from "@/lib/lookups";
 import { getPaginationConfig } from "@/lib/pagination";
+import { findReportingManagers } from "@/lib/reporting-managers";
+import { listBanks } from "@/lib/banks";
 
 export async function GET(request) {
   const { user, error } = await requireAuth(request);
@@ -34,7 +39,7 @@ export async function GET(request) {
   const canManage = canManageEmployees(user);
   const canAttendance = canViewAttendance(user);
 
-  const [departments, designations, leaveTypes, roles, managers, attendanceMarkStatuses, attendanceStatusFilters] =
+  const [departments, designations, leaveTypes, roles, managers, banks, attendanceMarkStatuses, attendanceStatusFilters] =
     await Promise.all([
     canManage || canAttendance
       ? prisma.department.findMany({ orderBy: { departmentName: "asc" } })
@@ -49,13 +54,8 @@ export async function GET(request) {
     canManage
       ? prisma.role.findMany({ orderBy: { roleName: "asc" } })
       : Promise.resolve([]),
-    canManage
-      ? prisma.employee.findMany({
-          where: { status: "Active" },
-          select: { id: true, fullName: true, employeeCode: true },
-          orderBy: { fullName: "asc" },
-        })
-      : Promise.resolve([]),
+    canManage ? findReportingManagers(prisma) : Promise.resolve([]),
+    canManage ? listBanks(prisma) : Promise.resolve([]),
     canAttendance ? getAttendanceMarkStatuses(prisma) : Promise.resolve([]),
     canAttendance ? getAttendanceListFilters(prisma) : Promise.resolve([]),
   ]);
@@ -86,6 +86,9 @@ export async function GET(request) {
     reportDepartmentOptions: buildReportDepartmentOptions(departmentOptions),
     genders: GENDERS,
     bloodGroups: BLOOD_GROUPS,
+    maritalStatuses: MARITAL_STATUSES,
+    religions: RELIGIONS,
+    nationalities: NATIONALITIES,
     employmentTypes: EMPLOYMENT_TYPES,
     employeeStatuses: EMPLOYEE_STATUSES,
     employeeStatusFilters: canManage ? EMPLOYEE_LIST_STATUS_FILTERS : [],
@@ -106,6 +109,7 @@ export async function GET(request) {
     leaveTypeMeta: buildLeaveTypeMeta(leaveTypes),
     roles: roles.map(mapRoleOption),
     managers,
+    banks,
     pagination: getPaginationConfig(),
   });
 }

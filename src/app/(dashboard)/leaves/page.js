@@ -67,6 +67,8 @@ export default function LeavesPage() {
   const [canApplyLeave, setCanApplyLeave] = useState(false);
   const [employeeLeaveBalances, setEmployeeLeaveBalances] = useState([]);
   const [applyOpen, setApplyOpen] = useState(false);
+  const [leaveConfirm, setLeaveConfirm] = useState(null);
+  const [leaveActing, setLeaveActing] = useState(false);
   const [leaveForm, setLeaveForm] = useState({ leaveType: "", fromDate: "", toDate: "", reason: "" });
   const [loading, setLoading] = useState(true);
   const [requestPage, setRequestPage] = useState(1);
@@ -150,17 +152,49 @@ export default function LeavesPage() {
   const handleApprove = async (id, level) => {
     try {
       await api.updateLeave(id, { action: "approve", level });
+      setLeaveConfirm(null);
       loadLeaves(true);
       toast.success("Leave approved");
-    } catch (err) { toast.error(err.message); }
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setLeaveActing(false);
+    }
   };
 
   const handleReject = async (id) => {
     try {
       await api.updateLeave(id, { action: "reject" });
+      setLeaveConfirm(null);
       loadLeaves(true);
       toast.success("Leave rejected");
-    } catch (err) { toast.error(err.message); }
+    } catch (err) {
+      toast.error(err.message);
+    } finally {
+      setLeaveActing(false);
+    }
+  };
+
+  const askLeaveConfirm = (req, action, level) => {
+    setLeaveConfirm({
+      id: req.id,
+      action,
+      level: level || null,
+      employeeName: req.employeeName,
+      leaveType: req.type || req.leaveType,
+      from: req.from,
+      to: req.to,
+    });
+  };
+
+  const confirmLeaveAction = async () => {
+    if (!leaveConfirm) return;
+    setLeaveActing(true);
+    if (leaveConfirm.action === "approve") {
+      await handleApprove(leaveConfirm.id, leaveConfirm.level);
+    } else {
+      await handleReject(leaveConfirm.id);
+    }
   };
 
   const selectedBalance = leaveTypeBalances[leaveForm.leaveType];
@@ -446,13 +480,31 @@ export default function LeavesPage() {
                         <td className="px-4 py-3">
                           {req.status === "Pending" && canApprove && (
                             <div className="flex gap-1">
-                              <Button variant="ghost" size="icon" className="h-7 w-7 text-emerald-600" onClick={() => handleApprove(req.id, "manager")}>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7 text-emerald-600"
+                                title="Approve (Manager)"
+                                onClick={() => askLeaveConfirm(req, "approve", "manager")}
+                              >
                                 <Check className="h-4 w-4" />
                               </Button>
-                              <Button variant="ghost" size="icon" className="h-7 w-7 text-emerald-600" onClick={() => handleApprove(req.id, "hr")}>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7 text-emerald-600"
+                                title="Approve (HR)"
+                                onClick={() => askLeaveConfirm(req, "approve", "hr")}
+                              >
                                 <Clock className="h-4 w-4" />
                               </Button>
-                              <Button variant="ghost" size="icon" className="h-7 w-7 text-destructive" onClick={() => handleReject(req.id)}>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-7 w-7 text-destructive"
+                                title="Reject"
+                                onClick={() => askLeaveConfirm(req, "reject")}
+                              >
                                 <X className="h-4 w-4" />
                               </Button>
                             </div>
@@ -585,6 +637,60 @@ export default function LeavesPage() {
           <DialogFooter>
             <Button variant="outline" onClick={() => setApplyOpen(false)}>Cancel</Button>
             <Button variant="premium" onClick={handleApplyLeave}>Submit Request</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={Boolean(leaveConfirm)}
+        onOpenChange={(open) => {
+          if (!open && !leaveActing) setLeaveConfirm(null);
+        }}
+      >
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>
+              {leaveConfirm?.action === "approve" ? "Approve leave?" : "Reject leave?"}
+            </DialogTitle>
+            <DialogDescription>
+              {leaveConfirm ? (
+                <>
+                  Are you sure you want to{" "}
+                  <span className="font-semibold text-foreground">
+                    {leaveConfirm.action === "approve" ? "approve" : "reject"}
+                  </span>{" "}
+                  leave for{" "}
+                  <span className="font-semibold text-foreground">{leaveConfirm.employeeName}</span>
+                  {leaveConfirm.leaveType ? ` (${leaveConfirm.leaveType})` : ""}
+                  {leaveConfirm.from && leaveConfirm.to
+                    ? ` · ${formatDate(leaveConfirm.from)} – ${formatDate(leaveConfirm.to)}`
+                    : ""}
+                  ?
+                </>
+              ) : null}
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              type="button"
+              variant="outline"
+              disabled={leaveActing}
+              onClick={() => setLeaveConfirm(null)}
+            >
+              No
+            </Button>
+            <Button
+              type="button"
+              disabled={leaveActing || !leaveConfirm}
+              className={
+                leaveConfirm?.action === "approve"
+                  ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                  : "bg-red-600 text-white hover:bg-red-700"
+              }
+              onClick={confirmLeaveAction}
+            >
+              Yes
+            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

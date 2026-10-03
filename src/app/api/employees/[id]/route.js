@@ -24,6 +24,9 @@ import {
   mapCategoryErrorsToFields,
 } from "@/lib/employee-validation";
 import { mapEmployeeDocument, mapDocumentsByType } from "@/lib/document-mapper";
+import { findReportingManagers } from "@/lib/reporting-managers";
+import { ensureBankExists, listBanks } from "@/lib/banks";
+import { MARITAL_STATUSES } from "@/lib/lookups";
 
 function canEditEmployee(user, employeeId) {
   const isOwn = user.id === employeeId || user.employeeId === employeeId;
@@ -47,10 +50,17 @@ const SELF_EDIT_FIELDS = new Set([
   "alternateMobile",
   "email",
   "address",
+  "temporaryAddress",
   "emergencyContact",
   "dob",
   "gender",
   "bloodGroup",
+  "motherName",
+  "fatherName",
+  "maritalStatus",
+  "spouseName",
+  "religion",
+  "nationality",
   "bankName",
   "accountNumber",
   "ifscCode",
@@ -91,15 +101,12 @@ export async function GET(request, { params }) {
     const canEdit = canEditEmployee(user, id);
     let lookups = null;
     if (canEdit) {
-      const [departments, designations, roles, managers] = await Promise.all([
+      const [departments, designations, roles, managers, banks] = await Promise.all([
         prisma.department.findMany({ orderBy: { departmentName: "asc" } }),
         prisma.designation.findMany({ orderBy: { designationName: "asc" } }),
         prisma.role.findMany({ orderBy: { roleName: "asc" } }),
-        prisma.employee.findMany({
-          where: { status: "Active", id: { not: id } },
-          select: { id: true, fullName: true, employeeCode: true },
-          orderBy: { fullName: "asc" },
-        }),
+        findReportingManagers(prisma, { excludeId: id }),
+        listBanks(prisma),
       ]);
       lookups = {
         departments,
@@ -110,6 +117,8 @@ export async function GET(request, { params }) {
           label: r.roleName.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase()),
         })),
         managers,
+        banks,
+        maritalStatuses: MARITAL_STATUSES,
       };
     }
 
@@ -253,8 +262,10 @@ export async function PATCH(request, { params }) {
   const updateData = {};
 
   const fields = [
-    "firstName", "lastName", "gender", "bloodGroup", "mobile", "alternateMobile",
-    "email", "address", "emergencyContact", "bankName", "accountNumber", "ifscCode", "pan", "aadhaar",
+    "firstName", "lastName", "gender", "bloodGroup", "motherName", "fatherName", "maritalStatus",
+    "spouseName", "religion", "nationality",
+    "mobile", "alternateMobile",
+    "email", "address", "temporaryAddress", "emergencyContact", "bankName", "accountNumber", "ifscCode", "pan", "aadhaar",
   ];
   fields.forEach((f) => {
     if (body[f] !== undefined) {
@@ -272,6 +283,18 @@ export async function PATCH(request, { params }) {
           updateData.accountNumber = normalizedInput.accountNumber || null;
         } else if (f === "ifscCode" && normalizedInput?.ifscCode !== undefined) {
           updateData.ifscCode = normalizedInput.ifscCode || null;
+        } else if (
+          f === "motherName" ||
+          f === "fatherName" ||
+          f === "maritalStatus" ||
+          f === "spouseName" ||
+          f === "religion" ||
+          f === "nationality" ||
+          f === "address" ||
+          f === "temporaryAddress"
+        ) {
+          const raw = normalizedInput?.[f] !== undefined ? normalizedInput[f] : body[f];
+          updateData[f] = String(raw || "").trim() || null;
         } else {
           updateData[f] = body[f];
         }
@@ -360,6 +383,10 @@ export async function PATCH(request, { params }) {
     data: updateData,
     include: { department: true, designation: true, reportingManager: true, role: true },
   });
+
+  if (employee.bankName) {
+    await ensureBankExists(prisma, employee.bankName);
+  }
 
   await createAuditLog({
     userId: user.id,

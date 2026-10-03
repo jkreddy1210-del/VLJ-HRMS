@@ -1,6 +1,6 @@
 import * as XLSX from "xlsx";
 
-const MONTH_NAMES = [
+export const MONTH_NAMES = [
   "January",
   "February",
   "March",

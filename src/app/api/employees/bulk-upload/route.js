@@ -3,6 +3,8 @@ import { requirePermission, hashPassword } from "@/lib/auth-server";
 import { createAuditLog } from "@/lib/audit";
 import { assignEmployeeCode } from "@/lib/employee-id";
 import { parseEmployeeWorkbook, validateEmployeeRow } from "@/lib/employee-bulk-upload";
+import { findReportingManagers } from "@/lib/reporting-managers";
+import { ensureBankExists } from "@/lib/banks";
 
 export async function POST(request) {
   const { user, error } = await requirePermission(request, "Employee Management");
@@ -23,10 +25,7 @@ export async function POST(request) {
         prisma.department.findMany(),
         prisma.designation.findMany(),
         prisma.role.findMany(),
-        prisma.employee.findMany({
-          where: { status: "Active" },
-          select: { id: true, employeeCode: true },
-        }),
+        findReportingManagers(prisma),
         prisma.employee.findMany({ select: { employeeCode: true, email: true } }),
         prisma.leaveType.findMany(),
         prisma.role.findUnique({ where: { roleName: "employee" } }),
@@ -122,6 +121,10 @@ export async function POST(request) {
             },
           });
         });
+
+        if (employee.bankName) {
+          await ensureBankExists(prisma, employee.bankName);
+        }
 
         if (leaveTypes.length) {
           await prisma.leaveBalance.createMany({

@@ -59,6 +59,11 @@ export type EmployeeDocument = $Result.DefaultSelection<Prisma.$EmployeeDocument
  */
 export type Attendance = $Result.DefaultSelection<Prisma.$AttendancePayload>
 /**
+ * Model AttendanceMonthlySummary
+ * 
+ */
+export type AttendanceMonthlySummary = $Result.DefaultSelection<Prisma.$AttendanceMonthlySummaryPayload>
+/**
  * Model AttendanceSyncLog
  * 
  */
@@ -88,6 +93,11 @@ export type LeaveBalance = $Result.DefaultSelection<Prisma.$LeaveBalancePayload>
  * 
  */
 export type LeaveRequest = $Result.DefaultSelection<Prisma.$LeaveRequestPayload>
+/**
+ * Model Bank
+ * 
+ */
+export type Bank = $Result.DefaultSelection<Prisma.$BankPayload>
 /**
  * Model Holiday
  * 
@@ -535,6 +545,16 @@ export class PrismaClient<
   get attendance(): Prisma.AttendanceDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.attendanceMonthlySummary`: Exposes CRUD operations for the **AttendanceMonthlySummary** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AttendanceMonthlySummaries
+    * const attendanceMonthlySummaries = await prisma.attendanceMonthlySummary.findMany()
+    * ```
+    */
+  get attendanceMonthlySummary(): Prisma.AttendanceMonthlySummaryDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.attendanceSyncLog`: Exposes CRUD operations for the **AttendanceSyncLog** model.
     * Example usage:
     * ```ts
@@ -593,6 +613,16 @@ export class PrismaClient<
     * ```
     */
   get leaveRequest(): Prisma.LeaveRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.bank`: Exposes CRUD operations for the **Bank** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Banks
+    * const banks = await prisma.bank.findMany()
+    * ```
+    */
+  get bank(): Prisma.BankDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.holiday`: Exposes CRUD operations for the **Holiday** model.
@@ -1113,12 +1143,14 @@ export namespace Prisma {
     Employee: 'Employee',
     EmployeeDocument: 'EmployeeDocument',
     Attendance: 'Attendance',
+    AttendanceMonthlySummary: 'AttendanceMonthlySummary',
     AttendanceSyncLog: 'AttendanceSyncLog',
     AttendanceException: 'AttendanceException',
     AttendanceStatusSetting: 'AttendanceStatusSetting',
     LeaveType: 'LeaveType',
     LeaveBalance: 'LeaveBalance',
     LeaveRequest: 'LeaveRequest',
+    Bank: 'Bank',
     Holiday: 'Holiday',
     AttendanceCorrection: 'AttendanceCorrection',
     ReportDownloadLog: 'ReportDownloadLog',
@@ -1144,7 +1176,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "role" | "permission" | "rolePermission" | "department" | "departmentShift" | "designation" | "employee" | "employeeDocument" | "attendance" | "attendanceSyncLog" | "attendanceException" | "attendanceStatusSetting" | "leaveType" | "leaveBalance" | "leaveRequest" | "holiday" | "attendanceCorrection" | "reportDownloadLog" | "auditLog" | "notification" | "passwordResetToken" | "employeePermission"
+      modelProps: "role" | "permission" | "rolePermission" | "department" | "departmentShift" | "designation" | "employee" | "employeeDocument" | "attendance" | "attendanceMonthlySummary" | "attendanceSyncLog" | "attendanceException" | "attendanceStatusSetting" | "leaveType" | "leaveBalance" | "leaveRequest" | "bank" | "holiday" | "attendanceCorrection" | "reportDownloadLog" | "auditLog" | "notification" | "passwordResetToken" | "employeePermission"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1742,6 +1774,72 @@ export namespace Prisma {
           }
         }
       }
+      AttendanceMonthlySummary: {
+        payload: Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>
+        fields: Prisma.AttendanceMonthlySummaryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AttendanceMonthlySummaryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AttendanceMonthlySummaryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>
+          }
+          findFirst: {
+            args: Prisma.AttendanceMonthlySummaryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AttendanceMonthlySummaryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>
+          }
+          findMany: {
+            args: Prisma.AttendanceMonthlySummaryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>[]
+          }
+          create: {
+            args: Prisma.AttendanceMonthlySummaryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>
+          }
+          createMany: {
+            args: Prisma.AttendanceMonthlySummaryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.AttendanceMonthlySummaryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>
+          }
+          update: {
+            args: Prisma.AttendanceMonthlySummaryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>
+          }
+          deleteMany: {
+            args: Prisma.AttendanceMonthlySummaryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AttendanceMonthlySummaryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.AttendanceMonthlySummaryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendanceMonthlySummaryPayload>
+          }
+          aggregate: {
+            args: Prisma.AttendanceMonthlySummaryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAttendanceMonthlySummary>
+          }
+          groupBy: {
+            args: Prisma.AttendanceMonthlySummaryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AttendanceMonthlySummaryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AttendanceMonthlySummaryCountArgs<ExtArgs>
+            result: $Utils.Optional<AttendanceMonthlySummaryCountAggregateOutputType> | number
+          }
+        }
+      }
       AttendanceSyncLog: {
         payload: Prisma.$AttendanceSyncLogPayload<ExtArgs>
         fields: Prisma.AttendanceSyncLogFieldRefs
@@ -2135,6 +2233,72 @@ export namespace Prisma {
           count: {
             args: Prisma.LeaveRequestCountArgs<ExtArgs>
             result: $Utils.Optional<LeaveRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      Bank: {
+        payload: Prisma.$BankPayload<ExtArgs>
+        fields: Prisma.BankFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.BankFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.BankFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>
+          }
+          findFirst: {
+            args: Prisma.BankFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.BankFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>
+          }
+          findMany: {
+            args: Prisma.BankFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>[]
+          }
+          create: {
+            args: Prisma.BankCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>
+          }
+          createMany: {
+            args: Prisma.BankCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.BankDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>
+          }
+          update: {
+            args: Prisma.BankUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>
+          }
+          deleteMany: {
+            args: Prisma.BankDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.BankUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.BankUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$BankPayload>
+          }
+          aggregate: {
+            args: Prisma.BankAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateBank>
+          }
+          groupBy: {
+            args: Prisma.BankGroupByArgs<ExtArgs>
+            result: $Utils.Optional<BankGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.BankCountArgs<ExtArgs>
+            result: $Utils.Optional<BankCountAggregateOutputType> | number
           }
         }
       }
@@ -2705,12 +2869,14 @@ export namespace Prisma {
     employee?: EmployeeOmit
     employeeDocument?: EmployeeDocumentOmit
     attendance?: AttendanceOmit
+    attendanceMonthlySummary?: AttendanceMonthlySummaryOmit
     attendanceSyncLog?: AttendanceSyncLogOmit
     attendanceException?: AttendanceExceptionOmit
     attendanceStatusSetting?: AttendanceStatusSettingOmit
     leaveType?: LeaveTypeOmit
     leaveBalance?: LeaveBalanceOmit
     leaveRequest?: LeaveRequestOmit
+    bank?: BankOmit
     holiday?: HolidayOmit
     attendanceCorrection?: AttendanceCorrectionOmit
     reportDownloadLog?: ReportDownloadLogOmit
@@ -2965,6 +3131,7 @@ export namespace Prisma {
     employeePermissions: number
     auditLogs: number
     attendanceRecords: number
+    attendanceMonthlySummaries: number
     attendanceExceptions: number
     leaveBalances: number
     leaveRequests: number
@@ -2987,6 +3154,8 @@ export namespace Prisma {
     documentsUpdated: number
     attendanceCreated: number
     attendanceUpdated: number
+    monthlySummariesCreated: number
+    monthlySummariesUpdated: number
     syncLogsCreated: number
     syncLogsUpdated: number
     exceptionsCreated: number
@@ -3017,6 +3186,7 @@ export namespace Prisma {
     employeePermissions?: boolean | EmployeeCountOutputTypeCountEmployeePermissionsArgs
     auditLogs?: boolean | EmployeeCountOutputTypeCountAuditLogsArgs
     attendanceRecords?: boolean | EmployeeCountOutputTypeCountAttendanceRecordsArgs
+    attendanceMonthlySummaries?: boolean | EmployeeCountOutputTypeCountAttendanceMonthlySummariesArgs
     attendanceExceptions?: boolean | EmployeeCountOutputTypeCountAttendanceExceptionsArgs
     leaveBalances?: boolean | EmployeeCountOutputTypeCountLeaveBalancesArgs
     leaveRequests?: boolean | EmployeeCountOutputTypeCountLeaveRequestsArgs
@@ -3039,6 +3209,8 @@ export namespace Prisma {
     documentsUpdated?: boolean | EmployeeCountOutputTypeCountDocumentsUpdatedArgs
     attendanceCreated?: boolean | EmployeeCountOutputTypeCountAttendanceCreatedArgs
     attendanceUpdated?: boolean | EmployeeCountOutputTypeCountAttendanceUpdatedArgs
+    monthlySummariesCreated?: boolean | EmployeeCountOutputTypeCountMonthlySummariesCreatedArgs
+    monthlySummariesUpdated?: boolean | EmployeeCountOutputTypeCountMonthlySummariesUpdatedArgs
     syncLogsCreated?: boolean | EmployeeCountOutputTypeCountSyncLogsCreatedArgs
     syncLogsUpdated?: boolean | EmployeeCountOutputTypeCountSyncLogsUpdatedArgs
     exceptionsCreated?: boolean | EmployeeCountOutputTypeCountExceptionsCreatedArgs
@@ -3119,6 +3291,13 @@ export namespace Prisma {
    */
   export type EmployeeCountOutputTypeCountAttendanceRecordsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AttendanceWhereInput
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountAttendanceMonthlySummariesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceMonthlySummaryWhereInput
   }
 
   /**
@@ -3273,6 +3452,20 @@ export namespace Prisma {
    */
   export type EmployeeCountOutputTypeCountAttendanceUpdatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AttendanceWhereInput
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountMonthlySummariesCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceMonthlySummaryWhereInput
+  }
+
+  /**
+   * EmployeeCountOutputType without action
+   */
+  export type EmployeeCountOutputTypeCountMonthlySummariesUpdatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceMonthlySummaryWhereInput
   }
 
   /**
@@ -10103,6 +10296,12 @@ export namespace Prisma {
     dob: Date | null
     gender: string | null
     bloodGroup: string | null
+    motherName: string | null
+    fatherName: string | null
+    maritalStatus: string | null
+    spouseName: string | null
+    religion: string | null
+    nationality: string | null
     mobile: string | null
     alternateMobile: string | null
     email: string | null
@@ -10110,6 +10309,7 @@ export namespace Prisma {
     roleId: number | null
     lastLogin: Date | null
     address: string | null
+    temporaryAddress: string | null
     departmentId: number | null
     designationId: number | null
     reportingManagerId: number | null
@@ -10159,6 +10359,12 @@ export namespace Prisma {
     dob: Date | null
     gender: string | null
     bloodGroup: string | null
+    motherName: string | null
+    fatherName: string | null
+    maritalStatus: string | null
+    spouseName: string | null
+    religion: string | null
+    nationality: string | null
     mobile: string | null
     alternateMobile: string | null
     email: string | null
@@ -10166,6 +10372,7 @@ export namespace Prisma {
     roleId: number | null
     lastLogin: Date | null
     address: string | null
+    temporaryAddress: string | null
     departmentId: number | null
     designationId: number | null
     reportingManagerId: number | null
@@ -10215,6 +10422,12 @@ export namespace Prisma {
     dob: number
     gender: number
     bloodGroup: number
+    motherName: number
+    fatherName: number
+    maritalStatus: number
+    spouseName: number
+    religion: number
+    nationality: number
     mobile: number
     alternateMobile: number
     email: number
@@ -10222,6 +10435,7 @@ export namespace Prisma {
     roleId: number
     lastLogin: number
     address: number
+    temporaryAddress: number
     departmentId: number
     designationId: number
     reportingManagerId: number
@@ -10304,6 +10518,12 @@ export namespace Prisma {
     dob?: true
     gender?: true
     bloodGroup?: true
+    motherName?: true
+    fatherName?: true
+    maritalStatus?: true
+    spouseName?: true
+    religion?: true
+    nationality?: true
     mobile?: true
     alternateMobile?: true
     email?: true
@@ -10311,6 +10531,7 @@ export namespace Prisma {
     roleId?: true
     lastLogin?: true
     address?: true
+    temporaryAddress?: true
     departmentId?: true
     designationId?: true
     reportingManagerId?: true
@@ -10360,6 +10581,12 @@ export namespace Prisma {
     dob?: true
     gender?: true
     bloodGroup?: true
+    motherName?: true
+    fatherName?: true
+    maritalStatus?: true
+    spouseName?: true
+    religion?: true
+    nationality?: true
     mobile?: true
     alternateMobile?: true
     email?: true
@@ -10367,6 +10594,7 @@ export namespace Prisma {
     roleId?: true
     lastLogin?: true
     address?: true
+    temporaryAddress?: true
     departmentId?: true
     designationId?: true
     reportingManagerId?: true
@@ -10416,6 +10644,12 @@ export namespace Prisma {
     dob?: true
     gender?: true
     bloodGroup?: true
+    motherName?: true
+    fatherName?: true
+    maritalStatus?: true
+    spouseName?: true
+    religion?: true
+    nationality?: true
     mobile?: true
     alternateMobile?: true
     email?: true
@@ -10423,6 +10657,7 @@ export namespace Prisma {
     roleId?: true
     lastLogin?: true
     address?: true
+    temporaryAddress?: true
     departmentId?: true
     designationId?: true
     reportingManagerId?: true
@@ -10560,6 +10795,12 @@ export namespace Prisma {
     dob: Date | null
     gender: string | null
     bloodGroup: string | null
+    motherName: string | null
+    fatherName: string | null
+    maritalStatus: string | null
+    spouseName: string | null
+    religion: string | null
+    nationality: string | null
     mobile: string
     alternateMobile: string | null
     email: string
@@ -10567,6 +10808,7 @@ export namespace Prisma {
     roleId: number
     lastLogin: Date | null
     address: string | null
+    temporaryAddress: string | null
     departmentId: number
     designationId: number
     reportingManagerId: number | null
@@ -10636,6 +10878,12 @@ export namespace Prisma {
     dob?: boolean
     gender?: boolean
     bloodGroup?: boolean
+    motherName?: boolean
+    fatherName?: boolean
+    maritalStatus?: boolean
+    spouseName?: boolean
+    religion?: boolean
+    nationality?: boolean
     mobile?: boolean
     alternateMobile?: boolean
     email?: boolean
@@ -10643,6 +10891,7 @@ export namespace Prisma {
     roleId?: boolean
     lastLogin?: boolean
     address?: boolean
+    temporaryAddress?: boolean
     departmentId?: boolean
     designationId?: boolean
     reportingManagerId?: boolean
@@ -10691,6 +10940,7 @@ export namespace Prisma {
     employeePermissions?: boolean | Employee$employeePermissionsArgs<ExtArgs>
     auditLogs?: boolean | Employee$auditLogsArgs<ExtArgs>
     attendanceRecords?: boolean | Employee$attendanceRecordsArgs<ExtArgs>
+    attendanceMonthlySummaries?: boolean | Employee$attendanceMonthlySummariesArgs<ExtArgs>
     attendanceExceptions?: boolean | Employee$attendanceExceptionsArgs<ExtArgs>
     leaveBalances?: boolean | Employee$leaveBalancesArgs<ExtArgs>
     leaveRequests?: boolean | Employee$leaveRequestsArgs<ExtArgs>
@@ -10715,6 +10965,8 @@ export namespace Prisma {
     documentsUpdated?: boolean | Employee$documentsUpdatedArgs<ExtArgs>
     attendanceCreated?: boolean | Employee$attendanceCreatedArgs<ExtArgs>
     attendanceUpdated?: boolean | Employee$attendanceUpdatedArgs<ExtArgs>
+    monthlySummariesCreated?: boolean | Employee$monthlySummariesCreatedArgs<ExtArgs>
+    monthlySummariesUpdated?: boolean | Employee$monthlySummariesUpdatedArgs<ExtArgs>
     syncLogsCreated?: boolean | Employee$syncLogsCreatedArgs<ExtArgs>
     syncLogsUpdated?: boolean | Employee$syncLogsUpdatedArgs<ExtArgs>
     exceptionsCreated?: boolean | Employee$exceptionsCreatedArgs<ExtArgs>
@@ -10751,6 +11003,12 @@ export namespace Prisma {
     dob?: boolean
     gender?: boolean
     bloodGroup?: boolean
+    motherName?: boolean
+    fatherName?: boolean
+    maritalStatus?: boolean
+    spouseName?: boolean
+    religion?: boolean
+    nationality?: boolean
     mobile?: boolean
     alternateMobile?: boolean
     email?: boolean
@@ -10758,6 +11016,7 @@ export namespace Prisma {
     roleId?: boolean
     lastLogin?: boolean
     address?: boolean
+    temporaryAddress?: boolean
     departmentId?: boolean
     designationId?: boolean
     reportingManagerId?: boolean
@@ -10797,7 +11056,7 @@ export namespace Prisma {
     updatedBy?: boolean
   }
 
-  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeCode" | "camAttendanceId" | "firstName" | "lastName" | "fullName" | "profilePhoto" | "dob" | "gender" | "bloodGroup" | "mobile" | "alternateMobile" | "email" | "passwordHash" | "roleId" | "lastLogin" | "address" | "departmentId" | "designationId" | "reportingManagerId" | "joiningDate" | "employmentType" | "status" | "emergencyContact" | "bankName" | "accountNumber" | "ifscCode" | "pan" | "aadhaar" | "employeeCategory" | "qualification" | "specialization" | "skills" | "collegeName" | "graduationYear" | "cgpa" | "internshipDetails" | "certifications" | "totalExperienceYears" | "totalExperienceMonths" | "previousCompany" | "previousDesignation" | "previousCtc" | "expectedCtc" | "lastWorkingDate" | "noticePeriod" | "relevantExperience" | "experienceLetterUrl" | "relievingLetterUrl" | "payslipUrls" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy", ExtArgs["result"]["employee"]>
+  export type EmployeeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeCode" | "camAttendanceId" | "firstName" | "lastName" | "fullName" | "profilePhoto" | "dob" | "gender" | "bloodGroup" | "motherName" | "fatherName" | "maritalStatus" | "spouseName" | "religion" | "nationality" | "mobile" | "alternateMobile" | "email" | "passwordHash" | "roleId" | "lastLogin" | "address" | "temporaryAddress" | "departmentId" | "designationId" | "reportingManagerId" | "joiningDate" | "employmentType" | "status" | "emergencyContact" | "bankName" | "accountNumber" | "ifscCode" | "pan" | "aadhaar" | "employeeCategory" | "qualification" | "specialization" | "skills" | "collegeName" | "graduationYear" | "cgpa" | "internshipDetails" | "certifications" | "totalExperienceYears" | "totalExperienceMonths" | "previousCompany" | "previousDesignation" | "previousCtc" | "expectedCtc" | "lastWorkingDate" | "noticePeriod" | "relevantExperience" | "experienceLetterUrl" | "relievingLetterUrl" | "payslipUrls" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy", ExtArgs["result"]["employee"]>
   export type EmployeeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     department?: boolean | DepartmentDefaultArgs<ExtArgs>
     designation?: boolean | DesignationDefaultArgs<ExtArgs>
@@ -10810,6 +11069,7 @@ export namespace Prisma {
     employeePermissions?: boolean | Employee$employeePermissionsArgs<ExtArgs>
     auditLogs?: boolean | Employee$auditLogsArgs<ExtArgs>
     attendanceRecords?: boolean | Employee$attendanceRecordsArgs<ExtArgs>
+    attendanceMonthlySummaries?: boolean | Employee$attendanceMonthlySummariesArgs<ExtArgs>
     attendanceExceptions?: boolean | Employee$attendanceExceptionsArgs<ExtArgs>
     leaveBalances?: boolean | Employee$leaveBalancesArgs<ExtArgs>
     leaveRequests?: boolean | Employee$leaveRequestsArgs<ExtArgs>
@@ -10834,6 +11094,8 @@ export namespace Prisma {
     documentsUpdated?: boolean | Employee$documentsUpdatedArgs<ExtArgs>
     attendanceCreated?: boolean | Employee$attendanceCreatedArgs<ExtArgs>
     attendanceUpdated?: boolean | Employee$attendanceUpdatedArgs<ExtArgs>
+    monthlySummariesCreated?: boolean | Employee$monthlySummariesCreatedArgs<ExtArgs>
+    monthlySummariesUpdated?: boolean | Employee$monthlySummariesUpdatedArgs<ExtArgs>
     syncLogsCreated?: boolean | Employee$syncLogsCreatedArgs<ExtArgs>
     syncLogsUpdated?: boolean | Employee$syncLogsUpdatedArgs<ExtArgs>
     exceptionsCreated?: boolean | Employee$exceptionsCreatedArgs<ExtArgs>
@@ -10871,6 +11133,7 @@ export namespace Prisma {
       employeePermissions: Prisma.$EmployeePermissionPayload<ExtArgs>[]
       auditLogs: Prisma.$AuditLogPayload<ExtArgs>[]
       attendanceRecords: Prisma.$AttendancePayload<ExtArgs>[]
+      attendanceMonthlySummaries: Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>[]
       attendanceExceptions: Prisma.$AttendanceExceptionPayload<ExtArgs>[]
       leaveBalances: Prisma.$LeaveBalancePayload<ExtArgs>[]
       leaveRequests: Prisma.$LeaveRequestPayload<ExtArgs>[]
@@ -10895,6 +11158,8 @@ export namespace Prisma {
       documentsUpdated: Prisma.$EmployeeDocumentPayload<ExtArgs>[]
       attendanceCreated: Prisma.$AttendancePayload<ExtArgs>[]
       attendanceUpdated: Prisma.$AttendancePayload<ExtArgs>[]
+      monthlySummariesCreated: Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>[]
+      monthlySummariesUpdated: Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>[]
       syncLogsCreated: Prisma.$AttendanceSyncLogPayload<ExtArgs>[]
       syncLogsUpdated: Prisma.$AttendanceSyncLogPayload<ExtArgs>[]
       exceptionsCreated: Prisma.$AttendanceExceptionPayload<ExtArgs>[]
@@ -10927,6 +11192,12 @@ export namespace Prisma {
       dob: Date | null
       gender: string | null
       bloodGroup: string | null
+      motherName: string | null
+      fatherName: string | null
+      maritalStatus: string | null
+      spouseName: string | null
+      religion: string | null
+      nationality: string | null
       mobile: string
       alternateMobile: string | null
       email: string
@@ -10934,6 +11205,7 @@ export namespace Prisma {
       roleId: number
       lastLogin: Date | null
       address: string | null
+      temporaryAddress: string | null
       departmentId: number
       designationId: number
       reportingManagerId: number | null
@@ -11322,6 +11594,7 @@ export namespace Prisma {
     employeePermissions<T extends Employee$employeePermissionsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$employeePermissionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeePermissionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     auditLogs<T extends Employee$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendanceRecords<T extends Employee$attendanceRecordsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$attendanceRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attendanceMonthlySummaries<T extends Employee$attendanceMonthlySummariesArgs<ExtArgs> = {}>(args?: Subset<T, Employee$attendanceMonthlySummariesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendanceExceptions<T extends Employee$attendanceExceptionsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$attendanceExceptionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceExceptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     leaveBalances<T extends Employee$leaveBalancesArgs<ExtArgs> = {}>(args?: Subset<T, Employee$leaveBalancesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaveBalancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     leaveRequests<T extends Employee$leaveRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Employee$leaveRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaveRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11346,6 +11619,8 @@ export namespace Prisma {
     documentsUpdated<T extends Employee$documentsUpdatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$documentsUpdatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EmployeeDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendanceCreated<T extends Employee$attendanceCreatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$attendanceCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     attendanceUpdated<T extends Employee$attendanceUpdatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$attendanceUpdatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    monthlySummariesCreated<T extends Employee$monthlySummariesCreatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$monthlySummariesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    monthlySummariesUpdated<T extends Employee$monthlySummariesUpdatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$monthlySummariesUpdatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     syncLogsCreated<T extends Employee$syncLogsCreatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$syncLogsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceSyncLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     syncLogsUpdated<T extends Employee$syncLogsUpdatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$syncLogsUpdatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceSyncLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     exceptionsCreated<T extends Employee$exceptionsCreatedArgs<ExtArgs> = {}>(args?: Subset<T, Employee$exceptionsCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceExceptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -11405,6 +11680,12 @@ export namespace Prisma {
     readonly dob: FieldRef<"Employee", 'DateTime'>
     readonly gender: FieldRef<"Employee", 'String'>
     readonly bloodGroup: FieldRef<"Employee", 'String'>
+    readonly motherName: FieldRef<"Employee", 'String'>
+    readonly fatherName: FieldRef<"Employee", 'String'>
+    readonly maritalStatus: FieldRef<"Employee", 'String'>
+    readonly spouseName: FieldRef<"Employee", 'String'>
+    readonly religion: FieldRef<"Employee", 'String'>
+    readonly nationality: FieldRef<"Employee", 'String'>
     readonly mobile: FieldRef<"Employee", 'String'>
     readonly alternateMobile: FieldRef<"Employee", 'String'>
     readonly email: FieldRef<"Employee", 'String'>
@@ -11412,6 +11693,7 @@ export namespace Prisma {
     readonly roleId: FieldRef<"Employee", 'Int'>
     readonly lastLogin: FieldRef<"Employee", 'DateTime'>
     readonly address: FieldRef<"Employee", 'String'>
+    readonly temporaryAddress: FieldRef<"Employee", 'String'>
     readonly departmentId: FieldRef<"Employee", 'Int'>
     readonly designationId: FieldRef<"Employee", 'Int'>
     readonly reportingManagerId: FieldRef<"Employee", 'Int'>
@@ -11979,6 +12261,30 @@ export namespace Prisma {
   }
 
   /**
+   * Employee.attendanceMonthlySummaries
+   */
+  export type Employee$attendanceMonthlySummariesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    where?: AttendanceMonthlySummaryWhereInput
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AttendanceMonthlySummaryScalarFieldEnum | AttendanceMonthlySummaryScalarFieldEnum[]
+  }
+
+  /**
    * Employee.attendanceExceptions
    */
   export type Employee$attendanceExceptionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12542,6 +12848,54 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Employee.monthlySummariesCreated
+   */
+  export type Employee$monthlySummariesCreatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    where?: AttendanceMonthlySummaryWhereInput
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AttendanceMonthlySummaryScalarFieldEnum | AttendanceMonthlySummaryScalarFieldEnum[]
+  }
+
+  /**
+   * Employee.monthlySummariesUpdated
+   */
+  export type Employee$monthlySummariesUpdatedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    where?: AttendanceMonthlySummaryWhereInput
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AttendanceMonthlySummaryScalarFieldEnum | AttendanceMonthlySummaryScalarFieldEnum[]
   }
 
   /**
@@ -15322,6 +15676,1180 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: AttendanceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AttendanceMonthlySummary
+   */
+
+  export type AggregateAttendanceMonthlySummary = {
+    _count: AttendanceMonthlySummaryCountAggregateOutputType | null
+    _avg: AttendanceMonthlySummaryAvgAggregateOutputType | null
+    _sum: AttendanceMonthlySummarySumAggregateOutputType | null
+    _min: AttendanceMonthlySummaryMinAggregateOutputType | null
+    _max: AttendanceMonthlySummaryMaxAggregateOutputType | null
+  }
+
+  export type AttendanceMonthlySummaryAvgAggregateOutputType = {
+    id: number | null
+    employeeId: number | null
+    year: number | null
+    month: number | null
+    lateDays: number | null
+    fullDays: number | null
+    halfDays: number | null
+    sundays: number | null
+    totalPresentDays: number | null
+    absentDays: number | null
+    createdBy: number | null
+    updatedBy: number | null
+  }
+
+  export type AttendanceMonthlySummarySumAggregateOutputType = {
+    id: number | null
+    employeeId: number | null
+    year: number | null
+    month: number | null
+    lateDays: number | null
+    fullDays: number | null
+    halfDays: number | null
+    sundays: number | null
+    totalPresentDays: number | null
+    absentDays: number | null
+    createdBy: number | null
+    updatedBy: number | null
+  }
+
+  export type AttendanceMonthlySummaryMinAggregateOutputType = {
+    id: number | null
+    employeeId: number | null
+    employeeCode: string | null
+    year: number | null
+    month: number | null
+    monthName: string | null
+    lateDays: number | null
+    fullDays: number | null
+    halfDays: number | null
+    sundays: number | null
+    totalPresentDays: number | null
+    absentDays: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdBy: number | null
+    updatedBy: number | null
+  }
+
+  export type AttendanceMonthlySummaryMaxAggregateOutputType = {
+    id: number | null
+    employeeId: number | null
+    employeeCode: string | null
+    year: number | null
+    month: number | null
+    monthName: string | null
+    lateDays: number | null
+    fullDays: number | null
+    halfDays: number | null
+    sundays: number | null
+    totalPresentDays: number | null
+    absentDays: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    createdBy: number | null
+    updatedBy: number | null
+  }
+
+  export type AttendanceMonthlySummaryCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    employeeCode: number
+    year: number
+    month: number
+    monthName: number
+    lateDays: number
+    fullDays: number
+    halfDays: number
+    sundays: number
+    totalPresentDays: number
+    absentDays: number
+    createdAt: number
+    updatedAt: number
+    createdBy: number
+    updatedBy: number
+    _all: number
+  }
+
+
+  export type AttendanceMonthlySummaryAvgAggregateInputType = {
+    id?: true
+    employeeId?: true
+    year?: true
+    month?: true
+    lateDays?: true
+    fullDays?: true
+    halfDays?: true
+    sundays?: true
+    totalPresentDays?: true
+    absentDays?: true
+    createdBy?: true
+    updatedBy?: true
+  }
+
+  export type AttendanceMonthlySummarySumAggregateInputType = {
+    id?: true
+    employeeId?: true
+    year?: true
+    month?: true
+    lateDays?: true
+    fullDays?: true
+    halfDays?: true
+    sundays?: true
+    totalPresentDays?: true
+    absentDays?: true
+    createdBy?: true
+    updatedBy?: true
+  }
+
+  export type AttendanceMonthlySummaryMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    employeeCode?: true
+    year?: true
+    month?: true
+    monthName?: true
+    lateDays?: true
+    fullDays?: true
+    halfDays?: true
+    sundays?: true
+    totalPresentDays?: true
+    absentDays?: true
+    createdAt?: true
+    updatedAt?: true
+    createdBy?: true
+    updatedBy?: true
+  }
+
+  export type AttendanceMonthlySummaryMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    employeeCode?: true
+    year?: true
+    month?: true
+    monthName?: true
+    lateDays?: true
+    fullDays?: true
+    halfDays?: true
+    sundays?: true
+    totalPresentDays?: true
+    absentDays?: true
+    createdAt?: true
+    updatedAt?: true
+    createdBy?: true
+    updatedBy?: true
+  }
+
+  export type AttendanceMonthlySummaryCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    employeeCode?: true
+    year?: true
+    month?: true
+    monthName?: true
+    lateDays?: true
+    fullDays?: true
+    halfDays?: true
+    sundays?: true
+    totalPresentDays?: true
+    absentDays?: true
+    createdAt?: true
+    updatedAt?: true
+    createdBy?: true
+    updatedBy?: true
+    _all?: true
+  }
+
+  export type AttendanceMonthlySummaryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AttendanceMonthlySummary to aggregate.
+     */
+    where?: AttendanceMonthlySummaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AttendanceMonthlySummaries to fetch.
+     */
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AttendanceMonthlySummaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AttendanceMonthlySummaries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AttendanceMonthlySummaries
+    **/
+    _count?: true | AttendanceMonthlySummaryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AttendanceMonthlySummaryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AttendanceMonthlySummarySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AttendanceMonthlySummaryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AttendanceMonthlySummaryMaxAggregateInputType
+  }
+
+  export type GetAttendanceMonthlySummaryAggregateType<T extends AttendanceMonthlySummaryAggregateArgs> = {
+        [P in keyof T & keyof AggregateAttendanceMonthlySummary]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAttendanceMonthlySummary[P]>
+      : GetScalarType<T[P], AggregateAttendanceMonthlySummary[P]>
+  }
+
+
+
+
+  export type AttendanceMonthlySummaryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceMonthlySummaryWhereInput
+    orderBy?: AttendanceMonthlySummaryOrderByWithAggregationInput | AttendanceMonthlySummaryOrderByWithAggregationInput[]
+    by: AttendanceMonthlySummaryScalarFieldEnum[] | AttendanceMonthlySummaryScalarFieldEnum
+    having?: AttendanceMonthlySummaryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AttendanceMonthlySummaryCountAggregateInputType | true
+    _avg?: AttendanceMonthlySummaryAvgAggregateInputType
+    _sum?: AttendanceMonthlySummarySumAggregateInputType
+    _min?: AttendanceMonthlySummaryMinAggregateInputType
+    _max?: AttendanceMonthlySummaryMaxAggregateInputType
+  }
+
+  export type AttendanceMonthlySummaryGroupByOutputType = {
+    id: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays: number
+    fullDays: number
+    halfDays: number
+    sundays: number
+    totalPresentDays: number
+    absentDays: number
+    createdAt: Date
+    updatedAt: Date
+    createdBy: number | null
+    updatedBy: number | null
+    _count: AttendanceMonthlySummaryCountAggregateOutputType | null
+    _avg: AttendanceMonthlySummaryAvgAggregateOutputType | null
+    _sum: AttendanceMonthlySummarySumAggregateOutputType | null
+    _min: AttendanceMonthlySummaryMinAggregateOutputType | null
+    _max: AttendanceMonthlySummaryMaxAggregateOutputType | null
+  }
+
+  type GetAttendanceMonthlySummaryGroupByPayload<T extends AttendanceMonthlySummaryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AttendanceMonthlySummaryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AttendanceMonthlySummaryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AttendanceMonthlySummaryGroupByOutputType[P]>
+            : GetScalarType<T[P], AttendanceMonthlySummaryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AttendanceMonthlySummarySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    employeeCode?: boolean
+    year?: boolean
+    month?: boolean
+    monthName?: boolean
+    lateDays?: boolean
+    fullDays?: boolean
+    halfDays?: boolean
+    sundays?: boolean
+    totalPresentDays?: boolean
+    absentDays?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean
+    updatedBy?: boolean
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    creator?: boolean | AttendanceMonthlySummary$creatorArgs<ExtArgs>
+    updater?: boolean | AttendanceMonthlySummary$updaterArgs<ExtArgs>
+  }, ExtArgs["result"]["attendanceMonthlySummary"]>
+
+
+
+  export type AttendanceMonthlySummarySelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    employeeCode?: boolean
+    year?: boolean
+    month?: boolean
+    monthName?: boolean
+    lateDays?: boolean
+    fullDays?: boolean
+    halfDays?: boolean
+    sundays?: boolean
+    totalPresentDays?: boolean
+    absentDays?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    createdBy?: boolean
+    updatedBy?: boolean
+  }
+
+  export type AttendanceMonthlySummaryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "employeeCode" | "year" | "month" | "monthName" | "lateDays" | "fullDays" | "halfDays" | "sundays" | "totalPresentDays" | "absentDays" | "createdAt" | "updatedAt" | "createdBy" | "updatedBy", ExtArgs["result"]["attendanceMonthlySummary"]>
+  export type AttendanceMonthlySummaryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | EmployeeDefaultArgs<ExtArgs>
+    creator?: boolean | AttendanceMonthlySummary$creatorArgs<ExtArgs>
+    updater?: boolean | AttendanceMonthlySummary$updaterArgs<ExtArgs>
+  }
+
+  export type $AttendanceMonthlySummaryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AttendanceMonthlySummary"
+    objects: {
+      employee: Prisma.$EmployeePayload<ExtArgs>
+      creator: Prisma.$EmployeePayload<ExtArgs> | null
+      updater: Prisma.$EmployeePayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      employeeId: number
+      employeeCode: string
+      year: number
+      month: number
+      monthName: string
+      lateDays: number
+      fullDays: number
+      halfDays: number
+      sundays: number
+      totalPresentDays: number
+      absentDays: number
+      createdAt: Date
+      updatedAt: Date
+      createdBy: number | null
+      updatedBy: number | null
+    }, ExtArgs["result"]["attendanceMonthlySummary"]>
+    composites: {}
+  }
+
+  type AttendanceMonthlySummaryGetPayload<S extends boolean | null | undefined | AttendanceMonthlySummaryDefaultArgs> = $Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload, S>
+
+  type AttendanceMonthlySummaryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AttendanceMonthlySummaryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AttendanceMonthlySummaryCountAggregateInputType | true
+    }
+
+  export interface AttendanceMonthlySummaryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AttendanceMonthlySummary'], meta: { name: 'AttendanceMonthlySummary' } }
+    /**
+     * Find zero or one AttendanceMonthlySummary that matches the filter.
+     * @param {AttendanceMonthlySummaryFindUniqueArgs} args - Arguments to find a AttendanceMonthlySummary
+     * @example
+     * // Get one AttendanceMonthlySummary
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AttendanceMonthlySummaryFindUniqueArgs>(args: SelectSubset<T, AttendanceMonthlySummaryFindUniqueArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AttendanceMonthlySummary that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AttendanceMonthlySummaryFindUniqueOrThrowArgs} args - Arguments to find a AttendanceMonthlySummary
+     * @example
+     * // Get one AttendanceMonthlySummary
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AttendanceMonthlySummaryFindUniqueOrThrowArgs>(args: SelectSubset<T, AttendanceMonthlySummaryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AttendanceMonthlySummary that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryFindFirstArgs} args - Arguments to find a AttendanceMonthlySummary
+     * @example
+     * // Get one AttendanceMonthlySummary
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AttendanceMonthlySummaryFindFirstArgs>(args?: SelectSubset<T, AttendanceMonthlySummaryFindFirstArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AttendanceMonthlySummary that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryFindFirstOrThrowArgs} args - Arguments to find a AttendanceMonthlySummary
+     * @example
+     * // Get one AttendanceMonthlySummary
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AttendanceMonthlySummaryFindFirstOrThrowArgs>(args?: SelectSubset<T, AttendanceMonthlySummaryFindFirstOrThrowArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AttendanceMonthlySummaries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AttendanceMonthlySummaries
+     * const attendanceMonthlySummaries = await prisma.attendanceMonthlySummary.findMany()
+     * 
+     * // Get first 10 AttendanceMonthlySummaries
+     * const attendanceMonthlySummaries = await prisma.attendanceMonthlySummary.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const attendanceMonthlySummaryWithIdOnly = await prisma.attendanceMonthlySummary.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AttendanceMonthlySummaryFindManyArgs>(args?: SelectSubset<T, AttendanceMonthlySummaryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AttendanceMonthlySummary.
+     * @param {AttendanceMonthlySummaryCreateArgs} args - Arguments to create a AttendanceMonthlySummary.
+     * @example
+     * // Create one AttendanceMonthlySummary
+     * const AttendanceMonthlySummary = await prisma.attendanceMonthlySummary.create({
+     *   data: {
+     *     // ... data to create a AttendanceMonthlySummary
+     *   }
+     * })
+     * 
+     */
+    create<T extends AttendanceMonthlySummaryCreateArgs>(args: SelectSubset<T, AttendanceMonthlySummaryCreateArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AttendanceMonthlySummaries.
+     * @param {AttendanceMonthlySummaryCreateManyArgs} args - Arguments to create many AttendanceMonthlySummaries.
+     * @example
+     * // Create many AttendanceMonthlySummaries
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AttendanceMonthlySummaryCreateManyArgs>(args?: SelectSubset<T, AttendanceMonthlySummaryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a AttendanceMonthlySummary.
+     * @param {AttendanceMonthlySummaryDeleteArgs} args - Arguments to delete one AttendanceMonthlySummary.
+     * @example
+     * // Delete one AttendanceMonthlySummary
+     * const AttendanceMonthlySummary = await prisma.attendanceMonthlySummary.delete({
+     *   where: {
+     *     // ... filter to delete one AttendanceMonthlySummary
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AttendanceMonthlySummaryDeleteArgs>(args: SelectSubset<T, AttendanceMonthlySummaryDeleteArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AttendanceMonthlySummary.
+     * @param {AttendanceMonthlySummaryUpdateArgs} args - Arguments to update one AttendanceMonthlySummary.
+     * @example
+     * // Update one AttendanceMonthlySummary
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AttendanceMonthlySummaryUpdateArgs>(args: SelectSubset<T, AttendanceMonthlySummaryUpdateArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AttendanceMonthlySummaries.
+     * @param {AttendanceMonthlySummaryDeleteManyArgs} args - Arguments to filter AttendanceMonthlySummaries to delete.
+     * @example
+     * // Delete a few AttendanceMonthlySummaries
+     * const { count } = await prisma.attendanceMonthlySummary.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AttendanceMonthlySummaryDeleteManyArgs>(args?: SelectSubset<T, AttendanceMonthlySummaryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AttendanceMonthlySummaries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AttendanceMonthlySummaries
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AttendanceMonthlySummaryUpdateManyArgs>(args: SelectSubset<T, AttendanceMonthlySummaryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one AttendanceMonthlySummary.
+     * @param {AttendanceMonthlySummaryUpsertArgs} args - Arguments to update or create a AttendanceMonthlySummary.
+     * @example
+     * // Update or create a AttendanceMonthlySummary
+     * const attendanceMonthlySummary = await prisma.attendanceMonthlySummary.upsert({
+     *   create: {
+     *     // ... data to create a AttendanceMonthlySummary
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AttendanceMonthlySummary we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AttendanceMonthlySummaryUpsertArgs>(args: SelectSubset<T, AttendanceMonthlySummaryUpsertArgs<ExtArgs>>): Prisma__AttendanceMonthlySummaryClient<$Result.GetResult<Prisma.$AttendanceMonthlySummaryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AttendanceMonthlySummaries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryCountArgs} args - Arguments to filter AttendanceMonthlySummaries to count.
+     * @example
+     * // Count the number of AttendanceMonthlySummaries
+     * const count = await prisma.attendanceMonthlySummary.count({
+     *   where: {
+     *     // ... the filter for the AttendanceMonthlySummaries we want to count
+     *   }
+     * })
+    **/
+    count<T extends AttendanceMonthlySummaryCountArgs>(
+      args?: Subset<T, AttendanceMonthlySummaryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AttendanceMonthlySummaryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AttendanceMonthlySummary.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AttendanceMonthlySummaryAggregateArgs>(args: Subset<T, AttendanceMonthlySummaryAggregateArgs>): Prisma.PrismaPromise<GetAttendanceMonthlySummaryAggregateType<T>>
+
+    /**
+     * Group by AttendanceMonthlySummary.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceMonthlySummaryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AttendanceMonthlySummaryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AttendanceMonthlySummaryGroupByArgs['orderBy'] }
+        : { orderBy?: AttendanceMonthlySummaryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AttendanceMonthlySummaryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAttendanceMonthlySummaryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AttendanceMonthlySummary model
+   */
+  readonly fields: AttendanceMonthlySummaryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AttendanceMonthlySummary.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AttendanceMonthlySummaryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends EmployeeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EmployeeDefaultArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    creator<T extends AttendanceMonthlySummary$creatorArgs<ExtArgs> = {}>(args?: Subset<T, AttendanceMonthlySummary$creatorArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    updater<T extends AttendanceMonthlySummary$updaterArgs<ExtArgs> = {}>(args?: Subset<T, AttendanceMonthlySummary$updaterArgs<ExtArgs>>): Prisma__EmployeeClient<$Result.GetResult<Prisma.$EmployeePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AttendanceMonthlySummary model
+   */
+  interface AttendanceMonthlySummaryFieldRefs {
+    readonly id: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly employeeId: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly employeeCode: FieldRef<"AttendanceMonthlySummary", 'String'>
+    readonly year: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly month: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly monthName: FieldRef<"AttendanceMonthlySummary", 'String'>
+    readonly lateDays: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly fullDays: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly halfDays: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly sundays: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly totalPresentDays: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly absentDays: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly createdAt: FieldRef<"AttendanceMonthlySummary", 'DateTime'>
+    readonly updatedAt: FieldRef<"AttendanceMonthlySummary", 'DateTime'>
+    readonly createdBy: FieldRef<"AttendanceMonthlySummary", 'Int'>
+    readonly updatedBy: FieldRef<"AttendanceMonthlySummary", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AttendanceMonthlySummary findUnique
+   */
+  export type AttendanceMonthlySummaryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * Filter, which AttendanceMonthlySummary to fetch.
+     */
+    where: AttendanceMonthlySummaryWhereUniqueInput
+  }
+
+  /**
+   * AttendanceMonthlySummary findUniqueOrThrow
+   */
+  export type AttendanceMonthlySummaryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * Filter, which AttendanceMonthlySummary to fetch.
+     */
+    where: AttendanceMonthlySummaryWhereUniqueInput
+  }
+
+  /**
+   * AttendanceMonthlySummary findFirst
+   */
+  export type AttendanceMonthlySummaryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * Filter, which AttendanceMonthlySummary to fetch.
+     */
+    where?: AttendanceMonthlySummaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AttendanceMonthlySummaries to fetch.
+     */
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AttendanceMonthlySummaries.
+     */
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AttendanceMonthlySummaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AttendanceMonthlySummaries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AttendanceMonthlySummaries.
+     */
+    distinct?: AttendanceMonthlySummaryScalarFieldEnum | AttendanceMonthlySummaryScalarFieldEnum[]
+  }
+
+  /**
+   * AttendanceMonthlySummary findFirstOrThrow
+   */
+  export type AttendanceMonthlySummaryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * Filter, which AttendanceMonthlySummary to fetch.
+     */
+    where?: AttendanceMonthlySummaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AttendanceMonthlySummaries to fetch.
+     */
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AttendanceMonthlySummaries.
+     */
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AttendanceMonthlySummaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AttendanceMonthlySummaries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AttendanceMonthlySummaries.
+     */
+    distinct?: AttendanceMonthlySummaryScalarFieldEnum | AttendanceMonthlySummaryScalarFieldEnum[]
+  }
+
+  /**
+   * AttendanceMonthlySummary findMany
+   */
+  export type AttendanceMonthlySummaryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * Filter, which AttendanceMonthlySummaries to fetch.
+     */
+    where?: AttendanceMonthlySummaryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AttendanceMonthlySummaries to fetch.
+     */
+    orderBy?: AttendanceMonthlySummaryOrderByWithRelationInput | AttendanceMonthlySummaryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AttendanceMonthlySummaries.
+     */
+    cursor?: AttendanceMonthlySummaryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AttendanceMonthlySummaries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AttendanceMonthlySummaries.
+     */
+    skip?: number
+    distinct?: AttendanceMonthlySummaryScalarFieldEnum | AttendanceMonthlySummaryScalarFieldEnum[]
+  }
+
+  /**
+   * AttendanceMonthlySummary create
+   */
+  export type AttendanceMonthlySummaryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AttendanceMonthlySummary.
+     */
+    data: XOR<AttendanceMonthlySummaryCreateInput, AttendanceMonthlySummaryUncheckedCreateInput>
+  }
+
+  /**
+   * AttendanceMonthlySummary createMany
+   */
+  export type AttendanceMonthlySummaryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AttendanceMonthlySummaries.
+     */
+    data: AttendanceMonthlySummaryCreateManyInput | AttendanceMonthlySummaryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AttendanceMonthlySummary update
+   */
+  export type AttendanceMonthlySummaryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AttendanceMonthlySummary.
+     */
+    data: XOR<AttendanceMonthlySummaryUpdateInput, AttendanceMonthlySummaryUncheckedUpdateInput>
+    /**
+     * Choose, which AttendanceMonthlySummary to update.
+     */
+    where: AttendanceMonthlySummaryWhereUniqueInput
+  }
+
+  /**
+   * AttendanceMonthlySummary updateMany
+   */
+  export type AttendanceMonthlySummaryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AttendanceMonthlySummaries.
+     */
+    data: XOR<AttendanceMonthlySummaryUpdateManyMutationInput, AttendanceMonthlySummaryUncheckedUpdateManyInput>
+    /**
+     * Filter which AttendanceMonthlySummaries to update
+     */
+    where?: AttendanceMonthlySummaryWhereInput
+    /**
+     * Limit how many AttendanceMonthlySummaries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AttendanceMonthlySummary upsert
+   */
+  export type AttendanceMonthlySummaryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AttendanceMonthlySummary to update in case it exists.
+     */
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    /**
+     * In case the AttendanceMonthlySummary found by the `where` argument doesn't exist, create a new AttendanceMonthlySummary with this data.
+     */
+    create: XOR<AttendanceMonthlySummaryCreateInput, AttendanceMonthlySummaryUncheckedCreateInput>
+    /**
+     * In case the AttendanceMonthlySummary was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AttendanceMonthlySummaryUpdateInput, AttendanceMonthlySummaryUncheckedUpdateInput>
+  }
+
+  /**
+   * AttendanceMonthlySummary delete
+   */
+  export type AttendanceMonthlySummaryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
+    /**
+     * Filter which AttendanceMonthlySummary to delete.
+     */
+    where: AttendanceMonthlySummaryWhereUniqueInput
+  }
+
+  /**
+   * AttendanceMonthlySummary deleteMany
+   */
+  export type AttendanceMonthlySummaryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AttendanceMonthlySummaries to delete
+     */
+    where?: AttendanceMonthlySummaryWhereInput
+    /**
+     * Limit how many AttendanceMonthlySummaries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AttendanceMonthlySummary.creator
+   */
+  export type AttendanceMonthlySummary$creatorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Employee
+     */
+    select?: EmployeeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Employee
+     */
+    omit?: EmployeeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeInclude<ExtArgs> | null
+    where?: EmployeeWhereInput
+  }
+
+  /**
+   * AttendanceMonthlySummary.updater
+   */
+  export type AttendanceMonthlySummary$updaterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Employee
+     */
+    select?: EmployeeSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Employee
+     */
+    omit?: EmployeeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EmployeeInclude<ExtArgs> | null
+    where?: EmployeeWhereInput
+  }
+
+  /**
+   * AttendanceMonthlySummary without action
+   */
+  export type AttendanceMonthlySummaryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AttendanceMonthlySummary
+     */
+    select?: AttendanceMonthlySummarySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AttendanceMonthlySummary
+     */
+    omit?: AttendanceMonthlySummaryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceMonthlySummaryInclude<ExtArgs> | null
   }
 
 
@@ -21845,6 +23373,911 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: LeaveRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Bank
+   */
+
+  export type AggregateBank = {
+    _count: BankCountAggregateOutputType | null
+    _avg: BankAvgAggregateOutputType | null
+    _sum: BankSumAggregateOutputType | null
+    _min: BankMinAggregateOutputType | null
+    _max: BankMaxAggregateOutputType | null
+  }
+
+  export type BankAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BankSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type BankMinAggregateOutputType = {
+    id: number | null
+    bankName: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BankMaxAggregateOutputType = {
+    id: number | null
+    bankName: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type BankCountAggregateOutputType = {
+    id: number
+    bankName: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type BankAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type BankSumAggregateInputType = {
+    id?: true
+  }
+
+  export type BankMinAggregateInputType = {
+    id?: true
+    bankName?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BankMaxAggregateInputType = {
+    id?: true
+    bankName?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type BankCountAggregateInputType = {
+    id?: true
+    bankName?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type BankAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Bank to aggregate.
+     */
+    where?: BankWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banks to fetch.
+     */
+    orderBy?: BankOrderByWithRelationInput | BankOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: BankWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Banks
+    **/
+    _count?: true | BankCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: BankAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BankSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: BankMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: BankMaxAggregateInputType
+  }
+
+  export type GetBankAggregateType<T extends BankAggregateArgs> = {
+        [P in keyof T & keyof AggregateBank]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateBank[P]>
+      : GetScalarType<T[P], AggregateBank[P]>
+  }
+
+
+
+
+  export type BankGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: BankWhereInput
+    orderBy?: BankOrderByWithAggregationInput | BankOrderByWithAggregationInput[]
+    by: BankScalarFieldEnum[] | BankScalarFieldEnum
+    having?: BankScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: BankCountAggregateInputType | true
+    _avg?: BankAvgAggregateInputType
+    _sum?: BankSumAggregateInputType
+    _min?: BankMinAggregateInputType
+    _max?: BankMaxAggregateInputType
+  }
+
+  export type BankGroupByOutputType = {
+    id: number
+    bankName: string
+    createdAt: Date
+    updatedAt: Date
+    _count: BankCountAggregateOutputType | null
+    _avg: BankAvgAggregateOutputType | null
+    _sum: BankSumAggregateOutputType | null
+    _min: BankMinAggregateOutputType | null
+    _max: BankMaxAggregateOutputType | null
+  }
+
+  type GetBankGroupByPayload<T extends BankGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<BankGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof BankGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], BankGroupByOutputType[P]>
+            : GetScalarType<T[P], BankGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type BankSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    bankName?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["bank"]>
+
+
+
+  export type BankSelectScalar = {
+    id?: boolean
+    bankName?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type BankOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "bankName" | "createdAt" | "updatedAt", ExtArgs["result"]["bank"]>
+
+  export type $BankPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Bank"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      bankName: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["bank"]>
+    composites: {}
+  }
+
+  type BankGetPayload<S extends boolean | null | undefined | BankDefaultArgs> = $Result.GetResult<Prisma.$BankPayload, S>
+
+  type BankCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<BankFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: BankCountAggregateInputType | true
+    }
+
+  export interface BankDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Bank'], meta: { name: 'Bank' } }
+    /**
+     * Find zero or one Bank that matches the filter.
+     * @param {BankFindUniqueArgs} args - Arguments to find a Bank
+     * @example
+     * // Get one Bank
+     * const bank = await prisma.bank.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BankFindUniqueArgs>(args: SelectSubset<T, BankFindUniqueArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Bank that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BankFindUniqueOrThrowArgs} args - Arguments to find a Bank
+     * @example
+     * // Get one Bank
+     * const bank = await prisma.bank.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BankFindUniqueOrThrowArgs>(args: SelectSubset<T, BankFindUniqueOrThrowArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Bank that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankFindFirstArgs} args - Arguments to find a Bank
+     * @example
+     * // Get one Bank
+     * const bank = await prisma.bank.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BankFindFirstArgs>(args?: SelectSubset<T, BankFindFirstArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Bank that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankFindFirstOrThrowArgs} args - Arguments to find a Bank
+     * @example
+     * // Get one Bank
+     * const bank = await prisma.bank.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BankFindFirstOrThrowArgs>(args?: SelectSubset<T, BankFindFirstOrThrowArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Banks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Banks
+     * const banks = await prisma.bank.findMany()
+     * 
+     * // Get first 10 Banks
+     * const banks = await prisma.bank.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const bankWithIdOnly = await prisma.bank.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends BankFindManyArgs>(args?: SelectSubset<T, BankFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Bank.
+     * @param {BankCreateArgs} args - Arguments to create a Bank.
+     * @example
+     * // Create one Bank
+     * const Bank = await prisma.bank.create({
+     *   data: {
+     *     // ... data to create a Bank
+     *   }
+     * })
+     * 
+     */
+    create<T extends BankCreateArgs>(args: SelectSubset<T, BankCreateArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Banks.
+     * @param {BankCreateManyArgs} args - Arguments to create many Banks.
+     * @example
+     * // Create many Banks
+     * const bank = await prisma.bank.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends BankCreateManyArgs>(args?: SelectSubset<T, BankCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Bank.
+     * @param {BankDeleteArgs} args - Arguments to delete one Bank.
+     * @example
+     * // Delete one Bank
+     * const Bank = await prisma.bank.delete({
+     *   where: {
+     *     // ... filter to delete one Bank
+     *   }
+     * })
+     * 
+     */
+    delete<T extends BankDeleteArgs>(args: SelectSubset<T, BankDeleteArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Bank.
+     * @param {BankUpdateArgs} args - Arguments to update one Bank.
+     * @example
+     * // Update one Bank
+     * const bank = await prisma.bank.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends BankUpdateArgs>(args: SelectSubset<T, BankUpdateArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Banks.
+     * @param {BankDeleteManyArgs} args - Arguments to filter Banks to delete.
+     * @example
+     * // Delete a few Banks
+     * const { count } = await prisma.bank.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends BankDeleteManyArgs>(args?: SelectSubset<T, BankDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Banks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Banks
+     * const bank = await prisma.bank.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends BankUpdateManyArgs>(args: SelectSubset<T, BankUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Bank.
+     * @param {BankUpsertArgs} args - Arguments to update or create a Bank.
+     * @example
+     * // Update or create a Bank
+     * const bank = await prisma.bank.upsert({
+     *   create: {
+     *     // ... data to create a Bank
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Bank we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BankUpsertArgs>(args: SelectSubset<T, BankUpsertArgs<ExtArgs>>): Prisma__BankClient<$Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Banks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankCountArgs} args - Arguments to filter Banks to count.
+     * @example
+     * // Count the number of Banks
+     * const count = await prisma.bank.count({
+     *   where: {
+     *     // ... the filter for the Banks we want to count
+     *   }
+     * })
+    **/
+    count<T extends BankCountArgs>(
+      args?: Subset<T, BankCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], BankCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Bank.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BankAggregateArgs>(args: Subset<T, BankAggregateArgs>): Prisma.PrismaPromise<GetBankAggregateType<T>>
+
+    /**
+     * Group by Bank.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BankGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends BankGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: BankGroupByArgs['orderBy'] }
+        : { orderBy?: BankGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, BankGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBankGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Bank model
+   */
+  readonly fields: BankFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Bank.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__BankClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Bank model
+   */
+  interface BankFieldRefs {
+    readonly id: FieldRef<"Bank", 'Int'>
+    readonly bankName: FieldRef<"Bank", 'String'>
+    readonly createdAt: FieldRef<"Bank", 'DateTime'>
+    readonly updatedAt: FieldRef<"Bank", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Bank findUnique
+   */
+  export type BankFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * Filter, which Bank to fetch.
+     */
+    where: BankWhereUniqueInput
+  }
+
+  /**
+   * Bank findUniqueOrThrow
+   */
+  export type BankFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * Filter, which Bank to fetch.
+     */
+    where: BankWhereUniqueInput
+  }
+
+  /**
+   * Bank findFirst
+   */
+  export type BankFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * Filter, which Bank to fetch.
+     */
+    where?: BankWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banks to fetch.
+     */
+    orderBy?: BankOrderByWithRelationInput | BankOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Banks.
+     */
+    cursor?: BankWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banks.
+     */
+    distinct?: BankScalarFieldEnum | BankScalarFieldEnum[]
+  }
+
+  /**
+   * Bank findFirstOrThrow
+   */
+  export type BankFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * Filter, which Bank to fetch.
+     */
+    where?: BankWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banks to fetch.
+     */
+    orderBy?: BankOrderByWithRelationInput | BankOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Banks.
+     */
+    cursor?: BankWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Banks.
+     */
+    distinct?: BankScalarFieldEnum | BankScalarFieldEnum[]
+  }
+
+  /**
+   * Bank findMany
+   */
+  export type BankFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * Filter, which Banks to fetch.
+     */
+    where?: BankWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Banks to fetch.
+     */
+    orderBy?: BankOrderByWithRelationInput | BankOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Banks.
+     */
+    cursor?: BankWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Banks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Banks.
+     */
+    skip?: number
+    distinct?: BankScalarFieldEnum | BankScalarFieldEnum[]
+  }
+
+  /**
+   * Bank create
+   */
+  export type BankCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Bank.
+     */
+    data: XOR<BankCreateInput, BankUncheckedCreateInput>
+  }
+
+  /**
+   * Bank createMany
+   */
+  export type BankCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Banks.
+     */
+    data: BankCreateManyInput | BankCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Bank update
+   */
+  export type BankUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Bank.
+     */
+    data: XOR<BankUpdateInput, BankUncheckedUpdateInput>
+    /**
+     * Choose, which Bank to update.
+     */
+    where: BankWhereUniqueInput
+  }
+
+  /**
+   * Bank updateMany
+   */
+  export type BankUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Banks.
+     */
+    data: XOR<BankUpdateManyMutationInput, BankUncheckedUpdateManyInput>
+    /**
+     * Filter which Banks to update
+     */
+    where?: BankWhereInput
+    /**
+     * Limit how many Banks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Bank upsert
+   */
+  export type BankUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Bank to update in case it exists.
+     */
+    where: BankWhereUniqueInput
+    /**
+     * In case the Bank found by the `where` argument doesn't exist, create a new Bank with this data.
+     */
+    create: XOR<BankCreateInput, BankUncheckedCreateInput>
+    /**
+     * In case the Bank was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<BankUpdateInput, BankUncheckedUpdateInput>
+  }
+
+  /**
+   * Bank delete
+   */
+  export type BankDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
+    /**
+     * Filter which Bank to delete.
+     */
+    where: BankWhereUniqueInput
+  }
+
+  /**
+   * Bank deleteMany
+   */
+  export type BankDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Banks to delete
+     */
+    where?: BankWhereInput
+    /**
+     * Limit how many Banks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Bank without action
+   */
+  export type BankDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Bank
+     */
+    select?: BankSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Bank
+     */
+    omit?: BankOmit<ExtArgs> | null
   }
 
 
@@ -29324,6 +31757,12 @@ export namespace Prisma {
     dob: 'dob',
     gender: 'gender',
     bloodGroup: 'bloodGroup',
+    motherName: 'motherName',
+    fatherName: 'fatherName',
+    maritalStatus: 'maritalStatus',
+    spouseName: 'spouseName',
+    religion: 'religion',
+    nationality: 'nationality',
     mobile: 'mobile',
     alternateMobile: 'alternateMobile',
     email: 'email',
@@ -29331,6 +31770,7 @@ export namespace Prisma {
     roleId: 'roleId',
     lastLogin: 'lastLogin',
     address: 'address',
+    temporaryAddress: 'temporaryAddress',
     departmentId: 'departmentId',
     designationId: 'designationId',
     reportingManagerId: 'reportingManagerId',
@@ -29411,6 +31851,28 @@ export namespace Prisma {
   };
 
   export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+  export const AttendanceMonthlySummaryScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    employeeCode: 'employeeCode',
+    year: 'year',
+    month: 'month',
+    monthName: 'monthName',
+    lateDays: 'lateDays',
+    fullDays: 'fullDays',
+    halfDays: 'halfDays',
+    sundays: 'sundays',
+    totalPresentDays: 'totalPresentDays',
+    absentDays: 'absentDays',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    createdBy: 'createdBy',
+    updatedBy: 'updatedBy'
+  };
+
+  export type AttendanceMonthlySummaryScalarFieldEnum = (typeof AttendanceMonthlySummaryScalarFieldEnum)[keyof typeof AttendanceMonthlySummaryScalarFieldEnum]
 
 
   export const AttendanceSyncLogScalarFieldEnum: {
@@ -29512,6 +31974,16 @@ export namespace Prisma {
   };
 
   export type LeaveRequestScalarFieldEnum = (typeof LeaveRequestScalarFieldEnum)[keyof typeof LeaveRequestScalarFieldEnum]
+
+
+  export const BankScalarFieldEnum: {
+    id: 'id',
+    bankName: 'bankName',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type BankScalarFieldEnum = (typeof BankScalarFieldEnum)[keyof typeof BankScalarFieldEnum]
 
 
   export const HolidayScalarFieldEnum: {
@@ -29715,11 +32187,18 @@ export namespace Prisma {
     fullName: 'fullName',
     gender: 'gender',
     bloodGroup: 'bloodGroup',
+    motherName: 'motherName',
+    fatherName: 'fatherName',
+    maritalStatus: 'maritalStatus',
+    spouseName: 'spouseName',
+    religion: 'religion',
+    nationality: 'nationality',
     mobile: 'mobile',
     alternateMobile: 'alternateMobile',
     email: 'email',
     passwordHash: 'passwordHash',
     address: 'address',
+    temporaryAddress: 'temporaryAddress',
     emergencyContact: 'emergencyContact',
     bankName: 'bankName',
     accountNumber: 'accountNumber',
@@ -29762,6 +32241,14 @@ export namespace Prisma {
   export type AttendanceOrderByRelevanceFieldEnum = (typeof AttendanceOrderByRelevanceFieldEnum)[keyof typeof AttendanceOrderByRelevanceFieldEnum]
 
 
+  export const AttendanceMonthlySummaryOrderByRelevanceFieldEnum: {
+    employeeCode: 'employeeCode',
+    monthName: 'monthName'
+  };
+
+  export type AttendanceMonthlySummaryOrderByRelevanceFieldEnum = (typeof AttendanceMonthlySummaryOrderByRelevanceFieldEnum)[keyof typeof AttendanceMonthlySummaryOrderByRelevanceFieldEnum]
+
+
   export const AttendanceSyncLogOrderByRelevanceFieldEnum: {
     remarks: 'remarks'
   };
@@ -29797,6 +32284,13 @@ export namespace Prisma {
   };
 
   export type LeaveRequestOrderByRelevanceFieldEnum = (typeof LeaveRequestOrderByRelevanceFieldEnum)[keyof typeof LeaveRequestOrderByRelevanceFieldEnum]
+
+
+  export const BankOrderByRelevanceFieldEnum: {
+    bankName: 'bankName'
+  };
+
+  export type BankOrderByRelevanceFieldEnum = (typeof BankOrderByRelevanceFieldEnum)[keyof typeof BankOrderByRelevanceFieldEnum]
 
 
   export const HolidayOrderByRelevanceFieldEnum: {
@@ -30511,6 +33005,12 @@ export namespace Prisma {
     dob?: DateTimeNullableFilter<"Employee"> | Date | string | null
     gender?: StringNullableFilter<"Employee"> | string | null
     bloodGroup?: StringNullableFilter<"Employee"> | string | null
+    motherName?: StringNullableFilter<"Employee"> | string | null
+    fatherName?: StringNullableFilter<"Employee"> | string | null
+    maritalStatus?: StringNullableFilter<"Employee"> | string | null
+    spouseName?: StringNullableFilter<"Employee"> | string | null
+    religion?: StringNullableFilter<"Employee"> | string | null
+    nationality?: StringNullableFilter<"Employee"> | string | null
     mobile?: StringFilter<"Employee"> | string
     alternateMobile?: StringNullableFilter<"Employee"> | string | null
     email?: StringFilter<"Employee"> | string
@@ -30518,6 +33018,7 @@ export namespace Prisma {
     roleId?: IntFilter<"Employee"> | number
     lastLogin?: DateTimeNullableFilter<"Employee"> | Date | string | null
     address?: StringNullableFilter<"Employee"> | string | null
+    temporaryAddress?: StringNullableFilter<"Employee"> | string | null
     departmentId?: IntFilter<"Employee"> | number
     designationId?: IntFilter<"Employee"> | number
     reportingManagerId?: IntNullableFilter<"Employee"> | number | null
@@ -30566,6 +33067,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     attendanceRecords?: AttendanceListRelationFilter
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryListRelationFilter
     attendanceExceptions?: AttendanceExceptionListRelationFilter
     leaveBalances?: LeaveBalanceListRelationFilter
     leaveRequests?: LeaveRequestListRelationFilter
@@ -30590,6 +33092,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentListRelationFilter
     attendanceCreated?: AttendanceListRelationFilter
     attendanceUpdated?: AttendanceListRelationFilter
+    monthlySummariesCreated?: AttendanceMonthlySummaryListRelationFilter
+    monthlySummariesUpdated?: AttendanceMonthlySummaryListRelationFilter
     syncLogsCreated?: AttendanceSyncLogListRelationFilter
     syncLogsUpdated?: AttendanceSyncLogListRelationFilter
     exceptionsCreated?: AttendanceExceptionListRelationFilter
@@ -30623,6 +33127,12 @@ export namespace Prisma {
     dob?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
+    motherName?: SortOrderInput | SortOrder
+    fatherName?: SortOrderInput | SortOrder
+    maritalStatus?: SortOrderInput | SortOrder
+    spouseName?: SortOrderInput | SortOrder
+    religion?: SortOrderInput | SortOrder
+    nationality?: SortOrderInput | SortOrder
     mobile?: SortOrder
     alternateMobile?: SortOrderInput | SortOrder
     email?: SortOrder
@@ -30630,6 +33140,7 @@ export namespace Prisma {
     roleId?: SortOrder
     lastLogin?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
+    temporaryAddress?: SortOrderInput | SortOrder
     departmentId?: SortOrder
     designationId?: SortOrder
     reportingManagerId?: SortOrderInput | SortOrder
@@ -30678,6 +33189,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionOrderByRelationAggregateInput
     auditLogs?: AuditLogOrderByRelationAggregateInput
     attendanceRecords?: AttendanceOrderByRelationAggregateInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryOrderByRelationAggregateInput
     attendanceExceptions?: AttendanceExceptionOrderByRelationAggregateInput
     leaveBalances?: LeaveBalanceOrderByRelationAggregateInput
     leaveRequests?: LeaveRequestOrderByRelationAggregateInput
@@ -30702,6 +33214,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentOrderByRelationAggregateInput
     attendanceCreated?: AttendanceOrderByRelationAggregateInput
     attendanceUpdated?: AttendanceOrderByRelationAggregateInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryOrderByRelationAggregateInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryOrderByRelationAggregateInput
     syncLogsCreated?: AttendanceSyncLogOrderByRelationAggregateInput
     syncLogsUpdated?: AttendanceSyncLogOrderByRelationAggregateInput
     exceptionsCreated?: AttendanceExceptionOrderByRelationAggregateInput
@@ -30740,12 +33254,19 @@ export namespace Prisma {
     dob?: DateTimeNullableFilter<"Employee"> | Date | string | null
     gender?: StringNullableFilter<"Employee"> | string | null
     bloodGroup?: StringNullableFilter<"Employee"> | string | null
+    motherName?: StringNullableFilter<"Employee"> | string | null
+    fatherName?: StringNullableFilter<"Employee"> | string | null
+    maritalStatus?: StringNullableFilter<"Employee"> | string | null
+    spouseName?: StringNullableFilter<"Employee"> | string | null
+    religion?: StringNullableFilter<"Employee"> | string | null
+    nationality?: StringNullableFilter<"Employee"> | string | null
     mobile?: StringFilter<"Employee"> | string
     alternateMobile?: StringNullableFilter<"Employee"> | string | null
     passwordHash?: StringFilter<"Employee"> | string
     roleId?: IntFilter<"Employee"> | number
     lastLogin?: DateTimeNullableFilter<"Employee"> | Date | string | null
     address?: StringNullableFilter<"Employee"> | string | null
+    temporaryAddress?: StringNullableFilter<"Employee"> | string | null
     departmentId?: IntFilter<"Employee"> | number
     designationId?: IntFilter<"Employee"> | number
     reportingManagerId?: IntNullableFilter<"Employee"> | number | null
@@ -30794,6 +33315,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionListRelationFilter
     auditLogs?: AuditLogListRelationFilter
     attendanceRecords?: AttendanceListRelationFilter
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryListRelationFilter
     attendanceExceptions?: AttendanceExceptionListRelationFilter
     leaveBalances?: LeaveBalanceListRelationFilter
     leaveRequests?: LeaveRequestListRelationFilter
@@ -30818,6 +33340,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentListRelationFilter
     attendanceCreated?: AttendanceListRelationFilter
     attendanceUpdated?: AttendanceListRelationFilter
+    monthlySummariesCreated?: AttendanceMonthlySummaryListRelationFilter
+    monthlySummariesUpdated?: AttendanceMonthlySummaryListRelationFilter
     syncLogsCreated?: AttendanceSyncLogListRelationFilter
     syncLogsUpdated?: AttendanceSyncLogListRelationFilter
     exceptionsCreated?: AttendanceExceptionListRelationFilter
@@ -30851,6 +33375,12 @@ export namespace Prisma {
     dob?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     bloodGroup?: SortOrderInput | SortOrder
+    motherName?: SortOrderInput | SortOrder
+    fatherName?: SortOrderInput | SortOrder
+    maritalStatus?: SortOrderInput | SortOrder
+    spouseName?: SortOrderInput | SortOrder
+    religion?: SortOrderInput | SortOrder
+    nationality?: SortOrderInput | SortOrder
     mobile?: SortOrder
     alternateMobile?: SortOrderInput | SortOrder
     email?: SortOrder
@@ -30858,6 +33388,7 @@ export namespace Prisma {
     roleId?: SortOrder
     lastLogin?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
+    temporaryAddress?: SortOrderInput | SortOrder
     departmentId?: SortOrder
     designationId?: SortOrder
     reportingManagerId?: SortOrderInput | SortOrder
@@ -30916,6 +33447,12 @@ export namespace Prisma {
     dob?: DateTimeNullableWithAggregatesFilter<"Employee"> | Date | string | null
     gender?: StringNullableWithAggregatesFilter<"Employee"> | string | null
     bloodGroup?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    motherName?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    fatherName?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    maritalStatus?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    spouseName?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    religion?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    nationality?: StringNullableWithAggregatesFilter<"Employee"> | string | null
     mobile?: StringWithAggregatesFilter<"Employee"> | string
     alternateMobile?: StringNullableWithAggregatesFilter<"Employee"> | string | null
     email?: StringWithAggregatesFilter<"Employee"> | string
@@ -30923,6 +33460,7 @@ export namespace Prisma {
     roleId?: IntWithAggregatesFilter<"Employee"> | number
     lastLogin?: DateTimeNullableWithAggregatesFilter<"Employee"> | Date | string | null
     address?: StringNullableWithAggregatesFilter<"Employee"> | string | null
+    temporaryAddress?: StringNullableWithAggregatesFilter<"Employee"> | string | null
     departmentId?: IntWithAggregatesFilter<"Employee"> | number
     designationId?: IntWithAggregatesFilter<"Employee"> | number
     reportingManagerId?: IntNullableWithAggregatesFilter<"Employee"> | number | null
@@ -31182,6 +33720,126 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Attendance"> | Date | string
     createdBy?: IntNullableWithAggregatesFilter<"Attendance"> | number | null
     updatedBy?: IntNullableWithAggregatesFilter<"Attendance"> | number | null
+  }
+
+  export type AttendanceMonthlySummaryWhereInput = {
+    AND?: AttendanceMonthlySummaryWhereInput | AttendanceMonthlySummaryWhereInput[]
+    OR?: AttendanceMonthlySummaryWhereInput[]
+    NOT?: AttendanceMonthlySummaryWhereInput | AttendanceMonthlySummaryWhereInput[]
+    id?: IntFilter<"AttendanceMonthlySummary"> | number
+    employeeId?: IntFilter<"AttendanceMonthlySummary"> | number
+    employeeCode?: StringFilter<"AttendanceMonthlySummary"> | string
+    year?: IntFilter<"AttendanceMonthlySummary"> | number
+    month?: IntFilter<"AttendanceMonthlySummary"> | number
+    monthName?: StringFilter<"AttendanceMonthlySummary"> | string
+    lateDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    fullDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    halfDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    sundays?: IntFilter<"AttendanceMonthlySummary"> | number
+    totalPresentDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    absentDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    createdAt?: DateTimeFilter<"AttendanceMonthlySummary"> | Date | string
+    updatedAt?: DateTimeFilter<"AttendanceMonthlySummary"> | Date | string
+    createdBy?: IntNullableFilter<"AttendanceMonthlySummary"> | number | null
+    updatedBy?: IntNullableFilter<"AttendanceMonthlySummary"> | number | null
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+    creator?: XOR<EmployeeNullableScalarRelationFilter, EmployeeWhereInput> | null
+    updater?: XOR<EmployeeNullableScalarRelationFilter, EmployeeWhereInput> | null
+  }
+
+  export type AttendanceMonthlySummaryOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    employeeCode?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthName?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    updatedBy?: SortOrderInput | SortOrder
+    employee?: EmployeeOrderByWithRelationInput
+    creator?: EmployeeOrderByWithRelationInput
+    updater?: EmployeeOrderByWithRelationInput
+    _relevance?: AttendanceMonthlySummaryOrderByRelevanceInput
+  }
+
+  export type AttendanceMonthlySummaryWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    employeeId_year_month?: AttendanceMonthlySummaryEmployeeIdYearMonthCompoundUniqueInput
+    AND?: AttendanceMonthlySummaryWhereInput | AttendanceMonthlySummaryWhereInput[]
+    OR?: AttendanceMonthlySummaryWhereInput[]
+    NOT?: AttendanceMonthlySummaryWhereInput | AttendanceMonthlySummaryWhereInput[]
+    employeeId?: IntFilter<"AttendanceMonthlySummary"> | number
+    employeeCode?: StringFilter<"AttendanceMonthlySummary"> | string
+    year?: IntFilter<"AttendanceMonthlySummary"> | number
+    month?: IntFilter<"AttendanceMonthlySummary"> | number
+    monthName?: StringFilter<"AttendanceMonthlySummary"> | string
+    lateDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    fullDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    halfDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    sundays?: IntFilter<"AttendanceMonthlySummary"> | number
+    totalPresentDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    absentDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    createdAt?: DateTimeFilter<"AttendanceMonthlySummary"> | Date | string
+    updatedAt?: DateTimeFilter<"AttendanceMonthlySummary"> | Date | string
+    createdBy?: IntNullableFilter<"AttendanceMonthlySummary"> | number | null
+    updatedBy?: IntNullableFilter<"AttendanceMonthlySummary"> | number | null
+    employee?: XOR<EmployeeScalarRelationFilter, EmployeeWhereInput>
+    creator?: XOR<EmployeeNullableScalarRelationFilter, EmployeeWhereInput> | null
+    updater?: XOR<EmployeeNullableScalarRelationFilter, EmployeeWhereInput> | null
+  }, "id" | "employeeId_year_month">
+
+  export type AttendanceMonthlySummaryOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    employeeCode?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthName?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrderInput | SortOrder
+    updatedBy?: SortOrderInput | SortOrder
+    _count?: AttendanceMonthlySummaryCountOrderByAggregateInput
+    _avg?: AttendanceMonthlySummaryAvgOrderByAggregateInput
+    _max?: AttendanceMonthlySummaryMaxOrderByAggregateInput
+    _min?: AttendanceMonthlySummaryMinOrderByAggregateInput
+    _sum?: AttendanceMonthlySummarySumOrderByAggregateInput
+  }
+
+  export type AttendanceMonthlySummaryScalarWhereWithAggregatesInput = {
+    AND?: AttendanceMonthlySummaryScalarWhereWithAggregatesInput | AttendanceMonthlySummaryScalarWhereWithAggregatesInput[]
+    OR?: AttendanceMonthlySummaryScalarWhereWithAggregatesInput[]
+    NOT?: AttendanceMonthlySummaryScalarWhereWithAggregatesInput | AttendanceMonthlySummaryScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    employeeId?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    employeeCode?: StringWithAggregatesFilter<"AttendanceMonthlySummary"> | string
+    year?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    month?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    monthName?: StringWithAggregatesFilter<"AttendanceMonthlySummary"> | string
+    lateDays?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    fullDays?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    halfDays?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    sundays?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    totalPresentDays?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    absentDays?: IntWithAggregatesFilter<"AttendanceMonthlySummary"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"AttendanceMonthlySummary"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AttendanceMonthlySummary"> | Date | string
+    createdBy?: IntNullableWithAggregatesFilter<"AttendanceMonthlySummary"> | number | null
+    updatedBy?: IntNullableWithAggregatesFilter<"AttendanceMonthlySummary"> | number | null
   }
 
   export type AttendanceSyncLogWhereInput = {
@@ -31738,6 +34396,56 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"LeaveRequest"> | Date | string
     createdBy?: IntNullableWithAggregatesFilter<"LeaveRequest"> | number | null
     updatedBy?: IntNullableWithAggregatesFilter<"LeaveRequest"> | number | null
+  }
+
+  export type BankWhereInput = {
+    AND?: BankWhereInput | BankWhereInput[]
+    OR?: BankWhereInput[]
+    NOT?: BankWhereInput | BankWhereInput[]
+    id?: IntFilter<"Bank"> | number
+    bankName?: StringFilter<"Bank"> | string
+    createdAt?: DateTimeFilter<"Bank"> | Date | string
+    updatedAt?: DateTimeFilter<"Bank"> | Date | string
+  }
+
+  export type BankOrderByWithRelationInput = {
+    id?: SortOrder
+    bankName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: BankOrderByRelevanceInput
+  }
+
+  export type BankWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    bankName?: string
+    AND?: BankWhereInput | BankWhereInput[]
+    OR?: BankWhereInput[]
+    NOT?: BankWhereInput | BankWhereInput[]
+    createdAt?: DateTimeFilter<"Bank"> | Date | string
+    updatedAt?: DateTimeFilter<"Bank"> | Date | string
+  }, "id" | "bankName">
+
+  export type BankOrderByWithAggregationInput = {
+    id?: SortOrder
+    bankName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: BankCountOrderByAggregateInput
+    _avg?: BankAvgOrderByAggregateInput
+    _max?: BankMaxOrderByAggregateInput
+    _min?: BankMinOrderByAggregateInput
+    _sum?: BankSumOrderByAggregateInput
+  }
+
+  export type BankScalarWhereWithAggregatesInput = {
+    AND?: BankScalarWhereWithAggregatesInput | BankScalarWhereWithAggregatesInput[]
+    OR?: BankScalarWhereWithAggregatesInput[]
+    NOT?: BankScalarWhereWithAggregatesInput | BankScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Bank"> | number
+    bankName?: StringWithAggregatesFilter<"Bank"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Bank"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Bank"> | Date | string
   }
 
   export type HolidayWhereInput = {
@@ -32792,12 +35500,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -32841,6 +35556,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -32865,6 +35581,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -32898,6 +35616,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -32905,6 +35629,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -32949,6 +35674,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -32971,6 +35697,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -33003,12 +35731,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -33052,6 +35787,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -33076,6 +35812,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -33109,6 +35847,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -33116,6 +35860,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -33160,6 +35905,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -33182,6 +35928,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -33215,6 +35963,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -33222,6 +35976,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -33271,12 +36026,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -33322,6 +36084,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -33329,6 +36097,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -33592,6 +36361,133 @@ export namespace Prisma {
     attendanceStatus?: EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
     lateMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     attendanceRemark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateInput = {
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutAttendanceMonthlySummariesInput
+    creator?: EmployeeCreateNestedOneWithoutMonthlySummariesCreatedInput
+    updater?: EmployeeCreateNestedOneWithoutMonthlySummariesUpdatedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedCreateInput = {
+    id?: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryUpdateInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutAttendanceMonthlySummariesNestedInput
+    creator?: EmployeeUpdateOneWithoutMonthlySummariesCreatedNestedInput
+    updater?: EmployeeUpdateOneWithoutMonthlySummariesUpdatedNestedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeId?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateManyInput = {
+    id?: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyMutationInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeId?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableIntFieldUpdateOperationsInput | number | null
@@ -34152,6 +37048,52 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableIntFieldUpdateOperationsInput | number | null
     updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type BankCreateInput = {
+    bankName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BankUncheckedCreateInput = {
+    id?: number
+    bankName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BankUpdateInput = {
+    bankName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    bankName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankCreateManyInput = {
+    id?: number
+    bankName: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type BankUpdateManyMutationInput = {
+    bankName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type BankUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    bankName?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HolidayCreateInput = {
@@ -35410,6 +38352,12 @@ export namespace Prisma {
     none?: AttendanceWhereInput
   }
 
+  export type AttendanceMonthlySummaryListRelationFilter = {
+    every?: AttendanceMonthlySummaryWhereInput
+    some?: AttendanceMonthlySummaryWhereInput
+    none?: AttendanceMonthlySummaryWhereInput
+  }
+
   export type AttendanceExceptionListRelationFilter = {
     every?: AttendanceExceptionWhereInput
     some?: AttendanceExceptionWhereInput
@@ -35496,6 +38444,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type AttendanceMonthlySummaryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type AttendanceExceptionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -35557,6 +38509,12 @@ export namespace Prisma {
     dob?: SortOrder
     gender?: SortOrder
     bloodGroup?: SortOrder
+    motherName?: SortOrder
+    fatherName?: SortOrder
+    maritalStatus?: SortOrder
+    spouseName?: SortOrder
+    religion?: SortOrder
+    nationality?: SortOrder
     mobile?: SortOrder
     alternateMobile?: SortOrder
     email?: SortOrder
@@ -35564,6 +38522,7 @@ export namespace Prisma {
     roleId?: SortOrder
     lastLogin?: SortOrder
     address?: SortOrder
+    temporaryAddress?: SortOrder
     departmentId?: SortOrder
     designationId?: SortOrder
     reportingManagerId?: SortOrder
@@ -35629,6 +38588,12 @@ export namespace Prisma {
     dob?: SortOrder
     gender?: SortOrder
     bloodGroup?: SortOrder
+    motherName?: SortOrder
+    fatherName?: SortOrder
+    maritalStatus?: SortOrder
+    spouseName?: SortOrder
+    religion?: SortOrder
+    nationality?: SortOrder
     mobile?: SortOrder
     alternateMobile?: SortOrder
     email?: SortOrder
@@ -35636,6 +38601,7 @@ export namespace Prisma {
     roleId?: SortOrder
     lastLogin?: SortOrder
     address?: SortOrder
+    temporaryAddress?: SortOrder
     departmentId?: SortOrder
     designationId?: SortOrder
     reportingManagerId?: SortOrder
@@ -35685,6 +38651,12 @@ export namespace Prisma {
     dob?: SortOrder
     gender?: SortOrder
     bloodGroup?: SortOrder
+    motherName?: SortOrder
+    fatherName?: SortOrder
+    maritalStatus?: SortOrder
+    spouseName?: SortOrder
+    religion?: SortOrder
+    nationality?: SortOrder
     mobile?: SortOrder
     alternateMobile?: SortOrder
     email?: SortOrder
@@ -35692,6 +38664,7 @@ export namespace Prisma {
     roleId?: SortOrder
     lastLogin?: SortOrder
     address?: SortOrder
+    temporaryAddress?: SortOrder
     departmentId?: SortOrder
     designationId?: SortOrder
     reportingManagerId?: SortOrder
@@ -36049,6 +39022,105 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAttendanceStatusFilter<$PrismaModel>
     _max?: NestedEnumAttendanceStatusFilter<$PrismaModel>
+  }
+
+  export type AttendanceMonthlySummaryOrderByRelevanceInput = {
+    fields: AttendanceMonthlySummaryOrderByRelevanceFieldEnum | AttendanceMonthlySummaryOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type AttendanceMonthlySummaryEmployeeIdYearMonthCompoundUniqueInput = {
+    employeeId: number
+    year: number
+    month: number
+  }
+
+  export type AttendanceMonthlySummaryCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    employeeCode?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthName?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+    updatedBy?: SortOrder
+  }
+
+  export type AttendanceMonthlySummaryAvgOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdBy?: SortOrder
+    updatedBy?: SortOrder
+  }
+
+  export type AttendanceMonthlySummaryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    employeeCode?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthName?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+    updatedBy?: SortOrder
+  }
+
+  export type AttendanceMonthlySummaryMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    employeeCode?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    monthName?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    createdBy?: SortOrder
+    updatedBy?: SortOrder
+  }
+
+  export type AttendanceMonthlySummarySumOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    year?: SortOrder
+    month?: SortOrder
+    lateDays?: SortOrder
+    fullDays?: SortOrder
+    halfDays?: SortOrder
+    sundays?: SortOrder
+    totalPresentDays?: SortOrder
+    absentDays?: SortOrder
+    createdBy?: SortOrder
+    updatedBy?: SortOrder
   }
 
   export type EnumAttendanceSyncStatusFilter<$PrismaModel = never> = {
@@ -36528,6 +39600,41 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumLeaveWorkflowStatusFilter<$PrismaModel>
     _max?: NestedEnumLeaveWorkflowStatusFilter<$PrismaModel>
+  }
+
+  export type BankOrderByRelevanceInput = {
+    fields: BankOrderByRelevanceFieldEnum | BankOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type BankCountOrderByAggregateInput = {
+    id?: SortOrder
+    bankName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BankAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type BankMaxOrderByAggregateInput = {
+    id?: SortOrder
+    bankName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BankMinOrderByAggregateInput = {
+    id?: SortOrder
+    bankName?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type BankSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type EnumHolidayTypeFilter<$PrismaModel = never> = {
@@ -37682,6 +40789,13 @@ export namespace Prisma {
     connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
   }
 
+  export type AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput> | AttendanceMonthlySummaryCreateWithoutEmployeeInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput | AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyEmployeeInputEnvelope
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+  }
+
   export type AttendanceExceptionCreateNestedManyWithoutEmployeeInput = {
     create?: XOR<AttendanceExceptionCreateWithoutEmployeeInput, AttendanceExceptionUncheckedCreateWithoutEmployeeInput> | AttendanceExceptionCreateWithoutEmployeeInput[] | AttendanceExceptionUncheckedCreateWithoutEmployeeInput[]
     connectOrCreate?: AttendanceExceptionCreateOrConnectWithoutEmployeeInput | AttendanceExceptionCreateOrConnectWithoutEmployeeInput[]
@@ -37846,6 +40960,20 @@ export namespace Prisma {
     connectOrCreate?: AttendanceCreateOrConnectWithoutUpdaterInput | AttendanceCreateOrConnectWithoutUpdaterInput[]
     createMany?: AttendanceCreateManyUpdaterInputEnvelope
     connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput> | AttendanceMonthlySummaryCreateWithoutCreatorInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput | AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyCreatorInputEnvelope
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+  }
+
+  export type AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput> | AttendanceMonthlySummaryCreateWithoutUpdaterInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput | AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyUpdaterInputEnvelope
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
   }
 
   export type AttendanceSyncLogCreateNestedManyWithoutCreatorInput = {
@@ -38037,6 +41165,13 @@ export namespace Prisma {
     connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
   }
 
+  export type AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput> | AttendanceMonthlySummaryCreateWithoutEmployeeInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput | AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyEmployeeInputEnvelope
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+  }
+
   export type AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput = {
     create?: XOR<AttendanceExceptionCreateWithoutEmployeeInput, AttendanceExceptionUncheckedCreateWithoutEmployeeInput> | AttendanceExceptionCreateWithoutEmployeeInput[] | AttendanceExceptionUncheckedCreateWithoutEmployeeInput[]
     connectOrCreate?: AttendanceExceptionCreateOrConnectWithoutEmployeeInput | AttendanceExceptionCreateOrConnectWithoutEmployeeInput[]
@@ -38189,6 +41324,20 @@ export namespace Prisma {
     connectOrCreate?: AttendanceCreateOrConnectWithoutUpdaterInput | AttendanceCreateOrConnectWithoutUpdaterInput[]
     createMany?: AttendanceCreateManyUpdaterInputEnvelope
     connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
+  export type AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput> | AttendanceMonthlySummaryCreateWithoutCreatorInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput | AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyCreatorInputEnvelope
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+  }
+
+  export type AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput> | AttendanceMonthlySummaryCreateWithoutUpdaterInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput | AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyUpdaterInputEnvelope
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
   }
 
   export type AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput = {
@@ -38493,6 +41642,20 @@ export namespace Prisma {
     update?: AttendanceUpdateWithWhereUniqueWithoutEmployeeInput | AttendanceUpdateWithWhereUniqueWithoutEmployeeInput[]
     updateMany?: AttendanceUpdateManyWithWhereWithoutEmployeeInput | AttendanceUpdateManyWithWhereWithoutEmployeeInput[]
     deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput> | AttendanceMonthlySummaryCreateWithoutEmployeeInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput | AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput[]
+    upsert?: AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutEmployeeInput | AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyEmployeeInputEnvelope
+    set?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    disconnect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    delete?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    update?: AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutEmployeeInput | AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: AttendanceMonthlySummaryUpdateManyWithWhereWithoutEmployeeInput | AttendanceMonthlySummaryUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
   }
 
   export type AttendanceExceptionUpdateManyWithoutEmployeeNestedInput = {
@@ -38821,6 +41984,34 @@ export namespace Prisma {
     update?: AttendanceUpdateWithWhereUniqueWithoutUpdaterInput | AttendanceUpdateWithWhereUniqueWithoutUpdaterInput[]
     updateMany?: AttendanceUpdateManyWithWhereWithoutUpdaterInput | AttendanceUpdateManyWithWhereWithoutUpdaterInput[]
     deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput> | AttendanceMonthlySummaryCreateWithoutCreatorInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput | AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput[]
+    upsert?: AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutCreatorInput | AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyCreatorInputEnvelope
+    set?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    disconnect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    delete?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    update?: AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutCreatorInput | AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: AttendanceMonthlySummaryUpdateManyWithWhereWithoutCreatorInput | AttendanceMonthlySummaryUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput> | AttendanceMonthlySummaryCreateWithoutUpdaterInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput | AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput[]
+    upsert?: AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutUpdaterInput | AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutUpdaterInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyUpdaterInputEnvelope
+    set?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    disconnect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    delete?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    update?: AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutUpdaterInput | AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutUpdaterInput[]
+    updateMany?: AttendanceMonthlySummaryUpdateManyWithWhereWithoutUpdaterInput | AttendanceMonthlySummaryUpdateManyWithWhereWithoutUpdaterInput[]
+    deleteMany?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
   }
 
   export type AttendanceSyncLogUpdateManyWithoutCreatorNestedInput = {
@@ -39201,6 +42392,20 @@ export namespace Prisma {
     deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
   }
 
+  export type AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput> | AttendanceMonthlySummaryCreateWithoutEmployeeInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput | AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput[]
+    upsert?: AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutEmployeeInput | AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyEmployeeInputEnvelope
+    set?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    disconnect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    delete?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    update?: AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutEmployeeInput | AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: AttendanceMonthlySummaryUpdateManyWithWhereWithoutEmployeeInput | AttendanceMonthlySummaryUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
+  }
+
   export type AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput = {
     create?: XOR<AttendanceExceptionCreateWithoutEmployeeInput, AttendanceExceptionUncheckedCreateWithoutEmployeeInput> | AttendanceExceptionCreateWithoutEmployeeInput[] | AttendanceExceptionUncheckedCreateWithoutEmployeeInput[]
     connectOrCreate?: AttendanceExceptionCreateOrConnectWithoutEmployeeInput | AttendanceExceptionCreateOrConnectWithoutEmployeeInput[]
@@ -39507,6 +42712,34 @@ export namespace Prisma {
     update?: AttendanceUpdateWithWhereUniqueWithoutUpdaterInput | AttendanceUpdateWithWhereUniqueWithoutUpdaterInput[]
     updateMany?: AttendanceUpdateManyWithWhereWithoutUpdaterInput | AttendanceUpdateManyWithWhereWithoutUpdaterInput[]
     deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput> | AttendanceMonthlySummaryCreateWithoutCreatorInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput | AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput[]
+    upsert?: AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutCreatorInput | AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyCreatorInputEnvelope
+    set?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    disconnect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    delete?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    update?: AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutCreatorInput | AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: AttendanceMonthlySummaryUpdateManyWithWhereWithoutCreatorInput | AttendanceMonthlySummaryUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput = {
+    create?: XOR<AttendanceMonthlySummaryCreateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput> | AttendanceMonthlySummaryCreateWithoutUpdaterInput[] | AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput[]
+    connectOrCreate?: AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput | AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput[]
+    upsert?: AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutUpdaterInput | AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutUpdaterInput[]
+    createMany?: AttendanceMonthlySummaryCreateManyUpdaterInputEnvelope
+    set?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    disconnect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    delete?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    connect?: AttendanceMonthlySummaryWhereUniqueInput | AttendanceMonthlySummaryWhereUniqueInput[]
+    update?: AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutUpdaterInput | AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutUpdaterInput[]
+    updateMany?: AttendanceMonthlySummaryUpdateManyWithWhereWithoutUpdaterInput | AttendanceMonthlySummaryUpdateManyWithWhereWithoutUpdaterInput[]
+    deleteMany?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
   }
 
   export type AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput = {
@@ -39929,6 +43162,52 @@ export namespace Prisma {
     update?: AttendanceCorrectionUpdateWithWhereUniqueWithoutAttendanceInput | AttendanceCorrectionUpdateWithWhereUniqueWithoutAttendanceInput[]
     updateMany?: AttendanceCorrectionUpdateManyWithWhereWithoutAttendanceInput | AttendanceCorrectionUpdateManyWithWhereWithoutAttendanceInput[]
     deleteMany?: AttendanceCorrectionScalarWhereInput | AttendanceCorrectionScalarWhereInput[]
+  }
+
+  export type EmployeeCreateNestedOneWithoutAttendanceMonthlySummariesInput = {
+    create?: XOR<EmployeeCreateWithoutAttendanceMonthlySummariesInput, EmployeeUncheckedCreateWithoutAttendanceMonthlySummariesInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutAttendanceMonthlySummariesInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type EmployeeCreateNestedOneWithoutMonthlySummariesCreatedInput = {
+    create?: XOR<EmployeeCreateWithoutMonthlySummariesCreatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesCreatedInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutMonthlySummariesCreatedInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type EmployeeCreateNestedOneWithoutMonthlySummariesUpdatedInput = {
+    create?: XOR<EmployeeCreateWithoutMonthlySummariesUpdatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesUpdatedInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutMonthlySummariesUpdatedInput
+    connect?: EmployeeWhereUniqueInput
+  }
+
+  export type EmployeeUpdateOneRequiredWithoutAttendanceMonthlySummariesNestedInput = {
+    create?: XOR<EmployeeCreateWithoutAttendanceMonthlySummariesInput, EmployeeUncheckedCreateWithoutAttendanceMonthlySummariesInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutAttendanceMonthlySummariesInput
+    upsert?: EmployeeUpsertWithoutAttendanceMonthlySummariesInput
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutAttendanceMonthlySummariesInput, EmployeeUpdateWithoutAttendanceMonthlySummariesInput>, EmployeeUncheckedUpdateWithoutAttendanceMonthlySummariesInput>
+  }
+
+  export type EmployeeUpdateOneWithoutMonthlySummariesCreatedNestedInput = {
+    create?: XOR<EmployeeCreateWithoutMonthlySummariesCreatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesCreatedInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutMonthlySummariesCreatedInput
+    upsert?: EmployeeUpsertWithoutMonthlySummariesCreatedInput
+    disconnect?: EmployeeWhereInput | boolean
+    delete?: EmployeeWhereInput | boolean
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutMonthlySummariesCreatedInput, EmployeeUpdateWithoutMonthlySummariesCreatedInput>, EmployeeUncheckedUpdateWithoutMonthlySummariesCreatedInput>
+  }
+
+  export type EmployeeUpdateOneWithoutMonthlySummariesUpdatedNestedInput = {
+    create?: XOR<EmployeeCreateWithoutMonthlySummariesUpdatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesUpdatedInput>
+    connectOrCreate?: EmployeeCreateOrConnectWithoutMonthlySummariesUpdatedInput
+    upsert?: EmployeeUpsertWithoutMonthlySummariesUpdatedInput
+    disconnect?: EmployeeWhereInput | boolean
+    delete?: EmployeeWhereInput | boolean
+    connect?: EmployeeWhereUniqueInput
+    update?: XOR<XOR<EmployeeUpdateToOneWithWhereWithoutMonthlySummariesUpdatedInput, EmployeeUpdateWithoutMonthlySummariesUpdatedInput>, EmployeeUncheckedUpdateWithoutMonthlySummariesUpdatedInput>
   }
 
   export type EmployeeCreateNestedOneWithoutSyncLogsCreatedInput = {
@@ -41121,12 +44400,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -41169,6 +44455,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -41193,6 +44480,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -41226,12 +44515,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -41276,6 +44572,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -41298,6 +44595,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -41367,12 +44666,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -41416,6 +44722,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -41439,6 +44746,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -41472,6 +44781,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -41479,6 +44794,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -41523,6 +44839,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -41544,6 +44861,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -41581,12 +44900,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -41630,6 +44956,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -41653,6 +44980,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -41686,6 +45015,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -41693,6 +45028,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -41737,6 +45073,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -41758,6 +45095,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -41815,6 +45154,12 @@ export namespace Prisma {
     dob?: DateTimeNullableFilter<"Employee"> | Date | string | null
     gender?: StringNullableFilter<"Employee"> | string | null
     bloodGroup?: StringNullableFilter<"Employee"> | string | null
+    motherName?: StringNullableFilter<"Employee"> | string | null
+    fatherName?: StringNullableFilter<"Employee"> | string | null
+    maritalStatus?: StringNullableFilter<"Employee"> | string | null
+    spouseName?: StringNullableFilter<"Employee"> | string | null
+    religion?: StringNullableFilter<"Employee"> | string | null
+    nationality?: StringNullableFilter<"Employee"> | string | null
     mobile?: StringFilter<"Employee"> | string
     alternateMobile?: StringNullableFilter<"Employee"> | string | null
     email?: StringFilter<"Employee"> | string
@@ -41822,6 +45167,7 @@ export namespace Prisma {
     roleId?: IntFilter<"Employee"> | number
     lastLogin?: DateTimeNullableFilter<"Employee"> | Date | string | null
     address?: StringNullableFilter<"Employee"> | string | null
+    temporaryAddress?: StringNullableFilter<"Employee"> | string | null
     departmentId?: IntFilter<"Employee"> | number
     designationId?: IntFilter<"Employee"> | number
     reportingManagerId?: IntNullableFilter<"Employee"> | number | null
@@ -41911,12 +45257,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -41960,6 +45313,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -41983,6 +45337,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -42016,6 +45372,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -42023,6 +45385,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -42067,6 +45430,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -42088,6 +45452,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -42131,12 +45497,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -42180,6 +45553,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -42203,6 +45577,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -42236,6 +45612,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -42243,6 +45625,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -42287,6 +45670,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -42308,6 +45692,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -42394,12 +45780,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -42443,6 +45836,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -42466,6 +45860,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -42499,6 +45895,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -42506,6 +45908,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -42550,6 +45953,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -42571,6 +45975,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -42608,12 +46014,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -42657,6 +46070,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -42680,6 +46094,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -42713,6 +46129,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -42720,6 +46142,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -42764,6 +46187,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -42785,6 +46209,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -42878,12 +46304,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -42927,6 +46360,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -42950,6 +46384,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -42983,6 +46419,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -42990,6 +46432,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -43034,6 +46477,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -43055,6 +46499,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -43098,12 +46544,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -43147,6 +46600,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -43170,6 +46624,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -43203,6 +46659,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -43210,6 +46672,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -43254,6 +46717,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -43275,6 +46739,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -43357,12 +46823,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -43406,6 +46879,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -43429,6 +46903,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -43462,6 +46938,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -43469,6 +46951,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -43513,6 +46996,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -43534,6 +47018,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -43571,12 +47057,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -43620,6 +47113,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -43643,6 +47137,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -43676,6 +47172,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -43683,6 +47185,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -43727,6 +47230,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -43748,6 +47252,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -43858,12 +47364,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -43907,6 +47420,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -43930,6 +47444,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -43963,6 +47479,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -43970,6 +47492,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -44014,6 +47537,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -44035,6 +47559,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -44078,12 +47604,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -44127,6 +47660,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -44150,6 +47684,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -44183,6 +47719,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -44190,6 +47732,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -44234,6 +47777,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -44255,6 +47799,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -44287,12 +47833,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -44335,6 +47888,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -44359,6 +47913,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -44392,6 +47948,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -44399,6 +47961,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     designationId: number
     reportingManagerId?: number | null
     joiningDate: Date | string
@@ -44442,6 +48005,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -44464,6 +48028,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -44578,12 +48144,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -44627,6 +48200,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -44650,6 +48224,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -44683,6 +48259,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -44690,6 +48272,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -44734,6 +48317,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -44755,6 +48339,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -44792,12 +48378,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -44841,6 +48434,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -44864,6 +48458,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -44897,6 +48493,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -44904,6 +48506,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -44948,6 +48551,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -44969,6 +48573,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -45099,12 +48705,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -45148,6 +48761,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -45171,6 +48785,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -45204,6 +48820,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -45211,6 +48833,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -45255,6 +48878,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -45276,6 +48900,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -45319,12 +48945,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -45368,6 +49001,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -45391,6 +49025,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -45424,6 +49060,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -45431,6 +49073,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -45475,6 +49118,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -45496,6 +49140,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -45556,12 +49202,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -45605,6 +49258,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -45628,6 +49282,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -45661,6 +49317,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -45668,6 +49330,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -45712,6 +49375,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -45733,6 +49397,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -45770,12 +49436,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -45819,6 +49492,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -45842,6 +49516,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -45875,6 +49551,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -45882,6 +49564,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -45926,6 +49609,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -45947,6 +49631,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -46029,12 +49715,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -46078,6 +49771,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -46101,6 +49795,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -46134,6 +49830,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -46141,6 +49843,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -46185,6 +49888,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -46206,6 +49910,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -46249,12 +49955,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -46298,6 +50011,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -46321,6 +50035,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -46354,6 +50070,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -46361,6 +50083,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -46405,6 +50128,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -46426,6 +50150,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -46486,12 +50212,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -46534,6 +50267,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -46558,6 +50292,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -46591,6 +50327,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -46598,6 +50340,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     reportingManagerId?: number | null
     joiningDate: Date | string
@@ -46641,6 +50384,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -46663,6 +50407,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -46705,12 +50451,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -46754,6 +50507,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -46777,6 +50531,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -46810,6 +50566,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -46817,6 +50579,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -46861,6 +50624,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -46882,6 +50646,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -46919,12 +50685,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -46968,6 +50741,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -46991,6 +50765,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -47024,6 +50800,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -47031,6 +50813,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -47075,6 +50858,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -47096,6 +50880,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -47194,12 +50980,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -47243,6 +51036,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -47266,6 +51060,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -47299,6 +51095,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -47306,6 +51108,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47350,6 +51153,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -47371,6 +51175,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -47414,12 +51220,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -47463,6 +51276,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -47486,6 +51300,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -47519,6 +51335,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -47526,6 +51348,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47570,6 +51393,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -47591,6 +51415,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -47707,12 +51533,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -47755,6 +51588,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -47779,6 +51613,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -47812,6 +51648,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -47819,6 +51661,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -47862,6 +51705,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -47884,6 +51728,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -47921,12 +51767,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -47969,6 +51822,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -47993,6 +51847,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -48026,6 +51882,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -48033,6 +51895,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     joiningDate: Date | string
@@ -48076,6 +51939,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -48098,6 +51962,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -48330,6 +52196,51 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AttendanceMonthlySummaryCreateWithoutEmployeeInput = {
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creator?: EmployeeCreateNestedOneWithoutMonthlySummariesCreatedInput
+    updater?: EmployeeCreateNestedOneWithoutMonthlySummariesUpdatedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput = {
+    id?: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateOrConnectWithoutEmployeeInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    create: XOR<AttendanceMonthlySummaryCreateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type AttendanceMonthlySummaryCreateManyEmployeeInputEnvelope = {
+    data: AttendanceMonthlySummaryCreateManyEmployeeInput | AttendanceMonthlySummaryCreateManyEmployeeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type AttendanceExceptionCreateWithoutEmployeeInput = {
     attendanceDate: Date | string
     issueType: $Enums.AttendanceExceptionIssue
@@ -48492,12 +52403,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -48541,6 +52459,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -48564,6 +52483,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -48597,6 +52518,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -48604,6 +52531,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -48648,6 +52576,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -48669,6 +52598,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -48706,12 +52637,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -48755,6 +52693,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -48778,6 +52717,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -48811,6 +52752,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -48818,6 +52765,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -48862,6 +52810,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -48883,6 +52832,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -48920,12 +52871,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -48969,6 +52927,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -48992,6 +52951,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -49025,6 +52986,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -49032,6 +52999,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -49075,6 +53043,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -49097,6 +53066,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -49139,12 +53110,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -49188,6 +53166,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -49211,6 +53190,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -49244,6 +53225,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -49251,6 +53238,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -49294,6 +53282,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -49316,6 +53305,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -49897,6 +53888,96 @@ export namespace Prisma {
 
   export type AttendanceCreateManyUpdaterInputEnvelope = {
     data: AttendanceCreateManyUpdaterInput | AttendanceCreateManyUpdaterInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AttendanceMonthlySummaryCreateWithoutCreatorInput = {
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutAttendanceMonthlySummariesInput
+    updater?: EmployeeCreateNestedOneWithoutMonthlySummariesUpdatedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput = {
+    id?: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    updatedBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateOrConnectWithoutCreatorInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    create: XOR<AttendanceMonthlySummaryCreateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type AttendanceMonthlySummaryCreateManyCreatorInputEnvelope = {
+    data: AttendanceMonthlySummaryCreateManyCreatorInput | AttendanceMonthlySummaryCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AttendanceMonthlySummaryCreateWithoutUpdaterInput = {
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    employee: EmployeeCreateNestedOneWithoutAttendanceMonthlySummariesInput
+    creator?: EmployeeCreateNestedOneWithoutMonthlySummariesCreatedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput = {
+    id?: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateOrConnectWithoutUpdaterInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    create: XOR<AttendanceMonthlySummaryCreateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput>
+  }
+
+  export type AttendanceMonthlySummaryCreateManyUpdaterInputEnvelope = {
+    data: AttendanceMonthlySummaryCreateManyUpdaterInput | AttendanceMonthlySummaryCreateManyUpdaterInput[]
     skipDuplicates?: boolean
   }
 
@@ -50701,12 +54782,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -50749,6 +54837,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -50773,6 +54862,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -50806,6 +54897,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -50813,6 +54910,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -50856,6 +54954,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -50878,6 +54977,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -51095,6 +55196,44 @@ export namespace Prisma {
     updatedBy?: IntNullableFilter<"Attendance"> | number | null
   }
 
+  export type AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    update: XOR<AttendanceMonthlySummaryUpdateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<AttendanceMonthlySummaryCreateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    data: XOR<AttendanceMonthlySummaryUpdateWithoutEmployeeInput, AttendanceMonthlySummaryUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyWithWhereWithoutEmployeeInput = {
+    where: AttendanceMonthlySummaryScalarWhereInput
+    data: XOR<AttendanceMonthlySummaryUpdateManyMutationInput, AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type AttendanceMonthlySummaryScalarWhereInput = {
+    AND?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
+    OR?: AttendanceMonthlySummaryScalarWhereInput[]
+    NOT?: AttendanceMonthlySummaryScalarWhereInput | AttendanceMonthlySummaryScalarWhereInput[]
+    id?: IntFilter<"AttendanceMonthlySummary"> | number
+    employeeId?: IntFilter<"AttendanceMonthlySummary"> | number
+    employeeCode?: StringFilter<"AttendanceMonthlySummary"> | string
+    year?: IntFilter<"AttendanceMonthlySummary"> | number
+    month?: IntFilter<"AttendanceMonthlySummary"> | number
+    monthName?: StringFilter<"AttendanceMonthlySummary"> | string
+    lateDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    fullDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    halfDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    sundays?: IntFilter<"AttendanceMonthlySummary"> | number
+    totalPresentDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    absentDays?: IntFilter<"AttendanceMonthlySummary"> | number
+    createdAt?: DateTimeFilter<"AttendanceMonthlySummary"> | Date | string
+    updatedAt?: DateTimeFilter<"AttendanceMonthlySummary"> | Date | string
+    createdBy?: IntNullableFilter<"AttendanceMonthlySummary"> | number | null
+    updatedBy?: IntNullableFilter<"AttendanceMonthlySummary"> | number | null
+  }
+
   export type AttendanceExceptionUpsertWithWhereUniqueWithoutEmployeeInput = {
     where: AttendanceExceptionWhereUniqueInput
     update: XOR<AttendanceExceptionUpdateWithoutEmployeeInput, AttendanceExceptionUncheckedUpdateWithoutEmployeeInput>
@@ -51254,12 +55393,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -51303,6 +55449,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -51326,6 +55473,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -51359,6 +55508,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -51366,6 +55521,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -51410,6 +55566,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -51431,6 +55588,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -51474,12 +55633,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -51523,6 +55689,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -51546,6 +55713,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -51579,6 +55748,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -51586,6 +55761,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -51630,6 +55806,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -51651,6 +55828,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -51997,6 +56176,38 @@ export namespace Prisma {
   export type AttendanceUpdateManyWithWhereWithoutUpdaterInput = {
     where: AttendanceScalarWhereInput
     data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyWithoutUpdaterInput>
+  }
+
+  export type AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    update: XOR<AttendanceMonthlySummaryUpdateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedUpdateWithoutCreatorInput>
+    create: XOR<AttendanceMonthlySummaryCreateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    data: XOR<AttendanceMonthlySummaryUpdateWithoutCreatorInput, AttendanceMonthlySummaryUncheckedUpdateWithoutCreatorInput>
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyWithWhereWithoutCreatorInput = {
+    where: AttendanceMonthlySummaryScalarWhereInput
+    data: XOR<AttendanceMonthlySummaryUpdateManyMutationInput, AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorInput>
+  }
+
+  export type AttendanceMonthlySummaryUpsertWithWhereUniqueWithoutUpdaterInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    update: XOR<AttendanceMonthlySummaryUpdateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedUpdateWithoutUpdaterInput>
+    create: XOR<AttendanceMonthlySummaryCreateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedCreateWithoutUpdaterInput>
+  }
+
+  export type AttendanceMonthlySummaryUpdateWithWhereUniqueWithoutUpdaterInput = {
+    where: AttendanceMonthlySummaryWhereUniqueInput
+    data: XOR<AttendanceMonthlySummaryUpdateWithoutUpdaterInput, AttendanceMonthlySummaryUncheckedUpdateWithoutUpdaterInput>
+  }
+
+  export type AttendanceMonthlySummaryUpdateManyWithWhereWithoutUpdaterInput = {
+    where: AttendanceMonthlySummaryScalarWhereInput
+    data: XOR<AttendanceMonthlySummaryUpdateManyMutationInput, AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterInput>
   }
 
   export type AttendanceSyncLogUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -52387,12 +56598,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -52435,6 +56653,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -52459,6 +56678,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -52492,6 +56713,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -52499,6 +56726,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -52542,6 +56770,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -52564,6 +56793,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -52601,12 +56832,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -52650,6 +56888,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -52673,6 +56912,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -52706,6 +56947,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -52713,6 +56960,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -52757,6 +57005,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -52778,6 +57027,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -52815,12 +57066,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -52864,6 +57122,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -52887,6 +57146,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentCreateNestedManyWithoutCreatorInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -52920,6 +57181,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -52927,6 +57194,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -52971,6 +57239,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -52992,6 +57261,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUncheckedCreateNestedManyWithoutCreatorInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -53040,12 +57311,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -53088,6 +57366,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -53112,6 +57391,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -53145,6 +57426,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -53152,6 +57439,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -53195,6 +57483,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -53217,6 +57506,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -53260,12 +57551,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -53309,6 +57607,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -53332,6 +57631,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -53365,6 +57666,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -53372,6 +57679,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -53416,6 +57724,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -53437,6 +57746,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -53480,12 +57791,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -53529,6 +57847,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -53552,6 +57871,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUpdateManyWithoutCreatorNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -53585,6 +57906,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -53592,6 +57919,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -53636,6 +57964,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -53657,6 +57986,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -53689,12 +58020,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -53737,6 +58075,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenCreateNestedManyWithoutEmployeeInput
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -53761,6 +58100,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -53794,6 +58135,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -53801,6 +58148,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -53844,6 +58192,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutEmployeeInput
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -53866,6 +58215,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -53946,12 +58297,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -53995,6 +58353,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -54018,6 +58377,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentCreateNestedManyWithoutCreatorInput
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -54051,6 +58412,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -54058,6 +58425,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -54102,6 +58470,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -54123,6 +58492,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUncheckedCreateNestedManyWithoutCreatorInput
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -54160,12 +58531,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -54209,6 +58587,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -54232,6 +58611,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentCreateNestedManyWithoutCreatorInput
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -54265,6 +58646,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -54272,6 +58659,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -54316,6 +58704,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -54337,6 +58726,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUncheckedCreateNestedManyWithoutCreatorInput
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -54385,12 +58776,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -54433,6 +58831,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUpdateManyWithoutEmployeeNestedInput
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -54457,6 +58856,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -54490,6 +58891,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -54497,6 +58904,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54540,6 +58948,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutEmployeeNestedInput
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -54562,6 +58971,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -54621,12 +59032,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -54670,6 +59088,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -54693,6 +59112,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUpdateManyWithoutCreatorNestedInput
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -54726,6 +59147,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -54733,6 +59160,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -54777,6 +59205,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -54798,6 +59227,8 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUncheckedUpdateManyWithoutCreatorNestedInput
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -54841,12 +59272,961 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pan?: NullableStringFieldUpdateOperationsInput | string | null
+    aadhaar?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeCategory?: EnumEmployeeCategoryFieldUpdateOperationsInput | $Enums.EmployeeCategory
+    qualification?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    cgpa?: NullableStringFieldUpdateOperationsInput | string | null
+    internshipDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    totalExperienceYears?: NullableIntFieldUpdateOperationsInput | number | null
+    totalExperienceMonths?: NullableIntFieldUpdateOperationsInput | number | null
+    previousCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    previousDesignation?: NullableStringFieldUpdateOperationsInput | string | null
+    previousCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    noticePeriod?: NullableStringFieldUpdateOperationsInput | string | null
+    relevantExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    relievingLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneRequiredWithoutEmployeesNestedInput
+    designation?: DesignationUpdateOneRequiredWithoutEmployeesNestedInput
+    role?: RoleUpdateOneRequiredWithoutEmployeesNestedInput
+    reportingManager?: EmployeeUpdateOneWithoutDirectReportsNestedInput
+    directReports?: EmployeeUpdateManyWithoutReportingManagerNestedInput
+    documents?: EmployeeDocumentUpdateManyWithoutEmployeeNestedInput
+    notifications?: NotificationUpdateManyWithoutEmployeeNestedInput
+    passwordResetTokens?: PasswordResetTokenUpdateManyWithoutEmployeeNestedInput
+    employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
+    attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
+    attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
+    leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendanceCorrections?: AttendanceCorrectionUpdateManyWithoutEmployeeNestedInput
+    creator?: EmployeeUpdateOneWithoutCreatedEmployeesNestedInput
+    updater?: EmployeeUpdateOneWithoutUpdatedEmployeesNestedInput
+    createdEmployees?: EmployeeUpdateManyWithoutCreatorNestedInput
+    updatedEmployees?: EmployeeUpdateManyWithoutUpdaterNestedInput
+    rolesCreated?: RoleUpdateManyWithoutCreatorNestedInput
+    rolesUpdated?: RoleUpdateManyWithoutUpdaterNestedInput
+    permissionsCreated?: PermissionUpdateManyWithoutCreatorNestedInput
+    permissionsUpdated?: PermissionUpdateManyWithoutUpdaterNestedInput
+    rolePermissionsCreated?: RolePermissionUpdateManyWithoutCreatorNestedInput
+    rolePermissionsUpdated?: RolePermissionUpdateManyWithoutUpdaterNestedInput
+    departmentsCreated?: DepartmentUpdateManyWithoutCreatorNestedInput
+    departmentsUpdated?: DepartmentUpdateManyWithoutUpdaterNestedInput
+    shiftsCreated?: DepartmentShiftUpdateManyWithoutCreatorNestedInput
+    shiftsUpdated?: DepartmentShiftUpdateManyWithoutUpdaterNestedInput
+    designationsCreated?: DesignationUpdateManyWithoutCreatorNestedInput
+    designationsUpdated?: DesignationUpdateManyWithoutUpdaterNestedInput
+    documentsCreated?: EmployeeDocumentUpdateManyWithoutCreatorNestedInput
+    documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
+    attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
+    syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
+    syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
+    exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
+    exceptionsUpdated?: AttendanceExceptionUpdateManyWithoutUpdaterNestedInput
+    leaveTypesCreated?: LeaveTypeUpdateManyWithoutCreatorNestedInput
+    leaveTypesUpdated?: LeaveTypeUpdateManyWithoutUpdaterNestedInput
+    leaveBalancesCreated?: LeaveBalanceUpdateManyWithoutCreatorNestedInput
+    leaveBalancesUpdated?: LeaveBalanceUpdateManyWithoutUpdaterNestedInput
+    leaveRequestsCreated?: LeaveRequestUpdateManyWithoutCreatorNestedInput
+    leaveRequestsUpdated?: LeaveRequestUpdateManyWithoutUpdaterNestedInput
+    holidaysCreated?: HolidayUpdateManyWithoutCreatorNestedInput
+    holidaysUpdated?: HolidayUpdateManyWithoutUpdaterNestedInput
+    correctionsCreated?: AttendanceCorrectionUpdateManyWithoutCreatorNestedInput
+    correctionsUpdated?: AttendanceCorrectionUpdateManyWithoutUpdaterNestedInput
+    correctionsApproved?: AttendanceCorrectionUpdateManyWithoutApproverNestedInput
+    reportsGenerated?: ReportDownloadLogUpdateManyWithoutGeneratorNestedInput
+    reportLogsCreated?: ReportDownloadLogUpdateManyWithoutCreatorNestedInput
+    reportLogsUpdated?: ReportDownloadLogUpdateManyWithoutUpdaterNestedInput
+    employeePermissionsCreated?: EmployeePermissionUpdateManyWithoutCreatorNestedInput
+    employeePermissionsUpdated?: EmployeePermissionUpdateManyWithoutUpdaterNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutAttendanceUpdatedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    camAttendanceId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableBytesFieldUpdateOperationsInput | Bytes | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: StringFieldUpdateOperationsInput | string
+    alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    roleId?: IntFieldUpdateOperationsInput | number
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: IntFieldUpdateOperationsInput | number
+    designationId?: IntFieldUpdateOperationsInput | number
+    reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pan?: NullableStringFieldUpdateOperationsInput | string | null
+    aadhaar?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeCategory?: EnumEmployeeCategoryFieldUpdateOperationsInput | $Enums.EmployeeCategory
+    qualification?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    cgpa?: NullableStringFieldUpdateOperationsInput | string | null
+    internshipDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    totalExperienceYears?: NullableIntFieldUpdateOperationsInput | number | null
+    totalExperienceMonths?: NullableIntFieldUpdateOperationsInput | number | null
+    previousCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    previousDesignation?: NullableStringFieldUpdateOperationsInput | string | null
+    previousCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    noticePeriod?: NullableStringFieldUpdateOperationsInput | string | null
+    relevantExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    relievingLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    directReports?: EmployeeUncheckedUpdateManyWithoutReportingManagerNestedInput
+    documents?: EmployeeDocumentUncheckedUpdateManyWithoutEmployeeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutEmployeeNestedInput
+    passwordResetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutEmployeeNestedInput
+    employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceCorrections?: AttendanceCorrectionUncheckedUpdateManyWithoutEmployeeNestedInput
+    createdEmployees?: EmployeeUncheckedUpdateManyWithoutCreatorNestedInput
+    updatedEmployees?: EmployeeUncheckedUpdateManyWithoutUpdaterNestedInput
+    rolesCreated?: RoleUncheckedUpdateManyWithoutCreatorNestedInput
+    rolesUpdated?: RoleUncheckedUpdateManyWithoutUpdaterNestedInput
+    permissionsCreated?: PermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    permissionsUpdated?: PermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+    rolePermissionsCreated?: RolePermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    rolePermissionsUpdated?: RolePermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+    departmentsCreated?: DepartmentUncheckedUpdateManyWithoutCreatorNestedInput
+    departmentsUpdated?: DepartmentUncheckedUpdateManyWithoutUpdaterNestedInput
+    shiftsCreated?: DepartmentShiftUncheckedUpdateManyWithoutCreatorNestedInput
+    shiftsUpdated?: DepartmentShiftUncheckedUpdateManyWithoutUpdaterNestedInput
+    designationsCreated?: DesignationUncheckedUpdateManyWithoutCreatorNestedInput
+    designationsUpdated?: DesignationUncheckedUpdateManyWithoutUpdaterNestedInput
+    documentsCreated?: EmployeeDocumentUncheckedUpdateManyWithoutCreatorNestedInput
+    documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
+    attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
+    syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
+    syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
+    exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
+    exceptionsUpdated?: AttendanceExceptionUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveTypesCreated?: LeaveTypeUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveTypesUpdated?: LeaveTypeUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveBalancesCreated?: LeaveBalanceUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveBalancesUpdated?: LeaveBalanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveRequestsCreated?: LeaveRequestUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveRequestsUpdated?: LeaveRequestUncheckedUpdateManyWithoutUpdaterNestedInput
+    holidaysCreated?: HolidayUncheckedUpdateManyWithoutCreatorNestedInput
+    holidaysUpdated?: HolidayUncheckedUpdateManyWithoutUpdaterNestedInput
+    correctionsCreated?: AttendanceCorrectionUncheckedUpdateManyWithoutCreatorNestedInput
+    correctionsUpdated?: AttendanceCorrectionUncheckedUpdateManyWithoutUpdaterNestedInput
+    correctionsApproved?: AttendanceCorrectionUncheckedUpdateManyWithoutApproverNestedInput
+    reportsGenerated?: ReportDownloadLogUncheckedUpdateManyWithoutGeneratorNestedInput
+    reportLogsCreated?: ReportDownloadLogUncheckedUpdateManyWithoutCreatorNestedInput
+    reportLogsUpdated?: ReportDownloadLogUncheckedUpdateManyWithoutUpdaterNestedInput
+    employeePermissionsCreated?: EmployeePermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    employeePermissionsUpdated?: EmployeePermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+  }
+
+  export type EmployeeCreateWithoutAttendanceMonthlySummariesInput = {
+    employeeCode: string
+    camAttendanceId: string
+    firstName: string
+    lastName: string
+    fullName: string
+    profilePhoto?: Bytes | null
+    dob?: Date | string | null
+    gender?: string | null
+    bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
+    mobile: string
+    alternateMobile?: string | null
+    email: string
+    passwordHash: string
+    lastLogin?: Date | string | null
+    address?: string | null
+    temporaryAddress?: string | null
+    joiningDate: Date | string
+    employmentType?: $Enums.EmploymentType
+    status?: $Enums.EmployeeStatus
+    emergencyContact?: string | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    pan?: string | null
+    aadhaar?: string | null
+    employeeCategory?: $Enums.EmployeeCategory
+    qualification?: string | null
+    specialization?: string | null
+    skills?: string | null
+    collegeName?: string | null
+    graduationYear?: number | null
+    cgpa?: string | null
+    internshipDetails?: string | null
+    certifications?: string | null
+    totalExperienceYears?: number | null
+    totalExperienceMonths?: number | null
+    previousCompany?: string | null
+    previousDesignation?: string | null
+    previousCtc?: Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: Date | string | null
+    noticePeriod?: string | null
+    relevantExperience?: string | null
+    experienceLetterUrl?: string | null
+    relievingLetterUrl?: string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department: DepartmentCreateNestedOneWithoutEmployeesInput
+    designation: DesignationCreateNestedOneWithoutEmployeesInput
+    role: RoleCreateNestedOneWithoutEmployeesInput
+    reportingManager?: EmployeeCreateNestedOneWithoutDirectReportsInput
+    directReports?: EmployeeCreateNestedManyWithoutReportingManagerInput
+    documents?: EmployeeDocumentCreateNestedManyWithoutEmployeeInput
+    notifications?: NotificationCreateNestedManyWithoutEmployeeInput
+    passwordResetTokens?: PasswordResetTokenCreateNestedManyWithoutEmployeeInput
+    employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
+    auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
+    attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
+    leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendanceCorrections?: AttendanceCorrectionCreateNestedManyWithoutEmployeeInput
+    creator?: EmployeeCreateNestedOneWithoutCreatedEmployeesInput
+    updater?: EmployeeCreateNestedOneWithoutUpdatedEmployeesInput
+    createdEmployees?: EmployeeCreateNestedManyWithoutCreatorInput
+    updatedEmployees?: EmployeeCreateNestedManyWithoutUpdaterInput
+    rolesCreated?: RoleCreateNestedManyWithoutCreatorInput
+    rolesUpdated?: RoleCreateNestedManyWithoutUpdaterInput
+    permissionsCreated?: PermissionCreateNestedManyWithoutCreatorInput
+    permissionsUpdated?: PermissionCreateNestedManyWithoutUpdaterInput
+    rolePermissionsCreated?: RolePermissionCreateNestedManyWithoutCreatorInput
+    rolePermissionsUpdated?: RolePermissionCreateNestedManyWithoutUpdaterInput
+    departmentsCreated?: DepartmentCreateNestedManyWithoutCreatorInput
+    departmentsUpdated?: DepartmentCreateNestedManyWithoutUpdaterInput
+    shiftsCreated?: DepartmentShiftCreateNestedManyWithoutCreatorInput
+    shiftsUpdated?: DepartmentShiftCreateNestedManyWithoutUpdaterInput
+    designationsCreated?: DesignationCreateNestedManyWithoutCreatorInput
+    designationsUpdated?: DesignationCreateNestedManyWithoutUpdaterInput
+    documentsCreated?: EmployeeDocumentCreateNestedManyWithoutCreatorInput
+    documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
+    attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
+    attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
+    syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
+    syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
+    exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
+    exceptionsUpdated?: AttendanceExceptionCreateNestedManyWithoutUpdaterInput
+    leaveTypesCreated?: LeaveTypeCreateNestedManyWithoutCreatorInput
+    leaveTypesUpdated?: LeaveTypeCreateNestedManyWithoutUpdaterInput
+    leaveBalancesCreated?: LeaveBalanceCreateNestedManyWithoutCreatorInput
+    leaveBalancesUpdated?: LeaveBalanceCreateNestedManyWithoutUpdaterInput
+    leaveRequestsCreated?: LeaveRequestCreateNestedManyWithoutCreatorInput
+    leaveRequestsUpdated?: LeaveRequestCreateNestedManyWithoutUpdaterInput
+    holidaysCreated?: HolidayCreateNestedManyWithoutCreatorInput
+    holidaysUpdated?: HolidayCreateNestedManyWithoutUpdaterInput
+    correctionsCreated?: AttendanceCorrectionCreateNestedManyWithoutCreatorInput
+    correctionsUpdated?: AttendanceCorrectionCreateNestedManyWithoutUpdaterInput
+    correctionsApproved?: AttendanceCorrectionCreateNestedManyWithoutApproverInput
+    reportsGenerated?: ReportDownloadLogCreateNestedManyWithoutGeneratorInput
+    reportLogsCreated?: ReportDownloadLogCreateNestedManyWithoutCreatorInput
+    reportLogsUpdated?: ReportDownloadLogCreateNestedManyWithoutUpdaterInput
+    employeePermissionsCreated?: EmployeePermissionCreateNestedManyWithoutCreatorInput
+    employeePermissionsUpdated?: EmployeePermissionCreateNestedManyWithoutUpdaterInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutAttendanceMonthlySummariesInput = {
+    id?: number
+    employeeCode: string
+    camAttendanceId: string
+    firstName: string
+    lastName: string
+    fullName: string
+    profilePhoto?: Bytes | null
+    dob?: Date | string | null
+    gender?: string | null
+    bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
+    mobile: string
+    alternateMobile?: string | null
+    email: string
+    passwordHash: string
+    roleId: number
+    lastLogin?: Date | string | null
+    address?: string | null
+    temporaryAddress?: string | null
+    departmentId: number
+    designationId: number
+    reportingManagerId?: number | null
+    joiningDate: Date | string
+    employmentType?: $Enums.EmploymentType
+    status?: $Enums.EmployeeStatus
+    emergencyContact?: string | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    pan?: string | null
+    aadhaar?: string | null
+    employeeCategory?: $Enums.EmployeeCategory
+    qualification?: string | null
+    specialization?: string | null
+    skills?: string | null
+    collegeName?: string | null
+    graduationYear?: number | null
+    cgpa?: string | null
+    internshipDetails?: string | null
+    certifications?: string | null
+    totalExperienceYears?: number | null
+    totalExperienceMonths?: number | null
+    previousCompany?: string | null
+    previousDesignation?: string | null
+    previousCtc?: Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: Date | string | null
+    noticePeriod?: string | null
+    relevantExperience?: string | null
+    experienceLetterUrl?: string | null
+    relievingLetterUrl?: string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+    directReports?: EmployeeUncheckedCreateNestedManyWithoutReportingManagerInput
+    documents?: EmployeeDocumentUncheckedCreateNestedManyWithoutEmployeeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutEmployeeInput
+    passwordResetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutEmployeeInput
+    employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceCorrections?: AttendanceCorrectionUncheckedCreateNestedManyWithoutEmployeeInput
+    createdEmployees?: EmployeeUncheckedCreateNestedManyWithoutCreatorInput
+    updatedEmployees?: EmployeeUncheckedCreateNestedManyWithoutUpdaterInput
+    rolesCreated?: RoleUncheckedCreateNestedManyWithoutCreatorInput
+    rolesUpdated?: RoleUncheckedCreateNestedManyWithoutUpdaterInput
+    permissionsCreated?: PermissionUncheckedCreateNestedManyWithoutCreatorInput
+    permissionsUpdated?: PermissionUncheckedCreateNestedManyWithoutUpdaterInput
+    rolePermissionsCreated?: RolePermissionUncheckedCreateNestedManyWithoutCreatorInput
+    rolePermissionsUpdated?: RolePermissionUncheckedCreateNestedManyWithoutUpdaterInput
+    departmentsCreated?: DepartmentUncheckedCreateNestedManyWithoutCreatorInput
+    departmentsUpdated?: DepartmentUncheckedCreateNestedManyWithoutUpdaterInput
+    shiftsCreated?: DepartmentShiftUncheckedCreateNestedManyWithoutCreatorInput
+    shiftsUpdated?: DepartmentShiftUncheckedCreateNestedManyWithoutUpdaterInput
+    designationsCreated?: DesignationUncheckedCreateNestedManyWithoutCreatorInput
+    designationsUpdated?: DesignationUncheckedCreateNestedManyWithoutUpdaterInput
+    documentsCreated?: EmployeeDocumentUncheckedCreateNestedManyWithoutCreatorInput
+    documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
+    attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
+    attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
+    syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
+    syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
+    exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
+    exceptionsUpdated?: AttendanceExceptionUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveTypesCreated?: LeaveTypeUncheckedCreateNestedManyWithoutCreatorInput
+    leaveTypesUpdated?: LeaveTypeUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveBalancesCreated?: LeaveBalanceUncheckedCreateNestedManyWithoutCreatorInput
+    leaveBalancesUpdated?: LeaveBalanceUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveRequestsCreated?: LeaveRequestUncheckedCreateNestedManyWithoutCreatorInput
+    leaveRequestsUpdated?: LeaveRequestUncheckedCreateNestedManyWithoutUpdaterInput
+    holidaysCreated?: HolidayUncheckedCreateNestedManyWithoutCreatorInput
+    holidaysUpdated?: HolidayUncheckedCreateNestedManyWithoutUpdaterInput
+    correctionsCreated?: AttendanceCorrectionUncheckedCreateNestedManyWithoutCreatorInput
+    correctionsUpdated?: AttendanceCorrectionUncheckedCreateNestedManyWithoutUpdaterInput
+    correctionsApproved?: AttendanceCorrectionUncheckedCreateNestedManyWithoutApproverInput
+    reportsGenerated?: ReportDownloadLogUncheckedCreateNestedManyWithoutGeneratorInput
+    reportLogsCreated?: ReportDownloadLogUncheckedCreateNestedManyWithoutCreatorInput
+    reportLogsUpdated?: ReportDownloadLogUncheckedCreateNestedManyWithoutUpdaterInput
+    employeePermissionsCreated?: EmployeePermissionUncheckedCreateNestedManyWithoutCreatorInput
+    employeePermissionsUpdated?: EmployeePermissionUncheckedCreateNestedManyWithoutUpdaterInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutAttendanceMonthlySummariesInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutAttendanceMonthlySummariesInput, EmployeeUncheckedCreateWithoutAttendanceMonthlySummariesInput>
+  }
+
+  export type EmployeeCreateWithoutMonthlySummariesCreatedInput = {
+    employeeCode: string
+    camAttendanceId: string
+    firstName: string
+    lastName: string
+    fullName: string
+    profilePhoto?: Bytes | null
+    dob?: Date | string | null
+    gender?: string | null
+    bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
+    mobile: string
+    alternateMobile?: string | null
+    email: string
+    passwordHash: string
+    lastLogin?: Date | string | null
+    address?: string | null
+    temporaryAddress?: string | null
+    joiningDate: Date | string
+    employmentType?: $Enums.EmploymentType
+    status?: $Enums.EmployeeStatus
+    emergencyContact?: string | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    pan?: string | null
+    aadhaar?: string | null
+    employeeCategory?: $Enums.EmployeeCategory
+    qualification?: string | null
+    specialization?: string | null
+    skills?: string | null
+    collegeName?: string | null
+    graduationYear?: number | null
+    cgpa?: string | null
+    internshipDetails?: string | null
+    certifications?: string | null
+    totalExperienceYears?: number | null
+    totalExperienceMonths?: number | null
+    previousCompany?: string | null
+    previousDesignation?: string | null
+    previousCtc?: Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: Date | string | null
+    noticePeriod?: string | null
+    relevantExperience?: string | null
+    experienceLetterUrl?: string | null
+    relievingLetterUrl?: string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department: DepartmentCreateNestedOneWithoutEmployeesInput
+    designation: DesignationCreateNestedOneWithoutEmployeesInput
+    role: RoleCreateNestedOneWithoutEmployeesInput
+    reportingManager?: EmployeeCreateNestedOneWithoutDirectReportsInput
+    directReports?: EmployeeCreateNestedManyWithoutReportingManagerInput
+    documents?: EmployeeDocumentCreateNestedManyWithoutEmployeeInput
+    notifications?: NotificationCreateNestedManyWithoutEmployeeInput
+    passwordResetTokens?: PasswordResetTokenCreateNestedManyWithoutEmployeeInput
+    employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
+    auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
+    attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
+    attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
+    leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendanceCorrections?: AttendanceCorrectionCreateNestedManyWithoutEmployeeInput
+    creator?: EmployeeCreateNestedOneWithoutCreatedEmployeesInput
+    updater?: EmployeeCreateNestedOneWithoutUpdatedEmployeesInput
+    createdEmployees?: EmployeeCreateNestedManyWithoutCreatorInput
+    updatedEmployees?: EmployeeCreateNestedManyWithoutUpdaterInput
+    rolesCreated?: RoleCreateNestedManyWithoutCreatorInput
+    rolesUpdated?: RoleCreateNestedManyWithoutUpdaterInput
+    permissionsCreated?: PermissionCreateNestedManyWithoutCreatorInput
+    permissionsUpdated?: PermissionCreateNestedManyWithoutUpdaterInput
+    rolePermissionsCreated?: RolePermissionCreateNestedManyWithoutCreatorInput
+    rolePermissionsUpdated?: RolePermissionCreateNestedManyWithoutUpdaterInput
+    departmentsCreated?: DepartmentCreateNestedManyWithoutCreatorInput
+    departmentsUpdated?: DepartmentCreateNestedManyWithoutUpdaterInput
+    shiftsCreated?: DepartmentShiftCreateNestedManyWithoutCreatorInput
+    shiftsUpdated?: DepartmentShiftCreateNestedManyWithoutUpdaterInput
+    designationsCreated?: DesignationCreateNestedManyWithoutCreatorInput
+    designationsUpdated?: DesignationCreateNestedManyWithoutUpdaterInput
+    documentsCreated?: EmployeeDocumentCreateNestedManyWithoutCreatorInput
+    documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
+    attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
+    attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
+    syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
+    syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
+    exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
+    exceptionsUpdated?: AttendanceExceptionCreateNestedManyWithoutUpdaterInput
+    leaveTypesCreated?: LeaveTypeCreateNestedManyWithoutCreatorInput
+    leaveTypesUpdated?: LeaveTypeCreateNestedManyWithoutUpdaterInput
+    leaveBalancesCreated?: LeaveBalanceCreateNestedManyWithoutCreatorInput
+    leaveBalancesUpdated?: LeaveBalanceCreateNestedManyWithoutUpdaterInput
+    leaveRequestsCreated?: LeaveRequestCreateNestedManyWithoutCreatorInput
+    leaveRequestsUpdated?: LeaveRequestCreateNestedManyWithoutUpdaterInput
+    holidaysCreated?: HolidayCreateNestedManyWithoutCreatorInput
+    holidaysUpdated?: HolidayCreateNestedManyWithoutUpdaterInput
+    correctionsCreated?: AttendanceCorrectionCreateNestedManyWithoutCreatorInput
+    correctionsUpdated?: AttendanceCorrectionCreateNestedManyWithoutUpdaterInput
+    correctionsApproved?: AttendanceCorrectionCreateNestedManyWithoutApproverInput
+    reportsGenerated?: ReportDownloadLogCreateNestedManyWithoutGeneratorInput
+    reportLogsCreated?: ReportDownloadLogCreateNestedManyWithoutCreatorInput
+    reportLogsUpdated?: ReportDownloadLogCreateNestedManyWithoutUpdaterInput
+    employeePermissionsCreated?: EmployeePermissionCreateNestedManyWithoutCreatorInput
+    employeePermissionsUpdated?: EmployeePermissionCreateNestedManyWithoutUpdaterInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutMonthlySummariesCreatedInput = {
+    id?: number
+    employeeCode: string
+    camAttendanceId: string
+    firstName: string
+    lastName: string
+    fullName: string
+    profilePhoto?: Bytes | null
+    dob?: Date | string | null
+    gender?: string | null
+    bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
+    mobile: string
+    alternateMobile?: string | null
+    email: string
+    passwordHash: string
+    roleId: number
+    lastLogin?: Date | string | null
+    address?: string | null
+    temporaryAddress?: string | null
+    departmentId: number
+    designationId: number
+    reportingManagerId?: number | null
+    joiningDate: Date | string
+    employmentType?: $Enums.EmploymentType
+    status?: $Enums.EmployeeStatus
+    emergencyContact?: string | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    pan?: string | null
+    aadhaar?: string | null
+    employeeCategory?: $Enums.EmployeeCategory
+    qualification?: string | null
+    specialization?: string | null
+    skills?: string | null
+    collegeName?: string | null
+    graduationYear?: number | null
+    cgpa?: string | null
+    internshipDetails?: string | null
+    certifications?: string | null
+    totalExperienceYears?: number | null
+    totalExperienceMonths?: number | null
+    previousCompany?: string | null
+    previousDesignation?: string | null
+    previousCtc?: Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: Date | string | null
+    noticePeriod?: string | null
+    relevantExperience?: string | null
+    experienceLetterUrl?: string | null
+    relievingLetterUrl?: string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+    directReports?: EmployeeUncheckedCreateNestedManyWithoutReportingManagerInput
+    documents?: EmployeeDocumentUncheckedCreateNestedManyWithoutEmployeeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutEmployeeInput
+    passwordResetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutEmployeeInput
+    employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceCorrections?: AttendanceCorrectionUncheckedCreateNestedManyWithoutEmployeeInput
+    createdEmployees?: EmployeeUncheckedCreateNestedManyWithoutCreatorInput
+    updatedEmployees?: EmployeeUncheckedCreateNestedManyWithoutUpdaterInput
+    rolesCreated?: RoleUncheckedCreateNestedManyWithoutCreatorInput
+    rolesUpdated?: RoleUncheckedCreateNestedManyWithoutUpdaterInput
+    permissionsCreated?: PermissionUncheckedCreateNestedManyWithoutCreatorInput
+    permissionsUpdated?: PermissionUncheckedCreateNestedManyWithoutUpdaterInput
+    rolePermissionsCreated?: RolePermissionUncheckedCreateNestedManyWithoutCreatorInput
+    rolePermissionsUpdated?: RolePermissionUncheckedCreateNestedManyWithoutUpdaterInput
+    departmentsCreated?: DepartmentUncheckedCreateNestedManyWithoutCreatorInput
+    departmentsUpdated?: DepartmentUncheckedCreateNestedManyWithoutUpdaterInput
+    shiftsCreated?: DepartmentShiftUncheckedCreateNestedManyWithoutCreatorInput
+    shiftsUpdated?: DepartmentShiftUncheckedCreateNestedManyWithoutUpdaterInput
+    designationsCreated?: DesignationUncheckedCreateNestedManyWithoutCreatorInput
+    designationsUpdated?: DesignationUncheckedCreateNestedManyWithoutUpdaterInput
+    documentsCreated?: EmployeeDocumentUncheckedCreateNestedManyWithoutCreatorInput
+    documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
+    attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
+    attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
+    syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
+    syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
+    exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
+    exceptionsUpdated?: AttendanceExceptionUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveTypesCreated?: LeaveTypeUncheckedCreateNestedManyWithoutCreatorInput
+    leaveTypesUpdated?: LeaveTypeUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveBalancesCreated?: LeaveBalanceUncheckedCreateNestedManyWithoutCreatorInput
+    leaveBalancesUpdated?: LeaveBalanceUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveRequestsCreated?: LeaveRequestUncheckedCreateNestedManyWithoutCreatorInput
+    leaveRequestsUpdated?: LeaveRequestUncheckedCreateNestedManyWithoutUpdaterInput
+    holidaysCreated?: HolidayUncheckedCreateNestedManyWithoutCreatorInput
+    holidaysUpdated?: HolidayUncheckedCreateNestedManyWithoutUpdaterInput
+    correctionsCreated?: AttendanceCorrectionUncheckedCreateNestedManyWithoutCreatorInput
+    correctionsUpdated?: AttendanceCorrectionUncheckedCreateNestedManyWithoutUpdaterInput
+    correctionsApproved?: AttendanceCorrectionUncheckedCreateNestedManyWithoutApproverInput
+    reportsGenerated?: ReportDownloadLogUncheckedCreateNestedManyWithoutGeneratorInput
+    reportLogsCreated?: ReportDownloadLogUncheckedCreateNestedManyWithoutCreatorInput
+    reportLogsUpdated?: ReportDownloadLogUncheckedCreateNestedManyWithoutUpdaterInput
+    employeePermissionsCreated?: EmployeePermissionUncheckedCreateNestedManyWithoutCreatorInput
+    employeePermissionsUpdated?: EmployeePermissionUncheckedCreateNestedManyWithoutUpdaterInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutMonthlySummariesCreatedInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutMonthlySummariesCreatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesCreatedInput>
+  }
+
+  export type EmployeeCreateWithoutMonthlySummariesUpdatedInput = {
+    employeeCode: string
+    camAttendanceId: string
+    firstName: string
+    lastName: string
+    fullName: string
+    profilePhoto?: Bytes | null
+    dob?: Date | string | null
+    gender?: string | null
+    bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
+    mobile: string
+    alternateMobile?: string | null
+    email: string
+    passwordHash: string
+    lastLogin?: Date | string | null
+    address?: string | null
+    temporaryAddress?: string | null
+    joiningDate: Date | string
+    employmentType?: $Enums.EmploymentType
+    status?: $Enums.EmployeeStatus
+    emergencyContact?: string | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    pan?: string | null
+    aadhaar?: string | null
+    employeeCategory?: $Enums.EmployeeCategory
+    qualification?: string | null
+    specialization?: string | null
+    skills?: string | null
+    collegeName?: string | null
+    graduationYear?: number | null
+    cgpa?: string | null
+    internshipDetails?: string | null
+    certifications?: string | null
+    totalExperienceYears?: number | null
+    totalExperienceMonths?: number | null
+    previousCompany?: string | null
+    previousDesignation?: string | null
+    previousCtc?: Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: Date | string | null
+    noticePeriod?: string | null
+    relevantExperience?: string | null
+    experienceLetterUrl?: string | null
+    relievingLetterUrl?: string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    department: DepartmentCreateNestedOneWithoutEmployeesInput
+    designation: DesignationCreateNestedOneWithoutEmployeesInput
+    role: RoleCreateNestedOneWithoutEmployeesInput
+    reportingManager?: EmployeeCreateNestedOneWithoutDirectReportsInput
+    directReports?: EmployeeCreateNestedManyWithoutReportingManagerInput
+    documents?: EmployeeDocumentCreateNestedManyWithoutEmployeeInput
+    notifications?: NotificationCreateNestedManyWithoutEmployeeInput
+    passwordResetTokens?: PasswordResetTokenCreateNestedManyWithoutEmployeeInput
+    employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
+    auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
+    attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
+    attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
+    leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
+    attendanceCorrections?: AttendanceCorrectionCreateNestedManyWithoutEmployeeInput
+    creator?: EmployeeCreateNestedOneWithoutCreatedEmployeesInput
+    updater?: EmployeeCreateNestedOneWithoutUpdatedEmployeesInput
+    createdEmployees?: EmployeeCreateNestedManyWithoutCreatorInput
+    updatedEmployees?: EmployeeCreateNestedManyWithoutUpdaterInput
+    rolesCreated?: RoleCreateNestedManyWithoutCreatorInput
+    rolesUpdated?: RoleCreateNestedManyWithoutUpdaterInput
+    permissionsCreated?: PermissionCreateNestedManyWithoutCreatorInput
+    permissionsUpdated?: PermissionCreateNestedManyWithoutUpdaterInput
+    rolePermissionsCreated?: RolePermissionCreateNestedManyWithoutCreatorInput
+    rolePermissionsUpdated?: RolePermissionCreateNestedManyWithoutUpdaterInput
+    departmentsCreated?: DepartmentCreateNestedManyWithoutCreatorInput
+    departmentsUpdated?: DepartmentCreateNestedManyWithoutUpdaterInput
+    shiftsCreated?: DepartmentShiftCreateNestedManyWithoutCreatorInput
+    shiftsUpdated?: DepartmentShiftCreateNestedManyWithoutUpdaterInput
+    designationsCreated?: DesignationCreateNestedManyWithoutCreatorInput
+    designationsUpdated?: DesignationCreateNestedManyWithoutUpdaterInput
+    documentsCreated?: EmployeeDocumentCreateNestedManyWithoutCreatorInput
+    documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
+    attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
+    attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
+    syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
+    exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
+    exceptionsUpdated?: AttendanceExceptionCreateNestedManyWithoutUpdaterInput
+    leaveTypesCreated?: LeaveTypeCreateNestedManyWithoutCreatorInput
+    leaveTypesUpdated?: LeaveTypeCreateNestedManyWithoutUpdaterInput
+    leaveBalancesCreated?: LeaveBalanceCreateNestedManyWithoutCreatorInput
+    leaveBalancesUpdated?: LeaveBalanceCreateNestedManyWithoutUpdaterInput
+    leaveRequestsCreated?: LeaveRequestCreateNestedManyWithoutCreatorInput
+    leaveRequestsUpdated?: LeaveRequestCreateNestedManyWithoutUpdaterInput
+    holidaysCreated?: HolidayCreateNestedManyWithoutCreatorInput
+    holidaysUpdated?: HolidayCreateNestedManyWithoutUpdaterInput
+    correctionsCreated?: AttendanceCorrectionCreateNestedManyWithoutCreatorInput
+    correctionsUpdated?: AttendanceCorrectionCreateNestedManyWithoutUpdaterInput
+    correctionsApproved?: AttendanceCorrectionCreateNestedManyWithoutApproverInput
+    reportsGenerated?: ReportDownloadLogCreateNestedManyWithoutGeneratorInput
+    reportLogsCreated?: ReportDownloadLogCreateNestedManyWithoutCreatorInput
+    reportLogsUpdated?: ReportDownloadLogCreateNestedManyWithoutUpdaterInput
+    employeePermissionsCreated?: EmployeePermissionCreateNestedManyWithoutCreatorInput
+    employeePermissionsUpdated?: EmployeePermissionCreateNestedManyWithoutUpdaterInput
+  }
+
+  export type EmployeeUncheckedCreateWithoutMonthlySummariesUpdatedInput = {
+    id?: number
+    employeeCode: string
+    camAttendanceId: string
+    firstName: string
+    lastName: string
+    fullName: string
+    profilePhoto?: Bytes | null
+    dob?: Date | string | null
+    gender?: string | null
+    bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
+    mobile: string
+    alternateMobile?: string | null
+    email: string
+    passwordHash: string
+    roleId: number
+    lastLogin?: Date | string | null
+    address?: string | null
+    temporaryAddress?: string | null
+    departmentId: number
+    designationId: number
+    reportingManagerId?: number | null
+    joiningDate: Date | string
+    employmentType?: $Enums.EmploymentType
+    status?: $Enums.EmployeeStatus
+    emergencyContact?: string | null
+    bankName?: string | null
+    accountNumber?: string | null
+    ifscCode?: string | null
+    pan?: string | null
+    aadhaar?: string | null
+    employeeCategory?: $Enums.EmployeeCategory
+    qualification?: string | null
+    specialization?: string | null
+    skills?: string | null
+    collegeName?: string | null
+    graduationYear?: number | null
+    cgpa?: string | null
+    internshipDetails?: string | null
+    certifications?: string | null
+    totalExperienceYears?: number | null
+    totalExperienceMonths?: number | null
+    previousCompany?: string | null
+    previousDesignation?: string | null
+    previousCtc?: Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: Date | string | null
+    noticePeriod?: string | null
+    relevantExperience?: string | null
+    experienceLetterUrl?: string | null
+    relievingLetterUrl?: string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+    directReports?: EmployeeUncheckedCreateNestedManyWithoutReportingManagerInput
+    documents?: EmployeeDocumentUncheckedCreateNestedManyWithoutEmployeeInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutEmployeeInput
+    passwordResetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutEmployeeInput
+    employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
+    auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
+    leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceCorrections?: AttendanceCorrectionUncheckedCreateNestedManyWithoutEmployeeInput
+    createdEmployees?: EmployeeUncheckedCreateNestedManyWithoutCreatorInput
+    updatedEmployees?: EmployeeUncheckedCreateNestedManyWithoutUpdaterInput
+    rolesCreated?: RoleUncheckedCreateNestedManyWithoutCreatorInput
+    rolesUpdated?: RoleUncheckedCreateNestedManyWithoutUpdaterInput
+    permissionsCreated?: PermissionUncheckedCreateNestedManyWithoutCreatorInput
+    permissionsUpdated?: PermissionUncheckedCreateNestedManyWithoutUpdaterInput
+    rolePermissionsCreated?: RolePermissionUncheckedCreateNestedManyWithoutCreatorInput
+    rolePermissionsUpdated?: RolePermissionUncheckedCreateNestedManyWithoutUpdaterInput
+    departmentsCreated?: DepartmentUncheckedCreateNestedManyWithoutCreatorInput
+    departmentsUpdated?: DepartmentUncheckedCreateNestedManyWithoutUpdaterInput
+    shiftsCreated?: DepartmentShiftUncheckedCreateNestedManyWithoutCreatorInput
+    shiftsUpdated?: DepartmentShiftUncheckedCreateNestedManyWithoutUpdaterInput
+    designationsCreated?: DesignationUncheckedCreateNestedManyWithoutCreatorInput
+    designationsUpdated?: DesignationUncheckedCreateNestedManyWithoutUpdaterInput
+    documentsCreated?: EmployeeDocumentUncheckedCreateNestedManyWithoutCreatorInput
+    documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
+    attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
+    attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
+    syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
+    exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
+    exceptionsUpdated?: AttendanceExceptionUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveTypesCreated?: LeaveTypeUncheckedCreateNestedManyWithoutCreatorInput
+    leaveTypesUpdated?: LeaveTypeUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveBalancesCreated?: LeaveBalanceUncheckedCreateNestedManyWithoutCreatorInput
+    leaveBalancesUpdated?: LeaveBalanceUncheckedCreateNestedManyWithoutUpdaterInput
+    leaveRequestsCreated?: LeaveRequestUncheckedCreateNestedManyWithoutCreatorInput
+    leaveRequestsUpdated?: LeaveRequestUncheckedCreateNestedManyWithoutUpdaterInput
+    holidaysCreated?: HolidayUncheckedCreateNestedManyWithoutCreatorInput
+    holidaysUpdated?: HolidayUncheckedCreateNestedManyWithoutUpdaterInput
+    correctionsCreated?: AttendanceCorrectionUncheckedCreateNestedManyWithoutCreatorInput
+    correctionsUpdated?: AttendanceCorrectionUncheckedCreateNestedManyWithoutUpdaterInput
+    correctionsApproved?: AttendanceCorrectionUncheckedCreateNestedManyWithoutApproverInput
+    reportsGenerated?: ReportDownloadLogUncheckedCreateNestedManyWithoutGeneratorInput
+    reportLogsCreated?: ReportDownloadLogUncheckedCreateNestedManyWithoutCreatorInput
+    reportLogsUpdated?: ReportDownloadLogUncheckedCreateNestedManyWithoutUpdaterInput
+    employeePermissionsCreated?: EmployeePermissionUncheckedCreateNestedManyWithoutCreatorInput
+    employeePermissionsUpdated?: EmployeePermissionUncheckedCreateNestedManyWithoutUpdaterInput
+  }
+
+  export type EmployeeCreateOrConnectWithoutMonthlySummariesUpdatedInput = {
+    where: EmployeeWhereUniqueInput
+    create: XOR<EmployeeCreateWithoutMonthlySummariesUpdatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesUpdatedInput>
+  }
+
+  export type EmployeeUpsertWithoutAttendanceMonthlySummariesInput = {
+    update: XOR<EmployeeUpdateWithoutAttendanceMonthlySummariesInput, EmployeeUncheckedUpdateWithoutAttendanceMonthlySummariesInput>
+    create: XOR<EmployeeCreateWithoutAttendanceMonthlySummariesInput, EmployeeUncheckedCreateWithoutAttendanceMonthlySummariesInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutAttendanceMonthlySummariesInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutAttendanceMonthlySummariesInput, EmployeeUncheckedUpdateWithoutAttendanceMonthlySummariesInput>
+  }
+
+  export type EmployeeUpdateWithoutAttendanceMonthlySummariesInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    camAttendanceId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableBytesFieldUpdateOperationsInput | Bytes | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: StringFieldUpdateOperationsInput | string
+    alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -54913,6 +60293,9 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUpdateManyWithoutCreatorNestedInput
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
+    attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -54935,7 +60318,7 @@ export namespace Prisma {
     employeePermissionsUpdated?: EmployeePermissionUpdateManyWithoutUpdaterNestedInput
   }
 
-  export type EmployeeUncheckedUpdateWithoutAttendanceUpdatedInput = {
+  export type EmployeeUncheckedUpdateWithoutAttendanceMonthlySummariesInput = {
     id?: IntFieldUpdateOperationsInput | number
     employeeCode?: StringFieldUpdateOperationsInput | string
     camAttendanceId?: StringFieldUpdateOperationsInput | string
@@ -54946,6 +60329,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -54953,6 +60342,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55018,6 +60408,489 @@ export namespace Prisma {
     documentsCreated?: EmployeeDocumentUncheckedUpdateManyWithoutCreatorNestedInput
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
+    attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
+    syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
+    syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
+    exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
+    exceptionsUpdated?: AttendanceExceptionUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveTypesCreated?: LeaveTypeUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveTypesUpdated?: LeaveTypeUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveBalancesCreated?: LeaveBalanceUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveBalancesUpdated?: LeaveBalanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveRequestsCreated?: LeaveRequestUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveRequestsUpdated?: LeaveRequestUncheckedUpdateManyWithoutUpdaterNestedInput
+    holidaysCreated?: HolidayUncheckedUpdateManyWithoutCreatorNestedInput
+    holidaysUpdated?: HolidayUncheckedUpdateManyWithoutUpdaterNestedInput
+    correctionsCreated?: AttendanceCorrectionUncheckedUpdateManyWithoutCreatorNestedInput
+    correctionsUpdated?: AttendanceCorrectionUncheckedUpdateManyWithoutUpdaterNestedInput
+    correctionsApproved?: AttendanceCorrectionUncheckedUpdateManyWithoutApproverNestedInput
+    reportsGenerated?: ReportDownloadLogUncheckedUpdateManyWithoutGeneratorNestedInput
+    reportLogsCreated?: ReportDownloadLogUncheckedUpdateManyWithoutCreatorNestedInput
+    reportLogsUpdated?: ReportDownloadLogUncheckedUpdateManyWithoutUpdaterNestedInput
+    employeePermissionsCreated?: EmployeePermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    employeePermissionsUpdated?: EmployeePermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+  }
+
+  export type EmployeeUpsertWithoutMonthlySummariesCreatedInput = {
+    update: XOR<EmployeeUpdateWithoutMonthlySummariesCreatedInput, EmployeeUncheckedUpdateWithoutMonthlySummariesCreatedInput>
+    create: XOR<EmployeeCreateWithoutMonthlySummariesCreatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesCreatedInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutMonthlySummariesCreatedInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutMonthlySummariesCreatedInput, EmployeeUncheckedUpdateWithoutMonthlySummariesCreatedInput>
+  }
+
+  export type EmployeeUpdateWithoutMonthlySummariesCreatedInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    camAttendanceId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableBytesFieldUpdateOperationsInput | Bytes | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: StringFieldUpdateOperationsInput | string
+    alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pan?: NullableStringFieldUpdateOperationsInput | string | null
+    aadhaar?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeCategory?: EnumEmployeeCategoryFieldUpdateOperationsInput | $Enums.EmployeeCategory
+    qualification?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    cgpa?: NullableStringFieldUpdateOperationsInput | string | null
+    internshipDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    totalExperienceYears?: NullableIntFieldUpdateOperationsInput | number | null
+    totalExperienceMonths?: NullableIntFieldUpdateOperationsInput | number | null
+    previousCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    previousDesignation?: NullableStringFieldUpdateOperationsInput | string | null
+    previousCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    noticePeriod?: NullableStringFieldUpdateOperationsInput | string | null
+    relevantExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    relievingLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneRequiredWithoutEmployeesNestedInput
+    designation?: DesignationUpdateOneRequiredWithoutEmployeesNestedInput
+    role?: RoleUpdateOneRequiredWithoutEmployeesNestedInput
+    reportingManager?: EmployeeUpdateOneWithoutDirectReportsNestedInput
+    directReports?: EmployeeUpdateManyWithoutReportingManagerNestedInput
+    documents?: EmployeeDocumentUpdateManyWithoutEmployeeNestedInput
+    notifications?: NotificationUpdateManyWithoutEmployeeNestedInput
+    passwordResetTokens?: PasswordResetTokenUpdateManyWithoutEmployeeNestedInput
+    employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
+    attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
+    attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
+    leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendanceCorrections?: AttendanceCorrectionUpdateManyWithoutEmployeeNestedInput
+    creator?: EmployeeUpdateOneWithoutCreatedEmployeesNestedInput
+    updater?: EmployeeUpdateOneWithoutUpdatedEmployeesNestedInput
+    createdEmployees?: EmployeeUpdateManyWithoutCreatorNestedInput
+    updatedEmployees?: EmployeeUpdateManyWithoutUpdaterNestedInput
+    rolesCreated?: RoleUpdateManyWithoutCreatorNestedInput
+    rolesUpdated?: RoleUpdateManyWithoutUpdaterNestedInput
+    permissionsCreated?: PermissionUpdateManyWithoutCreatorNestedInput
+    permissionsUpdated?: PermissionUpdateManyWithoutUpdaterNestedInput
+    rolePermissionsCreated?: RolePermissionUpdateManyWithoutCreatorNestedInput
+    rolePermissionsUpdated?: RolePermissionUpdateManyWithoutUpdaterNestedInput
+    departmentsCreated?: DepartmentUpdateManyWithoutCreatorNestedInput
+    departmentsUpdated?: DepartmentUpdateManyWithoutUpdaterNestedInput
+    shiftsCreated?: DepartmentShiftUpdateManyWithoutCreatorNestedInput
+    shiftsUpdated?: DepartmentShiftUpdateManyWithoutUpdaterNestedInput
+    designationsCreated?: DesignationUpdateManyWithoutCreatorNestedInput
+    designationsUpdated?: DesignationUpdateManyWithoutUpdaterNestedInput
+    documentsCreated?: EmployeeDocumentUpdateManyWithoutCreatorNestedInput
+    documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
+    attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
+    attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
+    syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
+    syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
+    exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
+    exceptionsUpdated?: AttendanceExceptionUpdateManyWithoutUpdaterNestedInput
+    leaveTypesCreated?: LeaveTypeUpdateManyWithoutCreatorNestedInput
+    leaveTypesUpdated?: LeaveTypeUpdateManyWithoutUpdaterNestedInput
+    leaveBalancesCreated?: LeaveBalanceUpdateManyWithoutCreatorNestedInput
+    leaveBalancesUpdated?: LeaveBalanceUpdateManyWithoutUpdaterNestedInput
+    leaveRequestsCreated?: LeaveRequestUpdateManyWithoutCreatorNestedInput
+    leaveRequestsUpdated?: LeaveRequestUpdateManyWithoutUpdaterNestedInput
+    holidaysCreated?: HolidayUpdateManyWithoutCreatorNestedInput
+    holidaysUpdated?: HolidayUpdateManyWithoutUpdaterNestedInput
+    correctionsCreated?: AttendanceCorrectionUpdateManyWithoutCreatorNestedInput
+    correctionsUpdated?: AttendanceCorrectionUpdateManyWithoutUpdaterNestedInput
+    correctionsApproved?: AttendanceCorrectionUpdateManyWithoutApproverNestedInput
+    reportsGenerated?: ReportDownloadLogUpdateManyWithoutGeneratorNestedInput
+    reportLogsCreated?: ReportDownloadLogUpdateManyWithoutCreatorNestedInput
+    reportLogsUpdated?: ReportDownloadLogUpdateManyWithoutUpdaterNestedInput
+    employeePermissionsCreated?: EmployeePermissionUpdateManyWithoutCreatorNestedInput
+    employeePermissionsUpdated?: EmployeePermissionUpdateManyWithoutUpdaterNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutMonthlySummariesCreatedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    camAttendanceId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableBytesFieldUpdateOperationsInput | Bytes | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: StringFieldUpdateOperationsInput | string
+    alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    roleId?: IntFieldUpdateOperationsInput | number
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: IntFieldUpdateOperationsInput | number
+    designationId?: IntFieldUpdateOperationsInput | number
+    reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pan?: NullableStringFieldUpdateOperationsInput | string | null
+    aadhaar?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeCategory?: EnumEmployeeCategoryFieldUpdateOperationsInput | $Enums.EmployeeCategory
+    qualification?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    cgpa?: NullableStringFieldUpdateOperationsInput | string | null
+    internshipDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    totalExperienceYears?: NullableIntFieldUpdateOperationsInput | number | null
+    totalExperienceMonths?: NullableIntFieldUpdateOperationsInput | number | null
+    previousCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    previousDesignation?: NullableStringFieldUpdateOperationsInput | string | null
+    previousCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    noticePeriod?: NullableStringFieldUpdateOperationsInput | string | null
+    relevantExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    relievingLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    directReports?: EmployeeUncheckedUpdateManyWithoutReportingManagerNestedInput
+    documents?: EmployeeDocumentUncheckedUpdateManyWithoutEmployeeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutEmployeeNestedInput
+    passwordResetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutEmployeeNestedInput
+    employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceCorrections?: AttendanceCorrectionUncheckedUpdateManyWithoutEmployeeNestedInput
+    createdEmployees?: EmployeeUncheckedUpdateManyWithoutCreatorNestedInput
+    updatedEmployees?: EmployeeUncheckedUpdateManyWithoutUpdaterNestedInput
+    rolesCreated?: RoleUncheckedUpdateManyWithoutCreatorNestedInput
+    rolesUpdated?: RoleUncheckedUpdateManyWithoutUpdaterNestedInput
+    permissionsCreated?: PermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    permissionsUpdated?: PermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+    rolePermissionsCreated?: RolePermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    rolePermissionsUpdated?: RolePermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+    departmentsCreated?: DepartmentUncheckedUpdateManyWithoutCreatorNestedInput
+    departmentsUpdated?: DepartmentUncheckedUpdateManyWithoutUpdaterNestedInput
+    shiftsCreated?: DepartmentShiftUncheckedUpdateManyWithoutCreatorNestedInput
+    shiftsUpdated?: DepartmentShiftUncheckedUpdateManyWithoutUpdaterNestedInput
+    designationsCreated?: DesignationUncheckedUpdateManyWithoutCreatorNestedInput
+    designationsUpdated?: DesignationUncheckedUpdateManyWithoutUpdaterNestedInput
+    documentsCreated?: EmployeeDocumentUncheckedUpdateManyWithoutCreatorNestedInput
+    documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
+    attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
+    attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
+    syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
+    syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
+    exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
+    exceptionsUpdated?: AttendanceExceptionUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveTypesCreated?: LeaveTypeUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveTypesUpdated?: LeaveTypeUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveBalancesCreated?: LeaveBalanceUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveBalancesUpdated?: LeaveBalanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    leaveRequestsCreated?: LeaveRequestUncheckedUpdateManyWithoutCreatorNestedInput
+    leaveRequestsUpdated?: LeaveRequestUncheckedUpdateManyWithoutUpdaterNestedInput
+    holidaysCreated?: HolidayUncheckedUpdateManyWithoutCreatorNestedInput
+    holidaysUpdated?: HolidayUncheckedUpdateManyWithoutUpdaterNestedInput
+    correctionsCreated?: AttendanceCorrectionUncheckedUpdateManyWithoutCreatorNestedInput
+    correctionsUpdated?: AttendanceCorrectionUncheckedUpdateManyWithoutUpdaterNestedInput
+    correctionsApproved?: AttendanceCorrectionUncheckedUpdateManyWithoutApproverNestedInput
+    reportsGenerated?: ReportDownloadLogUncheckedUpdateManyWithoutGeneratorNestedInput
+    reportLogsCreated?: ReportDownloadLogUncheckedUpdateManyWithoutCreatorNestedInput
+    reportLogsUpdated?: ReportDownloadLogUncheckedUpdateManyWithoutUpdaterNestedInput
+    employeePermissionsCreated?: EmployeePermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    employeePermissionsUpdated?: EmployeePermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+  }
+
+  export type EmployeeUpsertWithoutMonthlySummariesUpdatedInput = {
+    update: XOR<EmployeeUpdateWithoutMonthlySummariesUpdatedInput, EmployeeUncheckedUpdateWithoutMonthlySummariesUpdatedInput>
+    create: XOR<EmployeeCreateWithoutMonthlySummariesUpdatedInput, EmployeeUncheckedCreateWithoutMonthlySummariesUpdatedInput>
+    where?: EmployeeWhereInput
+  }
+
+  export type EmployeeUpdateToOneWithWhereWithoutMonthlySummariesUpdatedInput = {
+    where?: EmployeeWhereInput
+    data: XOR<EmployeeUpdateWithoutMonthlySummariesUpdatedInput, EmployeeUncheckedUpdateWithoutMonthlySummariesUpdatedInput>
+  }
+
+  export type EmployeeUpdateWithoutMonthlySummariesUpdatedInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    camAttendanceId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableBytesFieldUpdateOperationsInput | Bytes | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: StringFieldUpdateOperationsInput | string
+    alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pan?: NullableStringFieldUpdateOperationsInput | string | null
+    aadhaar?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeCategory?: EnumEmployeeCategoryFieldUpdateOperationsInput | $Enums.EmployeeCategory
+    qualification?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    cgpa?: NullableStringFieldUpdateOperationsInput | string | null
+    internshipDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    totalExperienceYears?: NullableIntFieldUpdateOperationsInput | number | null
+    totalExperienceMonths?: NullableIntFieldUpdateOperationsInput | number | null
+    previousCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    previousDesignation?: NullableStringFieldUpdateOperationsInput | string | null
+    previousCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    noticePeriod?: NullableStringFieldUpdateOperationsInput | string | null
+    relevantExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    relievingLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    department?: DepartmentUpdateOneRequiredWithoutEmployeesNestedInput
+    designation?: DesignationUpdateOneRequiredWithoutEmployeesNestedInput
+    role?: RoleUpdateOneRequiredWithoutEmployeesNestedInput
+    reportingManager?: EmployeeUpdateOneWithoutDirectReportsNestedInput
+    directReports?: EmployeeUpdateManyWithoutReportingManagerNestedInput
+    documents?: EmployeeDocumentUpdateManyWithoutEmployeeNestedInput
+    notifications?: NotificationUpdateManyWithoutEmployeeNestedInput
+    passwordResetTokens?: PasswordResetTokenUpdateManyWithoutEmployeeNestedInput
+    employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
+    auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
+    attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
+    attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
+    leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
+    attendanceCorrections?: AttendanceCorrectionUpdateManyWithoutEmployeeNestedInput
+    creator?: EmployeeUpdateOneWithoutCreatedEmployeesNestedInput
+    updater?: EmployeeUpdateOneWithoutUpdatedEmployeesNestedInput
+    createdEmployees?: EmployeeUpdateManyWithoutCreatorNestedInput
+    updatedEmployees?: EmployeeUpdateManyWithoutUpdaterNestedInput
+    rolesCreated?: RoleUpdateManyWithoutCreatorNestedInput
+    rolesUpdated?: RoleUpdateManyWithoutUpdaterNestedInput
+    permissionsCreated?: PermissionUpdateManyWithoutCreatorNestedInput
+    permissionsUpdated?: PermissionUpdateManyWithoutUpdaterNestedInput
+    rolePermissionsCreated?: RolePermissionUpdateManyWithoutCreatorNestedInput
+    rolePermissionsUpdated?: RolePermissionUpdateManyWithoutUpdaterNestedInput
+    departmentsCreated?: DepartmentUpdateManyWithoutCreatorNestedInput
+    departmentsUpdated?: DepartmentUpdateManyWithoutUpdaterNestedInput
+    shiftsCreated?: DepartmentShiftUpdateManyWithoutCreatorNestedInput
+    shiftsUpdated?: DepartmentShiftUpdateManyWithoutUpdaterNestedInput
+    designationsCreated?: DesignationUpdateManyWithoutCreatorNestedInput
+    designationsUpdated?: DesignationUpdateManyWithoutUpdaterNestedInput
+    documentsCreated?: EmployeeDocumentUpdateManyWithoutCreatorNestedInput
+    documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
+    attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
+    attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
+    syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
+    exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
+    exceptionsUpdated?: AttendanceExceptionUpdateManyWithoutUpdaterNestedInput
+    leaveTypesCreated?: LeaveTypeUpdateManyWithoutCreatorNestedInput
+    leaveTypesUpdated?: LeaveTypeUpdateManyWithoutUpdaterNestedInput
+    leaveBalancesCreated?: LeaveBalanceUpdateManyWithoutCreatorNestedInput
+    leaveBalancesUpdated?: LeaveBalanceUpdateManyWithoutUpdaterNestedInput
+    leaveRequestsCreated?: LeaveRequestUpdateManyWithoutCreatorNestedInput
+    leaveRequestsUpdated?: LeaveRequestUpdateManyWithoutUpdaterNestedInput
+    holidaysCreated?: HolidayUpdateManyWithoutCreatorNestedInput
+    holidaysUpdated?: HolidayUpdateManyWithoutUpdaterNestedInput
+    correctionsCreated?: AttendanceCorrectionUpdateManyWithoutCreatorNestedInput
+    correctionsUpdated?: AttendanceCorrectionUpdateManyWithoutUpdaterNestedInput
+    correctionsApproved?: AttendanceCorrectionUpdateManyWithoutApproverNestedInput
+    reportsGenerated?: ReportDownloadLogUpdateManyWithoutGeneratorNestedInput
+    reportLogsCreated?: ReportDownloadLogUpdateManyWithoutCreatorNestedInput
+    reportLogsUpdated?: ReportDownloadLogUpdateManyWithoutUpdaterNestedInput
+    employeePermissionsCreated?: EmployeePermissionUpdateManyWithoutCreatorNestedInput
+    employeePermissionsUpdated?: EmployeePermissionUpdateManyWithoutUpdaterNestedInput
+  }
+
+  export type EmployeeUncheckedUpdateWithoutMonthlySummariesUpdatedInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    camAttendanceId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    fullName?: StringFieldUpdateOperationsInput | string
+    profilePhoto?: NullableBytesFieldUpdateOperationsInput | Bytes | null
+    dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    gender?: NullableStringFieldUpdateOperationsInput | string | null
+    bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
+    mobile?: StringFieldUpdateOperationsInput | string
+    alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: StringFieldUpdateOperationsInput | string
+    passwordHash?: StringFieldUpdateOperationsInput | string
+    roleId?: IntFieldUpdateOperationsInput | number
+    lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    departmentId?: IntFieldUpdateOperationsInput | number
+    designationId?: IntFieldUpdateOperationsInput | number
+    reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
+    joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
+    status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
+    emergencyContact?: NullableStringFieldUpdateOperationsInput | string | null
+    bankName?: NullableStringFieldUpdateOperationsInput | string | null
+    accountNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    ifscCode?: NullableStringFieldUpdateOperationsInput | string | null
+    pan?: NullableStringFieldUpdateOperationsInput | string | null
+    aadhaar?: NullableStringFieldUpdateOperationsInput | string | null
+    employeeCategory?: EnumEmployeeCategoryFieldUpdateOperationsInput | $Enums.EmployeeCategory
+    qualification?: NullableStringFieldUpdateOperationsInput | string | null
+    specialization?: NullableStringFieldUpdateOperationsInput | string | null
+    skills?: NullableStringFieldUpdateOperationsInput | string | null
+    collegeName?: NullableStringFieldUpdateOperationsInput | string | null
+    graduationYear?: NullableIntFieldUpdateOperationsInput | number | null
+    cgpa?: NullableStringFieldUpdateOperationsInput | string | null
+    internshipDetails?: NullableStringFieldUpdateOperationsInput | string | null
+    certifications?: NullableStringFieldUpdateOperationsInput | string | null
+    totalExperienceYears?: NullableIntFieldUpdateOperationsInput | number | null
+    totalExperienceMonths?: NullableIntFieldUpdateOperationsInput | number | null
+    previousCompany?: NullableStringFieldUpdateOperationsInput | string | null
+    previousDesignation?: NullableStringFieldUpdateOperationsInput | string | null
+    previousCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    expectedCtc?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    lastWorkingDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    noticePeriod?: NullableStringFieldUpdateOperationsInput | string | null
+    relevantExperience?: NullableStringFieldUpdateOperationsInput | string | null
+    experienceLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    relievingLetterUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    payslipUrls?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+    directReports?: EmployeeUncheckedUpdateManyWithoutReportingManagerNestedInput
+    documents?: EmployeeDocumentUncheckedUpdateManyWithoutEmployeeNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutEmployeeNestedInput
+    passwordResetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutEmployeeNestedInput
+    employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
+    auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceCorrections?: AttendanceCorrectionUncheckedUpdateManyWithoutEmployeeNestedInput
+    createdEmployees?: EmployeeUncheckedUpdateManyWithoutCreatorNestedInput
+    updatedEmployees?: EmployeeUncheckedUpdateManyWithoutUpdaterNestedInput
+    rolesCreated?: RoleUncheckedUpdateManyWithoutCreatorNestedInput
+    rolesUpdated?: RoleUncheckedUpdateManyWithoutUpdaterNestedInput
+    permissionsCreated?: PermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    permissionsUpdated?: PermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+    rolePermissionsCreated?: RolePermissionUncheckedUpdateManyWithoutCreatorNestedInput
+    rolePermissionsUpdated?: RolePermissionUncheckedUpdateManyWithoutUpdaterNestedInput
+    departmentsCreated?: DepartmentUncheckedUpdateManyWithoutCreatorNestedInput
+    departmentsUpdated?: DepartmentUncheckedUpdateManyWithoutUpdaterNestedInput
+    shiftsCreated?: DepartmentShiftUncheckedUpdateManyWithoutCreatorNestedInput
+    shiftsUpdated?: DepartmentShiftUncheckedUpdateManyWithoutUpdaterNestedInput
+    designationsCreated?: DesignationUncheckedUpdateManyWithoutCreatorNestedInput
+    designationsUpdated?: DesignationUncheckedUpdateManyWithoutUpdaterNestedInput
+    documentsCreated?: EmployeeDocumentUncheckedUpdateManyWithoutCreatorNestedInput
+    documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
+    attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
+    attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -55050,12 +60923,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -55099,6 +60979,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -55123,6 +61004,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
     exceptionsUpdated?: AttendanceExceptionCreateNestedManyWithoutUpdaterInput
@@ -55155,6 +61038,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -55162,6 +61051,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -55206,6 +61096,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -55228,6 +61119,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
     exceptionsUpdated?: AttendanceExceptionUncheckedCreateNestedManyWithoutUpdaterInput
@@ -55264,12 +61157,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -55313,6 +61213,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -55337,6 +61238,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
     exceptionsUpdated?: AttendanceExceptionCreateNestedManyWithoutUpdaterInput
@@ -55369,6 +61272,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -55376,6 +61285,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -55420,6 +61330,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -55442,6 +61353,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
     exceptionsUpdated?: AttendanceExceptionUncheckedCreateNestedManyWithoutUpdaterInput
@@ -55489,12 +61402,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -55538,6 +61458,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -55562,6 +61483,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
     exceptionsUpdated?: AttendanceExceptionUpdateManyWithoutUpdaterNestedInput
@@ -55594,6 +61517,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -55601,6 +61530,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55645,6 +61575,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -55667,6 +61598,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
     exceptionsUpdated?: AttendanceExceptionUncheckedUpdateManyWithoutUpdaterNestedInput
@@ -55709,12 +61642,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -55758,6 +61698,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -55782,6 +61723,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
     exceptionsUpdated?: AttendanceExceptionUpdateManyWithoutUpdaterNestedInput
@@ -55814,6 +61757,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -55821,6 +61770,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55865,6 +61815,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -55887,6 +61838,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
     exceptionsUpdated?: AttendanceExceptionUncheckedUpdateManyWithoutUpdaterNestedInput
@@ -55918,12 +61871,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -55967,6 +61927,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendanceCorrections?: AttendanceCorrectionCreateNestedManyWithoutEmployeeInput
@@ -55990,6 +61951,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -56023,6 +61986,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -56030,6 +61999,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -56074,6 +62044,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceCorrections?: AttendanceCorrectionUncheckedCreateNestedManyWithoutEmployeeInput
@@ -56095,6 +62066,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -56132,12 +62105,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -56181,6 +62161,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -56205,6 +62186,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsUpdated?: AttendanceExceptionCreateNestedManyWithoutUpdaterInput
@@ -56237,6 +62220,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -56244,6 +62233,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -56288,6 +62278,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -56310,6 +62301,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsUpdated?: AttendanceExceptionUncheckedCreateNestedManyWithoutUpdaterInput
@@ -56346,12 +62339,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -56395,6 +62395,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -56419,6 +62420,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -56451,6 +62454,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -56458,6 +62467,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -56502,6 +62512,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -56524,6 +62535,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -56571,12 +62584,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -56620,6 +62640,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendanceCorrections?: AttendanceCorrectionUpdateManyWithoutEmployeeNestedInput
@@ -56643,6 +62664,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -56676,6 +62699,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -56683,6 +62712,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56727,6 +62757,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceCorrections?: AttendanceCorrectionUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -56748,6 +62779,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -56791,12 +62824,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -56840,6 +62880,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -56864,6 +62905,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsUpdated?: AttendanceExceptionUpdateManyWithoutUpdaterNestedInput
@@ -56896,6 +62939,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -56903,6 +62952,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56947,6 +62997,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -56969,6 +63020,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsUpdated?: AttendanceExceptionUncheckedUpdateManyWithoutUpdaterNestedInput
@@ -57011,12 +63064,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -57060,6 +63120,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -57084,6 +63145,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -57116,6 +63179,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -57123,6 +63192,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57167,6 +63237,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -57189,6 +63260,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -57296,12 +63369,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -57345,6 +63425,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -57369,6 +63450,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -57401,6 +63484,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -57408,6 +63497,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -57452,6 +63542,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -57474,6 +63565,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -57510,12 +63603,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -57559,6 +63659,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -57583,6 +63684,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -57615,6 +63718,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -57622,6 +63731,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -57666,6 +63776,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -57688,6 +63799,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -57767,12 +63880,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -57816,6 +63936,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -57840,6 +63961,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -57872,6 +63995,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -57879,6 +64008,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57923,6 +64053,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -57945,6 +64076,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -57987,12 +64120,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -58036,6 +64176,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -58060,6 +64201,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -58092,6 +64235,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -58099,6 +64248,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -58143,6 +64293,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -58165,6 +64316,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -58196,12 +64349,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -58245,6 +64405,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
     attendanceCorrections?: AttendanceCorrectionCreateNestedManyWithoutEmployeeInput
@@ -58268,6 +64429,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -58301,6 +64464,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -58308,6 +64477,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -58352,6 +64522,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceCorrections?: AttendanceCorrectionUncheckedCreateNestedManyWithoutEmployeeInput
@@ -58373,6 +64544,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -58436,12 +64609,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -58485,6 +64665,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -58509,6 +64690,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -58541,6 +64724,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -58548,6 +64737,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -58592,6 +64782,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -58614,6 +64805,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -58650,12 +64843,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -58699,6 +64899,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -58723,6 +64924,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -58755,6 +64958,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -58762,6 +64971,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -58806,6 +65016,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -58828,6 +65039,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -58875,12 +65088,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -58924,6 +65144,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
     attendanceCorrections?: AttendanceCorrectionUpdateManyWithoutEmployeeNestedInput
@@ -58947,6 +65168,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -58980,6 +65203,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -58987,6 +65216,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59031,6 +65261,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceCorrections?: AttendanceCorrectionUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -59052,6 +65283,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -59127,12 +65360,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -59176,6 +65416,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -59200,6 +65441,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -59232,6 +65475,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -59239,6 +65488,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59283,6 +65533,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -59305,6 +65556,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -59347,12 +65600,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -59396,6 +65656,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -59420,6 +65681,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -59452,6 +65715,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -59459,6 +65728,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -59503,6 +65773,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -59525,6 +65796,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -59556,12 +65829,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -59605,6 +65885,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     attendanceCorrections?: AttendanceCorrectionCreateNestedManyWithoutEmployeeInput
@@ -59628,6 +65909,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -59661,6 +65944,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -59668,6 +65957,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -59712,6 +66002,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceCorrections?: AttendanceCorrectionUncheckedCreateNestedManyWithoutEmployeeInput
@@ -59733,6 +66024,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -59796,12 +66089,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -59845,6 +66145,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -59869,6 +66170,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -59901,6 +66204,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -59908,6 +66217,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -59952,6 +66262,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -59974,6 +66285,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -60010,12 +66323,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -60059,6 +66379,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -60083,6 +66404,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -60115,6 +66438,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -60122,6 +66451,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -60166,6 +66496,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -60188,6 +66519,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -60235,12 +66568,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -60284,6 +66624,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     attendanceCorrections?: AttendanceCorrectionUpdateManyWithoutEmployeeNestedInput
@@ -60307,6 +66648,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -60340,6 +66683,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -60347,6 +66696,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60391,6 +66741,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceCorrections?: AttendanceCorrectionUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -60412,6 +66763,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -60487,12 +66840,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -60536,6 +66896,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -60560,6 +66921,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -60592,6 +66955,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -60599,6 +66968,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60643,6 +67013,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -60665,6 +67036,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -60707,12 +67080,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -60756,6 +67136,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -60780,6 +67161,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -60812,6 +67195,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -60819,6 +67208,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -60863,6 +67253,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -60885,6 +67276,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -60916,12 +67309,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -60965,6 +67365,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -60989,6 +67390,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -61021,6 +67424,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -61028,6 +67437,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -61072,6 +67482,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -61094,6 +67505,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -61130,12 +67543,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -61179,6 +67599,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -61203,6 +67624,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -61235,6 +67658,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -61242,6 +67671,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -61286,6 +67716,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -61308,6 +67739,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -61355,12 +67788,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -61404,6 +67844,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -61428,6 +67869,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -61460,6 +67903,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -61467,6 +67916,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61511,6 +67961,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -61533,6 +67984,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -61575,12 +68028,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -61624,6 +68084,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -61648,6 +68109,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -61680,6 +68143,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -61687,6 +68156,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -61731,6 +68201,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -61753,6 +68224,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -61784,12 +68257,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -61833,6 +68313,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -61856,6 +68337,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -61889,6 +68372,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -61896,6 +68385,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -61940,6 +68430,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -61961,6 +68452,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -62040,12 +68533,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -62089,6 +68589,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -62113,6 +68614,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -62145,6 +68648,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -62152,6 +68661,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -62196,6 +68706,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -62218,6 +68729,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -62254,12 +68767,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -62303,6 +68823,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -62327,6 +68848,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -62359,6 +68882,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -62366,6 +68895,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -62410,6 +68940,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -62432,6 +68963,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -62468,12 +69001,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -62517,6 +69057,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -62541,6 +69082,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -62573,6 +69116,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -62580,6 +69129,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -62624,6 +69174,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -62646,6 +69197,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -62693,12 +69246,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -62742,6 +69302,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -62765,6 +69326,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -62798,6 +69361,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -62805,6 +69374,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -62849,6 +69419,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -62870,6 +69441,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -62961,12 +69534,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -63010,6 +69590,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -63034,6 +69615,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -63066,6 +69649,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -63073,6 +69662,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63117,6 +69707,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -63139,6 +69730,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -63181,12 +69774,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -63230,6 +69830,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -63254,6 +69855,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -63286,6 +69889,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -63293,6 +69902,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63337,6 +69947,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -63359,6 +69970,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -63401,12 +70014,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -63450,6 +70070,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -63474,6 +70095,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -63506,6 +70129,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -63513,6 +70142,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -63557,6 +70187,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -63579,6 +70210,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -63610,12 +70243,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -63659,6 +70299,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -63683,6 +70324,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -63715,6 +70358,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -63722,6 +70371,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -63766,6 +70416,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -63788,6 +70439,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -63824,12 +70477,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -63873,6 +70533,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -63897,6 +70558,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -63929,6 +70592,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -63936,6 +70605,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -63980,6 +70650,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -64002,6 +70673,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -64038,12 +70711,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -64087,6 +70767,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -64111,6 +70792,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -64143,6 +70826,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -64150,6 +70839,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -64194,6 +70884,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -64216,6 +70907,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -64263,12 +70956,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -64312,6 +71012,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -64336,6 +71037,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -64368,6 +71071,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -64375,6 +71084,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64419,6 +71129,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -64441,6 +71152,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -64483,12 +71196,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -64532,6 +71252,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -64556,6 +71277,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -64588,6 +71311,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -64595,6 +71324,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64639,6 +71369,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -64661,6 +71392,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -64703,12 +71436,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -64752,6 +71492,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -64776,6 +71517,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -64808,6 +71551,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -64815,6 +71564,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -64859,6 +71609,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -64881,6 +71632,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -64912,12 +71665,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -64960,6 +71720,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenCreateNestedManyWithoutEmployeeInput
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -64984,6 +71745,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -65017,6 +71780,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -65024,6 +71793,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -65067,6 +71837,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutEmployeeInput
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -65089,6 +71860,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -65137,12 +71910,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -65185,6 +71965,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUpdateManyWithoutEmployeeNestedInput
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -65209,6 +71990,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -65242,6 +72025,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -65249,6 +72038,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65292,6 +72082,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutEmployeeNestedInput
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -65314,6 +72105,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -65346,12 +72139,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -65394,6 +72194,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -65418,6 +72219,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -65451,6 +72254,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -65458,6 +72267,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -65501,6 +72311,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -65523,6 +72334,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -65571,12 +72384,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -65619,6 +72439,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -65643,6 +72464,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -65676,6 +72499,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -65683,6 +72512,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65726,6 +72556,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -65748,6 +72579,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -65780,12 +72613,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -65828,6 +72668,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -65852,6 +72693,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -65885,6 +72728,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -65892,6 +72741,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -65935,6 +72785,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -65957,6 +72808,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -66005,12 +72858,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -66053,6 +72913,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -66077,6 +72938,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -66110,6 +72973,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -66117,6 +72986,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66160,6 +73030,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -66182,6 +73053,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -66214,12 +73087,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -66262,6 +73142,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -66286,6 +73167,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -66319,6 +73202,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -66326,6 +73215,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -66369,6 +73259,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -66391,6 +73282,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -66454,12 +73347,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -66503,6 +73403,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -66527,6 +73428,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -66559,6 +73462,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -66566,6 +73475,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -66610,6 +73520,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -66632,6 +73543,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -66668,12 +73581,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     joiningDate: Date | string
     employmentType?: $Enums.EmploymentType
     status?: $Enums.EmployeeStatus
@@ -66717,6 +73637,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestCreateNestedManyWithoutEmployeeInput
@@ -66741,6 +73662,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionCreateNestedManyWithoutCreatorInput
@@ -66773,6 +73696,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -66780,6 +73709,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -66824,6 +73754,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedCreateNestedManyWithoutEmployeeInput
     auditLogs?: AuditLogUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceRecords?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutEmployeeInput
     attendanceExceptions?: AttendanceExceptionUncheckedCreateNestedManyWithoutEmployeeInput
     leaveBalances?: LeaveBalanceUncheckedCreateNestedManyWithoutEmployeeInput
     leaveRequests?: LeaveRequestUncheckedCreateNestedManyWithoutEmployeeInput
@@ -66846,6 +73777,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedCreateNestedManyWithoutUpdaterInput
     attendanceCreated?: AttendanceUncheckedCreateNestedManyWithoutCreatorInput
     attendanceUpdated?: AttendanceUncheckedCreateNestedManyWithoutUpdaterInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutCreatorInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedCreateNestedManyWithoutUpdaterInput
     syncLogsCreated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutCreatorInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedCreateNestedManyWithoutUpdaterInput
     exceptionsCreated?: AttendanceExceptionUncheckedCreateNestedManyWithoutCreatorInput
@@ -66893,12 +73826,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -66941,6 +73881,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -66965,6 +73906,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -66998,6 +73941,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -67005,6 +73954,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67048,6 +73998,7 @@ export namespace Prisma {
     passwordResetTokens?: PasswordResetTokenUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -67070,6 +74021,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -67145,12 +74098,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -67194,6 +74154,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -67218,6 +74179,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -67250,6 +74213,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -67257,6 +74226,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67301,6 +74271,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -67323,6 +74294,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -67365,12 +74338,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -67414,6 +74394,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -67438,6 +74419,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -67470,6 +74453,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -67477,6 +74466,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67521,6 +74511,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -67543,6 +74534,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -67575,12 +74568,19 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
     passwordHash: string
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -67639,12 +74639,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -67687,6 +74694,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -67711,6 +74719,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -67744,12 +74754,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67794,6 +74811,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -67816,6 +74834,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -67849,12 +74869,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68001,6 +75028,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -68008,6 +75041,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     designationId: number
     reportingManagerId?: number | null
     joiningDate: Date | string
@@ -68082,12 +75116,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -68130,6 +75171,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -68154,6 +75196,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -68187,6 +75231,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -68194,6 +75244,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68237,6 +75288,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -68259,6 +75311,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -68292,6 +75346,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -68299,6 +75359,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68426,6 +75487,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -68433,6 +75500,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     reportingManagerId?: number | null
     joiningDate: Date | string
@@ -68481,12 +75549,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -68529,6 +75604,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -68553,6 +75629,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -68586,6 +75664,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -68593,6 +75677,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68636,6 +75721,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -68658,6 +75744,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -68691,6 +75779,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -68698,6 +75792,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68747,6 +75842,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -68754,6 +75855,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     joiningDate: Date | string
@@ -68864,6 +75966,24 @@ export namespace Prisma {
     updatedBy?: number | null
   }
 
+  export type AttendanceMonthlySummaryCreateManyEmployeeInput = {
+    id?: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+    updatedBy?: number | null
+  }
+
   export type AttendanceExceptionCreateManyEmployeeInput = {
     id?: number
     attendanceDate: Date | string
@@ -68933,6 +76053,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -68940,6 +76066,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -68989,6 +76116,12 @@ export namespace Prisma {
     dob?: Date | string | null
     gender?: string | null
     bloodGroup?: string | null
+    motherName?: string | null
+    fatherName?: string | null
+    maritalStatus?: string | null
+    spouseName?: string | null
+    religion?: string | null
+    nationality?: string | null
     mobile: string
     alternateMobile?: string | null
     email: string
@@ -68996,6 +76129,7 @@ export namespace Prisma {
     roleId: number
     lastLogin?: Date | string | null
     address?: string | null
+    temporaryAddress?: string | null
     departmentId: number
     designationId: number
     reportingManagerId?: number | null
@@ -69215,6 +76349,42 @@ export namespace Prisma {
     attendanceStatus: $Enums.AttendanceStatus
     lateMinutes?: number | null
     attendanceRemark?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    createdBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateManyCreatorInput = {
+    id?: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    updatedBy?: number | null
+  }
+
+  export type AttendanceMonthlySummaryCreateManyUpdaterInput = {
+    id?: number
+    employeeId: number
+    employeeCode: string
+    year: number
+    month: number
+    monthName: string
+    lateDays?: number
+    fullDays?: number
+    halfDays?: number
+    sundays?: number
+    totalPresentDays?: number
+    absentDays?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     createdBy?: number | null
@@ -69475,12 +76645,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -69523,6 +76700,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -69547,6 +76725,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -69580,6 +76760,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -69587,6 +76773,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69630,6 +76817,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -69652,6 +76840,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -69685,6 +76875,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -69692,6 +76888,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -69942,6 +77139,59 @@ export namespace Prisma {
     updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
+  export type AttendanceMonthlySummaryUpdateWithoutEmployeeInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: EmployeeUpdateOneWithoutMonthlySummariesCreatedNestedInput
+    updater?: EmployeeUpdateOneWithoutMonthlySummariesUpdatedNestedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateWithoutEmployeeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
   export type AttendanceExceptionUpdateWithoutEmployeeInput = {
     attendanceDate?: DateTimeFieldUpdateOperationsInput | Date | string
     issueType?: EnumAttendanceExceptionIssueFieldUpdateOperationsInput | $Enums.AttendanceExceptionIssue
@@ -70122,12 +77372,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -70171,6 +77428,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -70194,6 +77452,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -70227,6 +77487,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -70234,6 +77500,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70277,6 +77544,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -70299,6 +77567,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -70332,6 +77602,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -70339,6 +77615,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70387,12 +77664,19 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     joiningDate?: DateTimeFieldUpdateOperationsInput | Date | string
     employmentType?: EnumEmploymentTypeFieldUpdateOperationsInput | $Enums.EmploymentType
     status?: EnumEmployeeStatusFieldUpdateOperationsInput | $Enums.EmployeeStatus
@@ -70436,6 +77720,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUpdateManyWithoutEmployeeNestedInput
@@ -70459,6 +77744,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUpdateManyWithoutCreatorNestedInput
@@ -70492,6 +77779,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -70499,6 +77792,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70542,6 +77836,7 @@ export namespace Prisma {
     employeePermissions?: EmployeePermissionUncheckedUpdateManyWithoutEmployeeNestedInput
     auditLogs?: AuditLogUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceRecords?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
+    attendanceMonthlySummaries?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutEmployeeNestedInput
     attendanceExceptions?: AttendanceExceptionUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveBalances?: LeaveBalanceUncheckedUpdateManyWithoutEmployeeNestedInput
     leaveRequests?: LeaveRequestUncheckedUpdateManyWithoutEmployeeNestedInput
@@ -70564,6 +77859,8 @@ export namespace Prisma {
     documentsUpdated?: EmployeeDocumentUncheckedUpdateManyWithoutUpdaterNestedInput
     attendanceCreated?: AttendanceUncheckedUpdateManyWithoutCreatorNestedInput
     attendanceUpdated?: AttendanceUncheckedUpdateManyWithoutUpdaterNestedInput
+    monthlySummariesCreated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorNestedInput
+    monthlySummariesUpdated?: AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterNestedInput
     syncLogsCreated?: AttendanceSyncLogUncheckedUpdateManyWithoutCreatorNestedInput
     syncLogsUpdated?: AttendanceSyncLogUncheckedUpdateManyWithoutUpdaterNestedInput
     exceptionsCreated?: AttendanceExceptionUncheckedUpdateManyWithoutCreatorNestedInput
@@ -70597,6 +77894,12 @@ export namespace Prisma {
     dob?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     gender?: NullableStringFieldUpdateOperationsInput | string | null
     bloodGroup?: NullableStringFieldUpdateOperationsInput | string | null
+    motherName?: NullableStringFieldUpdateOperationsInput | string | null
+    fatherName?: NullableStringFieldUpdateOperationsInput | string | null
+    maritalStatus?: NullableStringFieldUpdateOperationsInput | string | null
+    spouseName?: NullableStringFieldUpdateOperationsInput | string | null
+    religion?: NullableStringFieldUpdateOperationsInput | string | null
+    nationality?: NullableStringFieldUpdateOperationsInput | string | null
     mobile?: StringFieldUpdateOperationsInput | string
     alternateMobile?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
@@ -70604,6 +77907,7 @@ export namespace Prisma {
     roleId?: IntFieldUpdateOperationsInput | number
     lastLogin?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    temporaryAddress?: NullableStringFieldUpdateOperationsInput | string | null
     departmentId?: IntFieldUpdateOperationsInput | number
     designationId?: IntFieldUpdateOperationsInput | number
     reportingManagerId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -71215,6 +78519,112 @@ export namespace Prisma {
     attendanceStatus?: EnumAttendanceStatusFieldUpdateOperationsInput | $Enums.AttendanceStatus
     lateMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     attendanceRemark?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryUpdateWithoutCreatorInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutAttendanceMonthlySummariesNestedInput
+    updater?: EmployeeUpdateOneWithoutMonthlySummariesUpdatedNestedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateWithoutCreatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeId?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateManyWithoutCreatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeId?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryUpdateWithoutUpdaterInput = {
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: EmployeeUpdateOneRequiredWithoutAttendanceMonthlySummariesNestedInput
+    creator?: EmployeeUpdateOneWithoutMonthlySummariesCreatedNestedInput
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateWithoutUpdaterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeId?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdBy?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type AttendanceMonthlySummaryUncheckedUpdateManyWithoutUpdaterInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employeeId?: IntFieldUpdateOperationsInput | number
+    employeeCode?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    month?: IntFieldUpdateOperationsInput | number
+    monthName?: StringFieldUpdateOperationsInput | string
+    lateDays?: IntFieldUpdateOperationsInput | number
+    fullDays?: IntFieldUpdateOperationsInput | number
+    halfDays?: IntFieldUpdateOperationsInput | number
+    sundays?: IntFieldUpdateOperationsInput | number
+    totalPresentDays?: IntFieldUpdateOperationsInput | number
+    absentDays?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     createdBy?: NullableIntFieldUpdateOperationsInput | number | null

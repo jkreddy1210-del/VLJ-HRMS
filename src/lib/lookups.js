@@ -15,6 +15,28 @@ export const BLOOD_GROUPS = [
   "A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-",
 ].map((value) => ({ value, label: value }));
 
+export const MARITAL_STATUSES = [
+  { value: "Single", label: "Single" },
+  { value: "Married", label: "Married" },
+  { value: "Divorced", label: "Divorced" },
+  { value: "Widowed", label: "Widowed" },
+];
+
+export const RELIGIONS = [
+  { value: "Hindu", label: "Hindu" },
+  { value: "Muslim", label: "Muslim" },
+  { value: "Christian", label: "Christian" },
+  { value: "Sikh", label: "Sikh" },
+  { value: "Buddhist", label: "Buddhist" },
+  { value: "Jain", label: "Jain" },
+  { value: "Other", label: "Other" },
+];
+
+export const NATIONALITIES = [
+  { value: "Indian", label: "Indian" },
+  { value: "Other", label: "Other" },
+];
+
 export const EMPLOYMENT_TYPES = [
   { value: "Full_Time", label: "Full Time" },
   { value: "Part_Time", label: "Part Time" },

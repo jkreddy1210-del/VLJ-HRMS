@@ -1,5 +1,5 @@
 const PHOTO_MIME = ["image/jpeg", "image/jpg", "image/png"];
-const MAX_PHOTO_SIZE = 2 * 1024 * 1024;
+const MAX_PHOTO_SIZE = 5 * 1024 * 1024;
 
 export { PHOTO_MIME, MAX_PHOTO_SIZE };
 
@@ -57,7 +57,7 @@ export function validateProfilePhotoFile(file) {
     return { valid: false, error: "File is required" };
   }
   if (file.size > MAX_PHOTO_SIZE) {
-    return { valid: false, error: "Photo must be under 2MB" };
+    return { valid: false, error: "Photo must be under 5MB" };
   }
   if (!PHOTO_MIME.includes(file.type)) {
     return { valid: false, error: "Profile photo must be JPG or PNG" };

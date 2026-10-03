@@ -33,6 +33,7 @@ import {
   buildDesignationFilterOptions,
 } from "@/lib/lookups";
 import { parsePagination, buildListPagination } from "@/lib/pagination";
+import { ensureBankExists } from "@/lib/banks";
 
 export async function GET(request) {
   const { user, error } = await requireAuth(request);
@@ -206,12 +207,19 @@ export async function POST(request) {
         dob: normalized.dob ? new Date(normalized.dob) : null,
         gender: normalized.gender || null,
         bloodGroup: normalized.bloodGroup || null,
+        motherName: normalized.motherName || null,
+        fatherName: normalized.fatherName || null,
+        maritalStatus: normalized.maritalStatus || null,
+        spouseName: normalized.spouseName || null,
+        religion: normalized.religion || null,
+        nationality: normalized.nationality || null,
         mobile: normalized.mobile,
         alternateMobile: normalized.alternateMobile || null,
         email: normalized.email,
         passwordHash,
         roleId: normalized.roleId ? parseInt(normalized.roleId, 10) : employeeRole.id,
         address: normalized.address || null,
+        temporaryAddress: normalized.temporaryAddress || null,
         departmentId: parseInt(normalized.departmentId, 10),
         designationId: parseInt(normalized.designationId, 10),
         reportingManagerId: normalized.reportingManagerId
@@ -231,6 +239,10 @@ export async function POST(request) {
       },
       include: { department: true, designation: true },
     });
+
+    if (employee.bankName) {
+      await ensureBankExists(prisma, employee.bankName);
+    }
 
     const year = new Date().getFullYear();
     const leaveTypes = await prisma.leaveType.findMany();

@@ -39,8 +39,11 @@ import { toast } from "sonner";
 import { api } from "@/lib/api-client";
 import { useAuth } from "@/context/auth-context";
 import { useLookups } from "@/hooks/use-lookups";
+import { FilePreviewDialog } from "@/components/employees/file-preview-dialog";
+import { ImageCropDialog } from "@/components/employees/image-crop-dialog";
+import { BankNameField } from "@/components/employees/bank-name-field";
+import { validateUploadFile } from "@/lib/file-upload";
 
-const MAX_PHOTO_SIZE = 2 * 1024 * 1024;
 
 function toEditForm(emp) {
   if (!emp) return {};
@@ -51,10 +54,17 @@ function toEditForm(emp) {
     dob: emp.dob || "",
     gender: emp.gender || "",
     bloodGroup: emp.bloodGroup || "",
+    motherName: emp.motherName || "",
+    fatherName: emp.fatherName || "",
+    maritalStatus: emp.maritalStatus || "",
+    spouseName: emp.spouseName || "",
+    religion: emp.religion || "",
+    nationality: emp.nationality || "",
     mobile: emp.mobile || "",
     alternateMobile: emp.alternateMobile || "",
     email: emp.email || "",
     address: emp.address || "",
+    temporaryAddress: emp.temporaryAddress || "",
     emergencyContact: emp.emergencyContact || "",
     departmentId: emp.departmentId ? String(emp.departmentId) : "",
     designationId: emp.designationId ? String(emp.designationId) : "",
@@ -111,6 +121,7 @@ export default function EmployeeProfilePage() {
   const params = useParams();
   const { user, hasPermission } = useAuth();
   const photoInputRef = useRef(null);
+  const photoCameraRef = useRef(null);
 
   const [employee, setEmployee] = useState(null);
   const [lookups, setLookups] = useState(null);
@@ -120,11 +131,16 @@ export default function EmployeeProfilePage() {
   const [attendance, setAttendance] = useState([]);
   const [leaves, setLeaves] = useState([]);
   const [documents, setDocuments] = useState([]);
+  const [docPreview, setDocPreview] = useState({ open: false, url: null, title: "", fileName: "" });
+  const [banks, setBanks] = useState([]);
   const [editing, setEditing] = useState(false);
   const [editForm, setEditForm] = useState({});
   const [saving, setSaving] = useState(false);
   const [photoPreview, setPhotoPreview] = useState(null);
   const [pendingPhoto, setPendingPhoto] = useState(null);
+  const [photoPreviewOpen, setPhotoPreviewOpen] = useState(false);
+  const [photoCropOpen, setPhotoCropOpen] = useState(false);
+  const [photoCropSrc, setPhotoCropSrc] = useState(null);
   const [passwordForm, setPasswordForm] = useState({
     currentPassword: "",
     newPassword: "",
@@ -208,28 +224,55 @@ export default function EmployeeProfilePage() {
       setLeaves(data.leaves || []);
       setDocuments(data.documents || []);
       setEditForm(toEditForm(data.employee));
+      setBanks(data.lookups?.banks || formLookups?.banks || []);
       setPhotoPreview(data.employee?.photo || null);
       setPendingPhoto(null);
     });
   };
 
   useEffect(() => {
+    if (formLookups?.banks?.length && !banks.length) {
+      setBanks(formLookups.banks);
+    }
+  }, [formLookups, banks.length]);
+
+  useEffect(() => {
     loadProfile().catch(() => {});
   }, [params.id]);
 
-  const handlePhotoSelect = (e) => {
-    const file = e.target.files?.[0];
+  const applyPendingPhoto = (file) => {
     if (!file) return;
-    if (!["image/jpeg", "image/jpg", "image/png"].includes(file.type)) {
-      toast.error("Only JPG and PNG photos are allowed");
-      return;
-    }
-    if (file.size > MAX_PHOTO_SIZE) {
-      toast.error("Photo must be under 2MB");
+    const check = validateUploadFile(file, { allowPdf: false });
+    if (!check.valid) {
+      toast.error(check.message);
       return;
     }
     setPendingPhoto(file);
-    setPhotoPreview(URL.createObjectURL(file));
+    setPhotoPreview((prev) => {
+      if (prev?.startsWith("blob:")) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
+  };
+
+  const handlePhotoSelect = (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    applyPendingPhoto(file);
+  };
+
+  const handleProfileCameraSelect = (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setPhotoCropSrc(url);
+    setPhotoCropOpen(true);
+  };
+
+  const handlePhotoCropClose = (open) => {
+    if (!open && photoCropSrc?.startsWith("blob:")) URL.revokeObjectURL(photoCropSrc);
+    if (!open) setPhotoCropSrc(null);
+    setPhotoCropOpen(open);
   };
 
   const handleCancel = () => {
@@ -334,17 +377,46 @@ export default function EmployeeProfilePage() {
                       className="hidden"
                       onChange={handlePhotoSelect}
                     />
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      type="button"
-                      className="w-full"
-                      onClick={() => photoInputRef.current?.click()}
-                    >
-                      <Camera className="h-3.5 w-3.5" />
-                      {pendingPhoto ? "Change Photo" : "Update Photo"}
-                    </Button>
-                    <p className="text-[10px] text-muted-foreground text-center">JPG/PNG, max 2MB</p>
+                    <input
+                      ref={photoCameraRef}
+                      type="file"
+                      accept="image/*"
+                      capture="user"
+                      className="hidden"
+                      onChange={handleProfileCameraSelect}
+                    />
+                    <div className="flex flex-wrap gap-1">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        type="button"
+                        onClick={() => photoCameraRef.current?.click()}
+                      >
+                        <Camera className="h-3.5 w-3.5" />
+                        Camera
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        type="button"
+                        onClick={() => photoInputRef.current?.click()}
+                      >
+                        <Upload className="h-3.5 w-3.5" />
+                        Upload
+                      </Button>
+                      {displayPhoto && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          type="button"
+                          onClick={() => setPhotoPreviewOpen(true)}
+                        >
+                          <Eye className="h-3.5 w-3.5" />
+                          View
+                        </Button>
+                      )}
+                    </div>
+                    <p className="text-[10px] text-muted-foreground text-center">JPG/PNG, max 5MB</p>
                   </div>
                 )}
               </div>
@@ -453,6 +525,50 @@ export default function EmployeeProfilePage() {
                         </SelectContent>
                       </Select>
                     </EditField>
+                    <EditField label="Father's Name">
+                      <Input value={editForm.fatherName || ""} onChange={(e) => set("fatherName", e.target.value)} />
+                    </EditField>
+                    <EditField label="Mother's Name">
+                      <Input value={editForm.motherName || ""} onChange={(e) => set("motherName", e.target.value)} />
+                    </EditField>
+                    <EditField label="Marriage Status">
+                      <Select
+                        value={editForm.maritalStatus || undefined}
+                        onValueChange={(v) => set("maritalStatus", v)}
+                      >
+                        <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                        <SelectContent>
+                          {(lookups?.maritalStatuses || formLookups?.maritalStatuses || []).map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </EditField>
+                    {editForm.maritalStatus === "Married" && (
+                      <EditField label="Spouse Name">
+                        <Input value={editForm.spouseName || ""} onChange={(e) => set("spouseName", e.target.value)} />
+                      </EditField>
+                    )}
+                    <EditField label="Religion">
+                      <Select value={editForm.religion || undefined} onValueChange={(v) => set("religion", v)}>
+                        <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                        <SelectContent>
+                          {(formLookups?.religions || []).map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </EditField>
+                    <EditField label="Nationality">
+                      <Select value={editForm.nationality || undefined} onValueChange={(v) => set("nationality", v)}>
+                        <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                        <SelectContent>
+                          {(formLookups?.nationalities || []).map((opt) => (
+                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </EditField>
                     <EditField label="Emergency Contact">
                       <Input
                         value={editForm.emergencyContact}
@@ -471,10 +587,17 @@ export default function EmployeeProfilePage() {
                     <EditField label="Email" className="sm:col-span-2">
                       <Input type="email" value={editForm.email} onChange={(e) => set("email", e.target.value)} />
                     </EditField>
-                    <EditField label="Address" className="sm:col-span-2">
+                    <EditField label="Permanent Address" className="sm:col-span-2">
                       <Textarea
                         value={editForm.address}
                         onChange={(e) => set("address", e.target.value)}
+                        rows={3}
+                      />
+                    </EditField>
+                    <EditField label="Temporary Address" className="sm:col-span-2">
+                      <Textarea
+                        value={editForm.temporaryAddress || ""}
+                        onChange={(e) => set("temporaryAddress", e.target.value)}
                         rows={3}
                       />
                     </EditField>
@@ -495,11 +618,20 @@ export default function EmployeeProfilePage() {
                     <DetailRow label="Date of Birth" value={employee.dob ? formatDate(employee.dob) : ""} />
                     <DetailRow label="Gender" value={employee.gender} />
                     <DetailRow label="Blood Group" value={employee.bloodGroup} />
+                    <DetailRow label="Father's Name" value={employee.fatherName} />
+                    <DetailRow label="Mother's Name" value={employee.motherName} />
+                    <DetailRow label="Marriage Status" value={employee.maritalStatus} />
+                    {employee.maritalStatus === "Married" && (
+                      <DetailRow label="Spouse Name" value={employee.spouseName} />
+                    )}
+                    <DetailRow label="Religion" value={employee.religion} />
+                    <DetailRow label="Nationality" value={employee.nationality} />
                     <DetailRow label="Mobile" value={employee.mobile} />
                     <DetailRow label="Alternate Mobile" value={employee.alternateMobile} />
                     <DetailRow label="Email" value={employee.email} />
                     <DetailRow label="Emergency Contact" value={employee.emergencyContact} />
-                    <DetailRow label="Address" value={employee.address} />
+                    <DetailRow label="Permanent Address" value={employee.address} />
+                    <DetailRow label="Temporary Address" value={employee.temporaryAddress} />
                     {employee.skills && <DetailRow label="Skills" value={employee.skills} />}
                   </>
                 )}
@@ -626,7 +758,7 @@ export default function EmployeeProfilePage() {
               </CardContent>
             </Card>
 
-            {employee.employeeCategory === "Fresher" && !editing && (
+            {!editing && (
               <Card className="glass-card">
                 <CardHeader><CardTitle>Education</CardTitle></CardHeader>
                 <CardContent className="space-y-3">
@@ -657,7 +789,6 @@ export default function EmployeeProfilePage() {
                   />
                   <DetailRow label="Notice Period" value={employee.noticePeriod} />
                   <DetailRow label="Relevant Experience" value={employee.relevantExperience} />
-                  <DetailRow label="Skills" value={employee.skills} />
                   <DocLink label="Experience Letter" url={employee.experienceLetterUrl} />
                   <DocLink label="Relieving Letter" url={employee.relievingLetterUrl} />
                   {(employee.payslipUrls || []).map((url, i) => (
@@ -672,9 +803,12 @@ export default function EmployeeProfilePage() {
               <CardContent className={editing ? "grid gap-4 sm:grid-cols-2" : "space-y-3"}>
                 {editing ? (
                   <>
-                    <EditField label="Bank Name">
-                      <Input value={editForm.bankName} onChange={(e) => set("bankName", e.target.value)} />
-                    </EditField>
+                    <BankNameField
+                      value={editForm.bankName}
+                      onChange={(v) => set("bankName", v)}
+                      banks={banks.length ? banks : formLookups?.banks || []}
+                      onBanksChange={setBanks}
+                    />
                     <EditField label="IFSC Code">
                       <Input
                         maxLength={11}
@@ -865,11 +999,29 @@ export default function EmployeeProfilePage() {
                       </div>
                     </div>
                     {doc.url ? (
-                      <a href={doc.url} target="_blank" rel="noopener noreferrer" download>
-                        <Button variant="ghost" size="icon" type="button">
-                          <Download className="h-4 w-4" />
+                      <div className="flex shrink-0 gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          type="button"
+                          title="View"
+                          onClick={() =>
+                            setDocPreview({
+                              open: true,
+                              url: doc.url,
+                              title: doc.name,
+                              fileName: doc.fileName || doc.name,
+                            })
+                          }
+                        >
+                          <Eye className="h-4 w-4" />
                         </Button>
-                      </a>
+                        <a href={doc.url} target="_blank" rel="noopener noreferrer" download>
+                          <Button variant="ghost" size="icon" type="button" title="Download">
+                            <Download className="h-4 w-4" />
+                          </Button>
+                        </a>
+                      </div>
                     ) : (
                       <Button variant="ghost" size="icon" disabled>
                         <Download className="h-4 w-4" />
@@ -882,6 +1034,28 @@ export default function EmployeeProfilePage() {
           </Card>
         </TabsContent>
       </Tabs>
+
+      <FilePreviewDialog
+        open={docPreview.open}
+        onOpenChange={(open) => setDocPreview((prev) => ({ ...prev, open }))}
+        title={docPreview.title}
+        url={docPreview.url}
+        fileName={docPreview.fileName}
+      />
+      <FilePreviewDialog
+        open={photoPreviewOpen}
+        onOpenChange={setPhotoPreviewOpen}
+        title="Profile Photo"
+        url={displayPhoto}
+        fileName={pendingPhoto?.name || "Profile photo"}
+      />
+      <ImageCropDialog
+        open={photoCropOpen}
+        onOpenChange={handlePhotoCropClose}
+        imageSrc={photoCropSrc}
+        title="Profile Photo"
+        onConfirm={applyPendingPhoto}
+      />
     </div>
   );
 }
