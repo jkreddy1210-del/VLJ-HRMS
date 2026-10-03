@@ -18,14 +18,16 @@ export async function PATCH(request, { params }) {
   if (typeof body.isActive !== "boolean") return Response.json({ error: "isActive must be a boolean" }, { status: 400 });
 
   try {
+    const existing = await prisma.employeeDeviceMapping.findFirst({
+      where: { id: mappingId, attendanceDeviceId },
+      select: { id: true },
+    });
+    if (!existing) return Response.json({ error: "Mapping not found for this device" }, { status: 404 });
     const mapping = await prisma.employeeDeviceMapping.update({
       where: { id: mappingId },
       data: { isActive: body.isActive },
       include: { employee: { select: { id: true, employeeCode: true, fullName: true } } },
     });
-    if (mapping.attendanceDeviceId !== attendanceDeviceId) {
-      return Response.json({ error: "Mapping does not belong to this device" }, { status: 404 });
-    }
     try {
       await createAuditLog({
         userId: user.id,
