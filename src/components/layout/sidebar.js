@@ -59,6 +59,7 @@ const navItems = [
   { href: "/shifts", label: "Shift Management", icon: Clock, perm: ["Shift Management", "Department Management"] },
 
   { href: "/attendance", label: "Daily Attendance", icon: CalendarCheck, perm: ["View Attendance", "Mark Attendance", "Attendance Monitoring", "View Team Attendance"] },
+  { href: "/attendance-devices", label: "Attendance Devices", icon: Fingerprint, perm: ["Employee Management", "Attendance Monitoring"] },
 
   { href: "/leaves", label: "Leave Management", icon: CalendarDays, perm: ["Apply Leave", "View Leave Requests", "View Team Leave Requests", "Final Leave Approval", "Leave Approval"] },
 
