@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "node scripts/ensure-prisma-client.js",
-    "prebuild": "node scripts/ensure-prisma-client.js",
+    "prebuild": "prisma generate && node scripts/ensure-prisma-client.js",
     "prestart": "node scripts/ensure-prisma-client.js",
     "dev": "next dev",
     "build": "next build",
