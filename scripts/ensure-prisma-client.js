@@ -7,7 +7,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 
 const root = path.join(__dirname, "..");
-const clientIndex = path.join(root, "src", "generated", "prisma", "client.ts");
+const clientIndex = path.join(root, "src", "generated", "prisma", "index.js");
 const clientDir = path.join(root, "src", "generated", "prisma");
 
 function isClientGenerated() {
