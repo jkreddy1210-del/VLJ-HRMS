@@ -1,6 +1,5 @@
 import { PrismaClient } from "@/generated/prisma";
-import { PrismaMariaDb } from "@prisma/adapter-mariadb";
-import { parseDatabaseUrl } from "@/lib/database-url";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { employeeProfilePhotoExtension } from "@/lib/employee-photo-db";
 
 const globalForPrisma = globalThis;
@@ -9,7 +8,7 @@ const globalForPrisma = globalThis;
 const PRISMA_CLIENT_VERSION = 6;
 
 function createPrismaClient() {
-  const adapter = new PrismaMariaDb(parseDatabaseUrl(process.env.DATABASE_URL));
+  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
   const base = new PrismaClient({
     adapter,
     log: process.env.NODE_ENV === "development" ? ["error", "warn"] : ["error"],
