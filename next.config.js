@@ -16,6 +16,16 @@ const nextConfig = {
       },
     ],
   },
+
+  // Prisma Client uses the query compiler WASM files from the custom
+  // src/generated/prisma output directory. Next.js/Vercel's file tracing
+  // does not reliably include these non-JS assets automatically.
+  outputFileTracingIncludes: {
+    "/*": [
+      "./src/generated/prisma/query_compiler_bg.wasm",
+      "./src/generated/prisma/query_compiler_bg.js",
+    ],
+  },
 };
 
 module.exports = nextConfig;
