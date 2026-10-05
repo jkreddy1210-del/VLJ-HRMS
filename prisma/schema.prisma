@@ -3,10 +3,9 @@
 // Attendance is NEVER linked by employee name — only employee_id, employee_code, cam_attendance_id
 
 generator client {
-  provider   = "prisma-client"
-  output     = "../src/generated/prisma"
+  provider   = "prisma-client-js"
   engineType = "client"
-  runtime    = "nodejs"
+  output     = "../src/generated/prisma"
 }
 
 datasource db {
