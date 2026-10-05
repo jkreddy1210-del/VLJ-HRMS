@@ -7,7 +7,7 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 
 const root = path.join(__dirname, "..");
-const clientIndex = path.join(root, "src", "generated", "prisma", "index.js");
+const clientIndex = path.join(root, "src", "generated", "prisma", "client.ts");
 const clientDir = path.join(root, "src", "generated", "prisma");
 
 function isClientGenerated() {
@@ -63,7 +63,7 @@ function printNasHelp() {
   console.warn(`
 ⚠ Prisma generate failed on this machine (common on Synology NAS).
 
-The pre-generated client in src/generated/prisma should still work after git pull.
+The generated client in src/generated/prisma should still work after git pull.
 If login fails, on your laptop run:
   npm run db:generate
   git add src/generated/prisma && git commit && git push
