@@ -2,37 +2,63 @@
 
 This module is vendor-neutral. A device provider has a registry entry, each device employee ID is explicitly mapped to an HRMS employee, and inbound device events are stored for review before they can affect payroll-facing attendance.
 
+## KENT webhook
+
+KENT CamAttendance Cloud documents a real-time webhook that sends recognition data to a client-provided endpoint. The documented recognition payload includes `empId`, `time`, `type`, `deviceId`, and other metadata.
+
+The HRMS receiver is:
+
+`POST /api/attendance/kent`
+
+Authentication is supported in either of these forms:
+
+- `x-kent-token: <token>`
+- `Authorization: Bearer <token>`
+- URL query parameter: `?token=<token>`
+
+The query-parameter form is provided because the current KENT Webhooks screen exposes only the webhook name, type, and endpoint URL; it does not expose a custom-header field.
+
+For KENT, configure the endpoint as:
+
+`https://hrms.varlakshmijewellery.co.in/api/attendance/kent?token=<KENT_ATTENDANCE_WEBHOOK_TOKEN>`
+
+Do not commit the token to Git. Store it only in the server environment.
+
 ## Safety behavior
 
 - Existing `Employee.camAttendanceId` and attendance workflows remain unchanged.
 - Device IDs are mapped independently to HRMS employee IDs; employee names are never used for matching.
-- The KENT webhook requires `KENT_ATTENDANCE_WEBHOOK_TOKEN` and accepts it as `x-kent-token` or a Bearer token.
-- The webhook only stores events. It does **not** automatically mark IN/OUT attendance. Confirm the device's event semantics and timezone first.
+- The webhook stores inbound recognition events first; it does **not** automatically mark IN/OUT attendance yet.
+- Unknown persons and unmapped device employee IDs are retained as reviewable event statuses.
+- Duplicate external event IDs are ignored when KENT provides an event/record/recognition ID.
 - Never put the webhook token in source control or send it to a browser.
 
-## Setup
+## Device setup
 
-1. Apply the migration in a test database first. Do not run `prisma migrate deploy` on production until the schema has been validated and a backup is confirmed.
-2. Register the KENT device through the authenticated API. Set `provider` to `KENT` and `externalDeviceId` to the exact `deviceId` delivered by the webhook.
-3. Set a long random secret (at least 32 characters) in the server environment as `KENT_ATTENDANCE_WEBHOOK_TOKEN`, then restart the HRMS process.
-4. In KENT's webhook configuration, set the URL to `https://hrms.varlakshmijewellery.co.in/api/attendance/kent` and configure the same token using the supported header if KENT permits custom headers. If the device provider cannot send a secret header, do not expose this endpoint publicly without adding a provider-supported signature or network allowlist.
-5. Create an employee-device mapping for each employee. Device employee IDs such as `VLJ001` remain separate from HRMS codes such as `VLJ-IT-2001`.
+1. Register the KENT device in `attendance_devices` with provider `KENT` and the exact `deviceId` sent by KENT.
+2. Create an employee-device mapping for each employee using the exact KENT `empId`.
+3. Configure the KENT Webhook as a Recognition webhook.
+4. Validate the endpoint.
+5. Send a controlled recognition and inspect the inbound event before enabling automatic attendance processing.
 
-## API
+## Management API
 
-All management endpoints require the normal HRMS bearer-token authentication.
+All management endpoints require normal HRMS bearer-token authentication.
 
-- `GET /api/attendance-devices` — list active devices. Add `?includeInactive=true` to include disabled devices.
-- `POST /api/attendance-devices` — create a device with `{ "name": "...", "provider": "KENT", "externalDeviceId": "...", "location": "..." }`.
-- `PATCH /api/attendance-devices/:id` — update device metadata or `isActive`.
+- `GET /api/attendance-devices` — list active devices.
+- `POST /api/attendance-devices` — register a device.
+- `PATCH /api/attendance-devices/:id` — update device metadata or status.
 - `GET /api/attendance-devices/:id/mappings` — list employee mappings.
-- `POST /api/attendance-devices/:id/mappings` — create mapping with `{ "employeeId": 123, "deviceEmployeeId": "VLJ001" }`.
-- `PATCH /api/attendance-devices/:id/mappings/:mappingId` — activate/deactivate a mapping with `{ "isActive": false }`.
-- `GET /api/attendance-devices/:id/events` — review recent device events; optional `status` and `limit` query parameters.
-- `POST /api/attendance/kent` — authenticated device webhook. Accepts one event object or an array of up to 100 events.
+- `POST /api/attendance-devices/:id/mappings` — create a mapping.
+- `PATCH /api/attendance-devices/:id/mappings/:mappingId` — activate/deactivate a mapping.
+- `GET /api/attendance-devices/:id/events` — review received device events.
 
 ## KENT event fields accepted
 
-The receiver recognizes `deviceId`, `empId`, and `time`, plus common aliases (`device_id`, `employeeId`, `timestamp`, etc.). It records `type` and an optional `eventId`/`recordId`/`recognitionId` for deduplication. The exact provider payload and timezone must be verified before implementing automatic attendance processing.
+The receiver recognizes `deviceId`, `empId`, and `time`, plus common aliases such as `device_id`, `employeeId`, `timestamp`, and `occurredAt`. It also records `type` and optional `eventId`, `recordId`, or `recognitionId`.
 
-Events without a matching active device or with invalid required fields are rejected. Unmapped employee IDs and unknown-person events are retained with review statuses when the device is registered.
+The exact provider payload and timezone will be verified during the first live test. No automatic IN/OUT calculation is performed until those semantics are confirmed.
+
+## Database portability
+
+The webhook is implemented at the HRMS application/API layer and uses Prisma. It is not tied to Supabase-specific APIs. The same integration is intended to work when the HRMS database is moved to MySQL/MariaDB on the Synology NAS, subject to the normal Prisma schema/migration compatibility checks.
